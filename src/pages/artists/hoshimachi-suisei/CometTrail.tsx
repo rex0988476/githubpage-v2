@@ -8,6 +8,8 @@ const SAMPLES = 400
 const MIN_STEP = 120
 /** 區塊交界兩側各用這麼多 px 漸變顏色 */
 const COLOR_BLEND = 160
+/** 捲動這麼多 px 後，彗星頭從起點接回 HEAD_POSITION */
+const START_RAMP = 240
 
 const SVG_NS = 'http://www.w3.org/2000/svg'
 
@@ -67,7 +69,11 @@ export function CometTrail({ rootRef }: { rootRef: RefObject<HTMLDivElement | nu
       const viewport = window.innerHeight
       const remaining = root.offsetHeight - viewport - window.scrollY
       const ending = Math.min(Math.max(1 - remaining / viewport, 0), 1)
-      const target = window.scrollY + viewport * (HEAD_POSITION + (1 - HEAD_POSITION) * ending)
+      const cruising = window.scrollY + viewport * (HEAD_POSITION + (1 - HEAD_POSITION) * ending)
+      // 頁面頂端時彗星頭待在起點，捲動後才追上巡航位置
+      const start = samples[0].y
+      const ramp = Math.min(window.scrollY / START_RAMP, 1)
+      const target = Math.min(cruising, start + (cruising - start) * ramp)
       const next = samples.findIndex((sample) => sample.y >= target)
       let length = total
       if (next === 0) length = 0

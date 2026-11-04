@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Link } from 'react-router-dom'
-import { artistImageUrl, concertsOf } from '../../../lib/music'
+import { artistImageUrl, concertsOf, isUpcoming } from '../../../lib/music'
 import type { Artist, FavoriteSong } from '../../../types'
 import { CometTrail } from './CometTrail'
 import styles from './SuiseiPage.module.css'
@@ -150,6 +150,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
               {concerts.map(({ id, date, title, venue, city }) => (
                 <li key={id}>
                   <time dateTime={date}>{date.replaceAll('-', '.')}</time>
+                  {isUpcoming(date) && <span className={styles.upcoming}>即將參戰</span>}
                   <h3>{title}</h3>
                   <p>{[venue, city].filter(Boolean).join(' · ')}</p>
                 </li>

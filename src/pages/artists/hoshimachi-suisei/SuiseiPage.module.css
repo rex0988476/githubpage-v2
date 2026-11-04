@@ -355,6 +355,17 @@
   color: var(--comet);
 }
 
+.upcoming {
+  display: inline-block;
+  padding: 1px 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #081434;
+  background: var(--comet);
+  border-radius: 999px;
+}
+
 .concerts h3 {
   margin: 4px 0;
   font-size: 20px;
