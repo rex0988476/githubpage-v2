@@ -16,8 +16,9 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - React + TypeScript + Vite，靜態部署到 GitHub Pages。
 - `vite.config.ts` 的 `base: './'` 搭配 `HashRouter`：Pages 沒有伺服器端路由，網址形式是 `#/anime`。
 - public 底下的資源要用 `import.meta.env.BASE_URL` 組路徑，不要寫 `/covers/...` 這種絕對路徑。
-- 路由在 `src/App.tsx`；共用外框在 `src/components/Layout.tsx`。
-- 所有樣式在 `src/index.css`，顏色和間距用 `:root` 的變數，配色沿用舊站。
+- 路由在 `src/App.tsx`；共用外框在 `src/components/Layout.tsx`。音樂家頁 `#/music/artists/<slug>` 不套共用外框。
+- 樣式在 `src/index.css`，顏色和間距用 `:root` 的變數，配色沿用舊站。音樂家專屬頁例外：各自用 CSS Module，避免樣式互相污染。
+- 音樂家專屬頁放在 `src/pages/artists/<slug>/`，在 `src/pages/ArtistPage.tsx` 註冊並按需載入。
 - 動畫的排序和計算邏輯集中在 `src/lib/anime.ts`，元件不要自己算。
 
 ## 資料
@@ -28,11 +29,17 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 尚未開播的季（`watched` 和 `total` 為 `null`）會讓該部動畫的進度和總集數變成未知，這是刻意的行為。
 - 舊 Excel 已停用，不要再把資料同步回去。
 - 遊戲：`src/data/games.ts`；自我介紹和興趣：`src/data/profile.ts`。
+- 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。
+- 演唱會：`src/data/music/concerts.ts`，用 `artistSlugs` 關聯音樂家，音樂家頁會自動列出。
+- `日本音樂家List.json` 和 `music-extract.json` 是未 commit 的本地來源資料，共 284 位音樂家，圖片網址指向 localhost，不能直接用。
 
 ## 已做的決定
 
 - 使用者選擇直接維護 JSON，不保留 Excel 轉檔流程。
-- 第一版只做首頁、動畫、遊戲三頁。Music、Sing 等興趣目前只是首頁圖示，沒有頁面。
+- Sing 等其他興趣目前只是首頁圖示，沒有頁面。
+- 284 位音樂家都要有獨立頁面，一位一位加；每位有不同的強烈背景設計。
+- 音樂家頁目前只放名稱、形象照片、喜歡的歌列表、演唱會參戰紀錄，不寫介紹文或年表。
+- 音樂家頁的背景視覺自己繪製，歌曲用官方 YouTube 嵌入，並標示為個人粉絲頁。形象照由使用者提供，不要自行下載官方圖。
 - 進度排序的升冪是「剩餘集數最多的在前」，與舊站相同。
 - 清單模式依評分或進度排序時不另外顯示排序值欄位，因為表格已有對應欄位。
 
@@ -45,6 +52,8 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
   gh api -X POST repos/rex0988476/githubpage-v2/pages -f build_type=workflow
   git push -u origin main
   ```
+- 星街すいせい頁的演唱會紀錄，等使用者提供。
+- Music 總覽的演唱會區塊還沒做，等使用者整理資料。
 - BanG Dream! Ave Mujica：舊資料有封面（`../githubpage/anime_covers/`）但沒有動畫資料，等使用者提供分數和進度。
 - 51 部中有 46 部還沒有 `tags`。
 - 封面總共約 16MB，之後可以壓縮。

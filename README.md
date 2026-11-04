@@ -19,6 +19,9 @@ npm run lint
 | 動畫清單 | `src/data/anime.json` |
 | 動畫封面 | `public/covers/<id>.<副檔名>` |
 | 遊戲清單 | `src/data/games.ts` |
+| 音樂家 | `src/data/music/artists.ts` |
+| 音樂家形象照 | `public/artists/<檔名>` |
+| 演唱會紀錄 | `src/data/music/concerts.ts` |
 | 自我介紹、興趣 | `src/data/profile.ts` |
 
 ### 新增一部動畫

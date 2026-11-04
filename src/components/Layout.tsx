@@ -1,19 +1,13 @@
-import { useEffect } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 
 const links = [
   { to: '/', label: 'Home' },
   { to: '/anime', label: 'Anime' },
   { to: '/games', label: 'Games' },
+  { to: '/music', label: 'Music' },
 ]
 
 export function Layout() {
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-
   return (
     <>
       <header className="site-header">

@@ -17,7 +17,7 @@ export interface Hobby {
 export const hobbies: Hobby[] = [
   { name: 'Game', icon: 'game.png', to: '/games' },
   { name: 'Anime', icon: 'anime.png', to: '/anime' },
-  { name: 'Music', icon: 'listen.png' },
+  { name: 'Music', icon: 'listen.png', to: '/music' },
   { name: 'Sing', icon: 'singing.png' },
   { name: 'Dance', icon: 'dancing.png' },
   { name: 'Instrument', icon: 'piano.png' },

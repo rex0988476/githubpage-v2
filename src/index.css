@@ -484,6 +484,31 @@ button {
   align-self: flex-start;
 }
 
+/* Music */
+.artist-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.artist-wall a {
+  display: flex;
+  align-items: flex-end;
+  min-height: 140px;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(145deg, var(--artist-accent), #10182c);
+  border-radius: var(--radius);
+  transition: transform 0.15s;
+}
+
+.artist-wall a:hover {
+  transform: translateY(-3px);
+}
+
 @media (max-width: 560px) {
   .hobbies ul {
     grid-template-columns: repeat(2, 1fr);

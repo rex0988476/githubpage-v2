@@ -26,3 +26,37 @@ export interface Game {
   name: string
   status: GameStatus
 }
+
+export interface FavoriteSong {
+  title: string
+  /** 官方 YouTube 影片 ID */
+  videoId: string
+  year: number
+  /** 作詞作曲，翻唱則填原曲的歌手或創作者；null 代表未知 */
+  credit: string | null
+}
+
+export interface Artist {
+  /** 網址用的識別字：#/music/artists/<slug> */
+  slug: string
+  name: string
+  /** 總覽頁卡片的強調色 */
+  accent: string
+  youtube: string
+  /** public/artists/ 底下的形象照檔名；null 代表還沒有 */
+  image: string | null
+  favoriteSongs: FavoriteSong[]
+  /** 喜歡的翻唱，影片在本人或合作對象的官方頻道 */
+  coverSongs: FavoriteSong[]
+}
+
+export interface Concert {
+  id: string
+  /** YYYY-MM-DD */
+  date: string
+  title: string
+  venue: string | null
+  city: string | null
+  /** 一場可以有多位音樂家，例如音樂祭 */
+  artistSlugs: string[]
+}

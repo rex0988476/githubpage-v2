@@ -1,0 +1,422 @@
+.page {
+  --night: #050816;
+  --comet: #7fd4ff;
+  --songs: #fd8f42;
+  --serif: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', 'Noto Serif TC', serif;
+  --heavy: 'Arial Black', 'Helvetica Neue', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  --mono: ui-monospace, 'Cascadia Mono', Consolas, 'Noto Sans Mono', monospace;
+  --side: clamp(36px, 12vw, 160px);
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+  color: #eef6ff;
+  background: var(--night);
+}
+
+.page h2,
+.page h3,
+.page h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.page a {
+  color: inherit;
+}
+
+.page :focus-visible {
+  outline: 3px solid currentColor;
+}
+
+.trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  pointer-events: none;
+}
+
+.trail path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.trail circle {
+  fill: #fff;
+  filter: drop-shadow(0 0 6px var(--comet)) drop-shadow(0 0 18px #2f8fe6);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 720px);
+}
+
+.back {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  padding: 6px 14px;
+  font-size: 14px;
+  color: #fff !important;
+  text-decoration: none;
+  background: rgb(5 8 22 / 72%);
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+.label {
+  margin-bottom: 14px;
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+}
+
+/* 形象照和名稱：夜空裡的一個光點 */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: 96px clamp(36px, 7vw, 96px);
+  background:
+    radial-gradient(1px 1px at 18% 24%, #fff, transparent),
+    radial-gradient(1px 1px at 42% 12%, #cfe9ff, transparent),
+    radial-gradient(1.5px 1.5px at 8% 62%, #fff, transparent),
+    radial-gradient(1px 1px at 36% 78%, #cfe9ff, transparent),
+    radial-gradient(1px 1px at 46% 44%, #fff, transparent),
+    var(--night);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: min(440px, 38%) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.nameLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px clamp(10px, 1.6vw, 22px);
+  align-items: center;
+}
+
+.youtube {
+  display: block;
+  flex: none;
+  width: clamp(44px, 4.6vw, 64px);
+  padding-block: 7px;
+  transition: scale 0.15s ease;
+}
+
+.youtube:hover {
+  scale: 1.1;
+}
+
+.youtube svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6.4vw, 92px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.spark {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-top: 36px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px 3px var(--comet),
+    0 0 44px 12px rgb(47 143 230 / 60%);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.photo,
+.photoEmpty {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 10px solid #fff;
+  border-radius: 24px;
+  box-shadow: 0 0 60px rgb(47 143 230 / 45%);
+  rotate: -1.5deg;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.photoEmpty {
+  display: grid;
+  place-items: center;
+  color: var(--comet);
+  background: rgb(255 255 255 / 6%);
+}
+
+/* 喜歡的歌：畫面突然變暗 */
+.ghost {
+  position: relative;
+  padding: clamp(150px, 24vh, 240px) var(--side) clamp(96px, 16vh, 180px);
+  font-family: var(--mono);
+  color: #f3e9ec;
+  background: #07070b;
+}
+
+.ghost .inner {
+  width: min(100%, 1180px);
+  padding: clamp(20px, 4vw, 36px);
+  margin-inline: auto;
+  background: #0e0e14;
+  border: 1px solid rgb(253 143 66 / 35%);
+}
+
+.ghost .label {
+  color: var(--songs);
+}
+
+.ghost h2 {
+  margin-left: -0.05em;
+  font-family: var(--heavy);
+  font-size: clamp(56px, 13.5vw, 165px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--songs);
+  text-shadow:
+    0.025em 0 0 rgb(253 143 66 / 35%),
+    -0.025em 0 0 rgb(127 212 255 / 25%);
+}
+
+.songColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px clamp(28px, 4vw, 56px);
+  align-items: start;
+  margin-top: 36px;
+}
+
+.columnTitle {
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: var(--songs);
+}
+
+.songs {
+  display: grid;
+  margin-top: 12px;
+  border-top: 1px solid var(--songs);
+}
+
+.song {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--songs);
+}
+
+.songLine {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.song h4 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.25;
+}
+
+.meta {
+  margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.78;
+}
+
+.play {
+  flex: none;
+  padding: 8px 14px;
+  font-weight: 700;
+  color: #07070b;
+  cursor: pointer;
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+}
+
+.play:hover {
+  background: var(--songs);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 14px;
+  border: 0;
+}
+
+/* 演唱會：捲動時爆開的光 */
+.nova {
+  --burst: 0;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 100vh;
+  padding: clamp(120px, 20vh, 220px) var(--side);
+  overflow: clip;
+  background: #081434;
+}
+
+.burst {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 170vmax;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    #fff 0 8%,
+    #9fe3ff 16%,
+    #4f9dff 28%,
+    #a04fe0 42%,
+    #e0348c 52%,
+    transparent 68%
+  );
+  opacity: calc(0.25 + var(--burst) * 0.75);
+  transform: translate(-50%, -50%) scale(calc(0.08 + var(--burst) * 0.92));
+}
+
+.nova .label {
+  display: inline-block;
+  padding: 2px 10px;
+  color: #081434;
+  background: #fff;
+}
+
+.nova h2 {
+  font-family: var(--heavy);
+  font-size: clamp(66px, 14vw, 170px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow:
+    0 2px 0 #081434,
+    0 0 26px #081434,
+    0 0 60px #081434;
+}
+
+.concerts {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.concerts li,
+.empty {
+  padding: 18px 20px;
+  background: rgb(8 20 52 / 86%);
+  border-radius: 14px;
+}
+
+.empty {
+  margin-top: 28px;
+}
+
+.concerts time {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--comet);
+}
+
+.concerts h3 {
+  margin: 4px 0;
+  font-size: 20px;
+}
+
+/* 頁尾：彗尾收束 */
+.onward {
+  position: relative;
+  padding: 120px var(--side) 56px;
+  background: linear-gradient(#081434, var(--night) 60%);
+}
+
+.onward .inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  font-size: 14px;
+}
+
+.onward p {
+  flex-basis: 100%;
+  font-size: 13px;
+  opacity: 0.72;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spark {
+    animation: none;
+  }
+
+  .nova {
+    --burst: 1;
+  }
+}
+
+@media (max-width: 999px) {
+  .songColumns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 759px) {
+  .page {
+    --side: 20px;
+  }
+
+  .hero,
+  .ghost,
+  .nova,
+  .onward {
+    padding-left: 36px;
+  }
+
+  .heroInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
+  }
+
+  .trail path {
+    stroke-width: 2;
+  }
+
+  .ghost h2 {
+    font-size: 18vw;
+    -webkit-text-stroke-width: 1.5px;
+  }
+}
