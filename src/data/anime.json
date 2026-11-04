@@ -1,0 +1,1105 @@
+[
+  {
+    "id": 0,
+    "title": "紫羅蘭永恆花園",
+    "cover": "0.png",
+    "score": 10,
+    "tags": [
+      "療癒",
+      "溫馨",
+      "反戰",
+      "勵志",
+      "愛情"
+    ],
+    "review": "神，劇情作畫音樂完全無可挑剔，每集看每集哭，可以被稱得上是藝術品的作品",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 13,
+        "total": 13,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "鬼滅之刃",
+    "cover": "1.jpg",
+    "score": 8,
+    "tags": [
+      "少年漫畫",
+      "黑暗奇幻",
+      "時代劇",
+      "獵奇",
+      "冒險",
+      "戰鬥"
+    ],
+    "review": "劇情還行，結局有點草率，但動畫跟音樂很棒，尤其是動畫，沒看過演出這麼猛的，是部光動畫品質就值得推薦其他人看的作品",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 26,
+        "total": 26,
+        "score": 8
+      },
+      {
+        "year": 2021,
+        "watched": 11,
+        "total": 11,
+        "score": 8
+      },
+      {
+        "year": 2023,
+        "watched": 0,
+        "total": 11,
+        "score": null
+      },
+      {
+        "year": 2024,
+        "watched": 0,
+        "total": 8,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "刀劍神域",
+    "cover": "2.jpg",
+    "score": 8,
+    "tags": [
+      "VR",
+      "MMORPG",
+      "冒險",
+      "SF",
+      "戰鬥",
+      "後宮型作品"
+    ],
+    "review": "唯一一部有收全實體小說的作品，可惜地底世界後面爛掉了",
+    "seasons": [
+      {
+        "year": 2012,
+        "watched": 25,
+        "total": 25,
+        "score": 9
+      },
+      {
+        "year": 2014,
+        "watched": 24,
+        "total": 24,
+        "score": 9
+      },
+      {
+        "year": 2018,
+        "watched": 0,
+        "total": 24,
+        "score": null
+      },
+      {
+        "year": 2019,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      },
+      {
+        "year": 2020,
+        "watched": 0,
+        "total": 11,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "怕痛的我，把防禦力點滿就對了",
+    "cover": "3.png",
+    "score": 7,
+    "tags": [
+      "網遊小說",
+      "MMORPG",
+      "奇幻",
+      "戰鬥",
+      "喜劇"
+    ],
+    "review": "可愛的龍傲天",
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      },
+      {
+        "year": 2023,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "孤獨搖滾",
+    "cover": "4.png",
+    "score": 10,
+    "tags": [
+      "四格漫畫",
+      "音樂"
+    ],
+    "review": "神，劇情跟音樂都很棒，尤其主角社恐發作做出的各種抽象行為太可愛了，這根本就是我",
+    "seasons": [
+      {
+        "year": 2022,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "BanG Dream! It's MyGO!!!!!",
+    "cover": "5.png",
+    "score": 8,
+    "tags": [],
+    "review": "八點檔少女樂隊番，很神奇的一部作品，前面各種狗血劇情，但後面收得不錯，好評",
+    "seasons": [
+      {
+        "year": 2023,
+        "watched": 13,
+        "total": 13,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "葬送的芙莉蓮",
+    "cover": "6.jpg",
+    "score": 10,
+    "tags": [],
+    "review": "神，作畫跟音樂都是上乘，而劇情則是可以讓人大量深刻反思的作品，我認為這部作品帶給了我們現今社會越來越缺乏的各種待人處事之道，並且這些道理與劇情融合得非常完美，常常看著看著不知不覺就看到心裡了，評分這種東西是主觀的，一部作品每個人給的分數不同才正常，但這部我覺得每個看過的都應該給滿分，且每個人都應該去看",
+    "seasons": [
+      {
+        "year": 2023,
+        "watched": 28,
+        "total": 28,
+        "score": 10
+      },
+      {
+        "year": 2026,
+        "watched": 10,
+        "total": 10,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Endro～！",
+    "cover": "7.jpg",
+    "score": 8,
+    "tags": [],
+    "review": "可愛至上，可愛就完事了",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "侵略！花枝娘",
+    "cover": "8.png",
+    "score": 10,
+    "tags": [],
+    "review": "超級可愛，而且是陪伴我很久的一部動畫，滿滿回憶",
+    "seasons": [
+      {
+        "year": 2010,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      },
+      {
+        "year": 2011,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "流浪神差",
+    "cover": "9.jpg",
+    "score": 10,
+    "tags": [],
+    "review": "帥慘了，對當初正值中二病的我影響很深xd",
+    "seasons": [
+      {
+        "year": 2014,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      },
+      {
+        "year": 2015,
+        "watched": 13,
+        "total": 13,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "冰菓",
+    "cover": "10.jpg",
+    "score": 10,
+    "tags": [],
+    "review": "神，米澤老師永遠的神",
+    "seasons": [
+      {
+        "year": 2012,
+        "watched": 22,
+        "total": 22,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "日常",
+    "cover": "11.png",
+    "score": 9,
+    "tags": [],
+    "review": "博士超級可愛，沒了:3(好啦其他人之間的互動也很有趣xd",
+    "seasons": [
+      {
+        "year": 2011,
+        "watched": 26,
+        "total": 26,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "少女終末旅行",
+    "cover": "12.png",
+    "score": 8,
+    "tags": [],
+    "review": "兩個可愛的少女在戰後孤獨的末日極地下還能夠積極樂觀地踏上旅程，這種反差感讓我印象非常深刻",
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "發條精靈戰記 天鏡的極北之星",
+    "cover": "13.jpg",
+    "score": 8,
+    "tags": [],
+    "review": "一部普通的鬥智類作品，但我喜歡鬥智所以給高分:3，有機會想收全實體小說",
+    "seasons": [
+      {
+        "year": 2016,
+        "watched": 13,
+        "total": 13,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "為美好的世界獻上祝福！",
+    "cover": "14.png",
+    "score": 10,
+    "tags": [],
+    "review": "位於異世界題材頂點的作品，這部給9分我想不到其他異世界有誰可以給10分",
+    "seasons": [
+      {
+        "year": 2016,
+        "watched": 10,
+        "total": 10,
+        "score": 10
+      },
+      {
+        "year": 2017,
+        "watched": 10,
+        "total": 10,
+        "score": 10
+      },
+      {
+        "year": 2024,
+        "watched": 11,
+        "total": 11,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "笨拙之極的上野",
+    "cover": "15.jpg",
+    "score": 7,
+    "tags": [],
+    "review": "看著女主為了男主做出各種自爆羞恥發明超級好笑www",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "來自繽紛世界的明日",
+    "cover": "16.png",
+    "score": 9,
+    "tags": [],
+    "review": "很棒，各種意義上很美的一部作品",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 13,
+        "total": 13,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "遊戲3人娘",
+    "cover": "17.jpg",
+    "score": 8.5,
+    "tags": [],
+    "review": "我看過最好笑的作品",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "虛構推理",
+    "cover": "18.png",
+    "score": 6,
+    "tags": [],
+    "review": "強調推理不是找真相，而是為了讓人相信自己的主張的作品，顛覆了一般推理作品應該要有的基於事實的嚴謹性，對於喜歡看推理作品的我來說算蠻新奇的，整體還行",
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 12,
+        "total": 12,
+        "score": 6
+      },
+      {
+        "year": 2023,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "約定的夢幻島",
+    "cover": "19.jpg",
+    "score": 8,
+    "tags": [],
+    "review": "整體來說算很不錯的作品，世界觀、鬥智跟旅行的部分我都很喜歡，可惜結尾普通",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      },
+      {
+        "year": 2021,
+        "watched": 0,
+        "total": 11,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "佐賀偶像是傳奇",
+    "cover": "20.png",
+    "score": 8,
+    "tags": [],
+    "review": "很腦洞的作品，妙很可愛w",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      },
+      {
+        "year": 2021,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "女高中生的虛度日常",
+    "cover": "21.jpg",
+    "score": 8.5,
+    "tags": [],
+    "review": "非常好笑的作品",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "title": "艾梅洛閣下II世事件簿 -魔眼蒐集列車 Grace note-",
+    "cover": "22.jpg",
+    "score": 9,
+    "tags": [],
+    "review": "除了劇情音樂畫風還有Fate的IP外，世界觀跟氛圍也都很棒，還有格蕾很讚",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 13,
+        "total": 13,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "此花綺譚",
+    "cover": "23.jpg",
+    "score": 9,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "K",
+    "cover": "24.png",
+    "score": 10,
+    "tags": [],
+    "review": "最強打鬥番，打鬥畫面每一下都看得到，而不是用特效或轉場帶過去，非常",
+    "seasons": [
+      {
+        "year": 2012,
+        "watched": 13,
+        "total": 13,
+        "score": 10
+      },
+      {
+        "year": 2015,
+        "watched": 13,
+        "total": 13,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "花開物語",
+    "cover": "25.jpg",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2011,
+        "watched": 26,
+        "total": 26,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "櫻花任務",
+    "cover": "26.jpg",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 25,
+        "total": 25,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "歡迎來到實力至上主義的教室",
+    "cover": "27.jpg",
+    "score": 9,
+    "tags": [],
+    "review": "很喜歡故事中各種規則超複雜的競賽",
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      },
+      {
+        "year": 2022,
+        "watched": 13,
+        "total": 13,
+        "score": 9
+      },
+      {
+        "year": 2024,
+        "watched": 13,
+        "total": 13,
+        "score": 9
+      },
+      {
+        "year": 2026,
+        "watched": null,
+        "total": null,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "一個人的○○小日子",
+    "cover": "28.png",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "流汗吧！健身少女",
+    "cover": "29.png",
+    "score": 6,
+    "tags": [],
+    "review": "就，少女健身番，蠻有趣的",
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "科學超電磁砲",
+    "cover": "30.jpg",
+    "score": 7,
+    "tags": [],
+    "review": "炮姐就是帥，然後不知道為啥我挺喜歡黑子的聲音w",
+    "seasons": [
+      {
+        "year": 2009,
+        "watched": 24,
+        "total": 24,
+        "score": 7
+      },
+      {
+        "year": 2013,
+        "watched": 24,
+        "total": 24,
+        "score": 7
+      },
+      {
+        "year": 2020,
+        "watched": 0,
+        "total": 25,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "狂賭之淵",
+    "cover": "31.jpg",
+    "score": 8,
+    "tags": [],
+    "review": "很喜歡劇中各種瘋子跟超強顏藝www",
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      },
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "POP TEAM EPIC",
+    "cover": "32.jpg",
+    "score": 8,
+    "tags": [],
+    "review": "前無古人後無來者的奇耙作品，不知道作者到底吸了啥www，凸(#ﾟДﾟ)凸",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      },
+      {
+        "year": 2022,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "哥布林殺手",
+    "cover": "33.jpg",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      },
+      {
+        "year": 2023,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "鹿乃子乃子乃子虎視眈眈",
+    "cover": "34.jpg",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2024,
+        "watched": 6,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "NO GAME NO LIFE 遊戲人生",
+    "cover": "35.jpg",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2014,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "title": "邪神與廚二病少女",
+    "cover": "36.png",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 11,
+        "total": 11,
+        "score": 8
+      },
+      {
+        "year": 2020,
+        "watched": 0,
+        "total": 11,
+        "score": null
+      },
+      {
+        "year": 2022,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "title": "關於我轉生變成史萊姆這檔事",
+    "cover": "37.jpg",
+    "score": 6,
+    "tags": [],
+    "review": "經典異世界龍傲天，還行",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 24,
+        "total": 24,
+        "score": 6
+      },
+      {
+        "year": 2021,
+        "watched": 0,
+        "total": 24,
+        "score": null
+      },
+      {
+        "year": 2024,
+        "watched": 0,
+        "total": 24,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "title": "末日時在做什麼？有沒有空？可以來拯救嗎？",
+    "cover": "38.jpg",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "title": "中二病也想談戀愛！",
+    "cover": "39.jpg",
+    "score": 9,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2012,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      },
+      {
+        "year": 2014,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "title": "多羅羅",
+    "cover": "40.jpg",
+    "score": 6,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 24,
+        "total": 24,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "title": "文豪Stray Dogs",
+    "cover": "41.jpg",
+    "score": 10,
+    "tags": [],
+    "review": "畫風跟音樂我很喜歡，但重點是劇情，是最讓我出乎意料的一部作品，完全猜不到接下來會怎麼發展",
+    "seasons": [
+      {
+        "year": 2016,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      },
+      {
+        "year": 2016,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      },
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      },
+      {
+        "year": 2023,
+        "watched": 13,
+        "total": 13,
+        "score": 10
+      },
+      {
+        "year": 2023,
+        "watched": 11,
+        "total": 11,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "title": "博多豚骨拉麵團",
+    "cover": "42.jpg",
+    "score": 6,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "title": "歌舞伎町夏洛克",
+    "cover": "43.jpg",
+    "score": 7.5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 24,
+        "total": 24,
+        "score": 7.5
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "title": "搖曳露營△",
+    "cover": "44.jpg",
+    "score": 10,
+    "tags": [],
+    "review": "神，可愛休閒番，壓力大或有負面情緒的時候看一集就能滿血恢復",
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 10
+      },
+      {
+        "year": 2021,
+        "watched": 0,
+        "total": 13,
+        "score": null
+      },
+      {
+        "year": 2024,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "title": "房間露營△",
+    "cover": "45.jpg",
+    "score": 10,
+    "tags": [],
+    "review": "泡麵番，跟搖曳露營一樣棒",
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 1,
+        "total": 12,
+        "score": 10
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "title": "彼方的阿斯特拉",
+    "cover": "46.jpg",
+    "score": 6,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "title": "公主殿下，「拷問」的時間到了",
+    "cover": "47.jpg",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2024,
+        "watched": 8,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "title": "進擊的巨人",
+    "cover": "48.jpg",
+    "score": 9,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2013,
+        "watched": 25,
+        "total": 25,
+        "score": 9
+      },
+      {
+        "year": 2017,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      },
+      {
+        "year": 2018,
+        "watched": 22,
+        "total": 22,
+        "score": 9
+      },
+      {
+        "year": 2020,
+        "watched": 35,
+        "total": 35,
+        "score": 9
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Re:從零開始的異世界生活",
+    "cover": "49.jpg",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2016,
+        "watched": 25,
+        "total": 25,
+        "score": 6
+      },
+      {
+        "year": 2020,
+        "watched": 25,
+        "total": 25,
+        "score": 8
+      },
+      {
+        "year": 2024,
+        "watched": 16,
+        "total": 16,
+        "score": 8
+      },
+      {
+        "year": 2026,
+        "watched": null,
+        "total": null,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "title": "憂國的莫里亞蒂",
+    "cover": "50.jpg",
+    "score": 7.5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 11,
+        "total": 11,
+        "score": 7.5
+      },
+      {
+        "year": 2021,
+        "watched": 13,
+        "total": 13,
+        "score": 8
+      }
+    ]
+  }
+]
