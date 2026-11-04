@@ -6,6 +6,7 @@
   --heavy: 'Arial Black', 'Helvetica Neue', 'Yu Gothic', 'Noto Sans JP', sans-serif;
   --mono: ui-monospace, 'Cascadia Mono', Consolas, 'Noto Sans Mono', monospace;
   --side: clamp(36px, 12vw, 160px);
+  --title-size: clamp(56px, 13.5vw, 165px);
   position: relative;
   min-height: 100vh;
   overflow-x: clip;
@@ -195,7 +196,7 @@
 .ghost h2 {
   margin-left: -0.05em;
   font-family: var(--heavy);
-  font-size: clamp(56px, 13.5vw, 165px);
+  font-size: var(--title-size);
   line-height: 0.9;
   letter-spacing: -0.04em;
   color: transparent;
@@ -278,7 +279,6 @@
   --burst: 0;
   position: relative;
   display: flex;
-  justify-content: flex-end;
   min-height: 100vh;
   padding: clamp(120px, 20vh, 220px) var(--side);
   overflow: clip;
@@ -304,6 +304,15 @@
   transform: translate(-50%, -50%) scale(calc(0.08 + var(--burst) * 0.92));
 }
 
+.nova .inner {
+  align-self: center;
+  width: min(100%, 1180px);
+  padding: clamp(20px, 4vw, 36px);
+  margin-inline: auto;
+  background: #081434;
+  border: 1px solid rgb(255 255 255 / 35%);
+}
+
 .nova .label {
   display: inline-block;
   padding: 2px 10px;
@@ -313,7 +322,7 @@
 
 .nova h2 {
   font-family: var(--heavy);
-  font-size: clamp(66px, 14vw, 170px);
+  font-size: var(--title-size);
   line-height: 1;
   letter-spacing: -0.03em;
   color: #fff;
@@ -332,7 +341,7 @@
 .concerts li,
 .empty {
   padding: 18px 20px;
-  background: rgb(8 20 52 / 86%);
+  background: rgb(255 255 255 / 7%);
   border-radius: 14px;
 }
 
@@ -397,6 +406,7 @@
 @media (max-width: 759px) {
   .page {
     --side: 20px;
+    --title-size: 18vw;
   }
 
   .hero,
@@ -416,7 +426,6 @@
   }
 
   .ghost h2 {
-    font-size: 18vw;
     -webkit-text-stroke-width: 1.5px;
   }
 }

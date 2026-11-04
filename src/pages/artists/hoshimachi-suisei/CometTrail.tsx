@@ -6,6 +6,8 @@ const HEAD_POSITION = 0.6
 const SAMPLES = 400
 /** 相鄰轉折點至少往下這麼多 px */
 const MIN_STEP = 120
+/** 區塊交界兩側各用這麼多 px 漸變顏色 */
+const COLOR_BLEND = 160
 
 const SVG_NS = 'http://www.w3.org/2000/svg'
 
@@ -63,7 +65,7 @@ export function CometTrail({ rootRef }: { rootRef: RefObject<HTMLDivElement | nu
 
       // 接近頁底時彗星頭往畫面下緣移動，捲到底剛好抵達終點
       const viewport = window.innerHeight
-      const remaining = root.scrollHeight - viewport - window.scrollY
+      const remaining = root.offsetHeight - viewport - window.scrollY
       const ending = Math.min(Math.max(1 - remaining / viewport, 0), 1)
       const target = window.scrollY + viewport * (HEAD_POSITION + (1 - HEAD_POSITION) * ending)
       const next = samples.findIndex((sample) => sample.y >= target)
@@ -95,7 +97,8 @@ export function CometTrail({ rootRef }: { rootRef: RefObject<HTMLDivElement | nu
 
     const layout = () => {
       const width = root.clientWidth
-      const height = root.scrollHeight
+      // 不能用 scrollHeight：它包含彗尾自己的高度，頁面變短時會量到舊值
+      const height = root.offsetHeight
       const acts = [...root.querySelectorAll<HTMLElement>('[data-act]')]
 
       svg.setAttribute('viewBox', `0 0 ${width} ${height}`)
@@ -104,14 +107,15 @@ export function CometTrail({ rootRef }: { rootRef: RefObject<HTMLDivElement | nu
       path.setAttribute('d', buildPath(root, acts, width, height))
 
       gradient.replaceChildren(
-        ...acts.flatMap((act) =>
-          [act.offsetTop, act.offsetTop + act.offsetHeight].map((y) => {
+        ...acts.flatMap((act) => {
+          const blend = Math.min(COLOR_BLEND, act.offsetHeight / 2)
+          return [act.offsetTop + blend, act.offsetTop + act.offsetHeight - blend].map((y) => {
             const stop = document.createElementNS(SVG_NS, 'stop')
             stop.setAttribute('offset', `${y / height}`)
             stop.setAttribute('stop-color', act.dataset.trail ?? '#fff')
             return stop
-          }),
-        ),
+          })
+        }),
       )
 
       const total = path.getTotalLength()
