@@ -1,133 +1,18 @@
-import { useRef, useState } from 'react'
-import { flushSync } from 'react-dom'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { artistImageUrl, concertsOf, daysSince, isUpcoming } from '../../../lib/music'
-import type { Artist, Concert, FavoriteSong } from '../../../types'
+import { artistImageUrl, concertsOf, daysSince } from '../../../lib/music'
+import type { Artist } from '../../../types'
+import { ConcertRow } from '../shared/ConcertRow'
+import { PhotoGallery } from '../shared/PhotoGallery'
+import { SongRow } from '../shared/SongRow'
+import { useExpandableRows } from '../shared/useExpandableRows'
 import { CometTrail } from './CometTrail'
-import { PhotoGallery } from './PhotoGallery'
 import styles from './SuiseiPage.module.css'
-
-interface SongRowProps {
-  song: FavoriteSong
-  creditLabel?: string
-  playing: boolean
-  onPlay: (videoId: string, row: HTMLElement) => void
-}
-
-function SongRow({ song, creditLabel, playing, onPlay }: SongRowProps) {
-  const rowRef = useRef<HTMLLIElement>(null)
-
-  return (
-    <li ref={rowRef} className={styles.song}>
-      <div className={styles.songLine}>
-        <div>
-          <h4 lang="ja">{song.title}</h4>
-          <p className={styles.meta}>
-            {song.year}
-            {song.credit && (
-              <>
-                {' · '}
-                {creditLabel && `${creditLabel} `}
-                <span lang="ja">{song.credit}</span>
-              </>
-            )}
-          </p>
-        </div>
-        {!playing && (
-          <button
-            type="button"
-            className={styles.play}
-            onClick={() => {
-              if (rowRef.current) onPlay(song.videoId, rowRef.current)
-            }}
-          >
-            ▶ 播放
-          </button>
-        )}
-      </div>
-      {playing && (
-        <iframe
-          className={styles.video}
-          src={`https://www.youtube-nocookie.com/embed/${song.videoId}?autoplay=1`}
-          title={`${song.title} 影片`}
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-      )}
-    </li>
-  )
-}
-
-interface ConcertRowProps {
-  concert: Concert
-  open: boolean
-  onToggle: (id: string, row: HTMLElement) => void
-}
-
-function ConcertRow({ concert, open, onToggle }: ConcertRowProps) {
-  const rowRef = useRef<HTMLLIElement>(null)
-  const { id, date, title, venue, city, review, photos } = concert
-  const detailId = `${id}-detail`
-
-  return (
-    <li ref={rowRef}>
-      <div className={styles.concertHead}>
-        <div>
-          <time dateTime={date}>{date.replaceAll('-', '.')}</time>
-          {isUpcoming(date) && <span className={styles.upcoming}>即將參戰</span>}
-          <h3>{title}</h3>
-          <p>{[venue, city].filter(Boolean).join(' · ')}</p>
-        </div>
-        {(review.length > 0 || photos.length > 0) && (
-          <button
-            type="button"
-            className={styles.concertToggle}
-            aria-expanded={open}
-            aria-controls={detailId}
-            onClick={() => {
-              if (rowRef.current) onToggle(id, rowRef.current)
-            }}
-          >
-            {open ? '收起 ▲' : '展開 ▼'}
-          </button>
-        )}
-      </div>
-      {open && (
-        <div id={detailId} className={styles.concertDetail}>
-          {review.length > 0 && (
-            <div className={styles.storyText}>
-              {review.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          )}
-          {photos.length > 0 && <PhotoGallery photos={photos} />}
-        </div>
-      )}
-    </li>
-  )
-}
 
 export default function SuiseiPage({ artist }: { artist: Artist }) {
   const rootRef = useRef<HTMLDivElement>(null)
   const concerts = concertsOf(artist.slug)
-  const [playingId, setPlayingId] = useState<string | null>(null)
-  const [openConcertId, setOpenConcertId] = useState<string | null>(null)
-
-  // 收起上方的影片會讓版面上移，補回捲動量讓點擊的那一列留在原位
-  const keepInPlace = (row: HTMLElement, update: () => void) => {
-    const top = row.getBoundingClientRect().top
-    flushSync(update)
-    window.scrollBy({ top: row.getBoundingClientRect().top - top, behavior: 'instant' })
-  }
-
-  const play = (videoId: string, row: HTMLElement) => {
-    keepInPlace(row, () => setPlayingId(videoId))
-  }
-
-  const toggleConcert = (id: string, row: HTMLElement) => {
-    keepInPlace(row, () => setOpenConcertId((current) => (current === id ? null : id)))
-  }
+  const { playingId, openConcertId, play, toggleConcert } = useExpandableRows()
 
   return (
     <div ref={rootRef} className={styles.page}>
@@ -182,7 +67,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {artist.gallery.length > 0 && <PhotoGallery photos={artist.gallery} title="COLLECTION" />}
+            {artist.gallery.length > 0 && <PhotoGallery photos={artist.gallery} title="COLLECTION" classes={styles} />}
           </div>
         </section>
       )}
@@ -194,20 +79,21 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
           <div className={styles.songColumns}>
             <div>
               <h3 className={styles.columnTitle}>ORIGINAL</h3>
-              <ul className={styles.songs}>
+              <ul className={styles.songs} data-scroller>
                 {artist.favoriteSongs.map((song) => (
                   <SongRow
                     key={song.videoId}
                     song={song}
                     playing={song.videoId === playingId}
                     onPlay={play}
+                    classes={styles}
                   />
                 ))}
               </ul>
             </div>
             <div>
               <h3 className={styles.columnTitle}>COVER</h3>
-              <ul className={styles.songs}>
+              <ul className={styles.songs} data-scroller>
                 {artist.coverSongs.map((song) => (
                   <SongRow
                     key={song.videoId}
@@ -215,6 +101,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
                     creditLabel="原曲"
                     playing={song.videoId === playingId}
                     onPlay={play}
+                    classes={styles}
                   />
                 ))}
               </ul>
@@ -236,6 +123,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
                   concert={concert}
                   open={concert.id === openConcertId}
                   onToggle={toggleConcert}
+                  classes={styles}
                 />
               ))}
             </ul>

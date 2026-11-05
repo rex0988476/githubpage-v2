@@ -19,6 +19,8 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 路由在 `src/App.tsx`；共用外框在 `src/components/Layout.tsx`。音樂家頁 `#/music/artists/<slug>` 不套共用外框。
 - 樣式在 `src/index.css`，顏色和間距用 `:root` 的變數，配色沿用舊站。音樂家專屬頁例外：各自用 CSS Module，避免樣式互相污染。
 - 音樂家專屬頁放在 `src/pages/artists/<slug>/`，在 `src/pages/ArtistPage.tsx` 註冊並按需載入。
+- 歌曲列、演唱會列、相簿和展開狀態在 `src/pages/artists/shared/`，各頁用 `classes` 傳入自己的 CSS Module，只共用行為不共用外觀。
+- 歌曲清單固定最大高度，超過就在欄內捲動。清單的 `ul` 要加 `data-scroller`，`useExpandableRows` 靠它分開處理頁面和清單的捲動。
 - 動畫的排序和計算邏輯集中在 `src/lib/anime.ts`，元件不要自己算。
 
 ## 資料
@@ -53,6 +55,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
   gh api -X POST repos/rex0988476/githubpage-v2/pages -f build_type=workflow
   git push -u origin main
   ```
+- HIMEHINA 頁的演唱會紀錄，等使用者提供。
 - 星街すいせい頁的演唱會紀錄，等使用者提供。
 - Music 總覽的演唱會區塊還沒做，等使用者整理資料。
 - BanG Dream! Ave Mujica：舊資料有封面（`../githubpage/anime_covers/`）但沒有動畫資料，等使用者提供分數和進度。

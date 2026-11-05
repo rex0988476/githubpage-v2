@@ -1,0 +1,821 @@
+.page {
+  --pink: #ffe1ec;
+  --pink-deep: #ffbdd3;
+  --yellow: #fff3bd;
+  --yellow-deep: #ffe07a;
+  --red: #d9344a;
+  --blue: #2f6fd6;
+  --ink: #5b2d44;
+  --paper: #fffdf8;
+  --round: 'Hiragino Maru Gothic ProN', 'Zen Maru Gothic', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif;
+  --display: Fredoka, var(--round);
+  --side: clamp(30px, 11vw, 170px);
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow-x: clip;
+  font-family: var(--round);
+  color: var(--ink);
+  background: var(--pink);
+}
+
+:where(.page) :where(h1, h2, h3, h4, p, ul) {
+  padding: 0;
+  margin: 0;
+}
+
+:where(.page) :where(ul) {
+  list-style: none;
+}
+
+:where(.page) :where(a) {
+  color: inherit;
+}
+
+.page :focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.back {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  padding: 6px 14px;
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: none;
+  background: #fff;
+  border: 2px solid var(--pink-deep);
+  border-radius: 999px;
+}
+
+/* 緞帶在區塊底色之上、紙張之下 */
+.ribbons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ribbonRed,
+.ribbonBlue,
+.stitch {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ribbonRed,
+.ribbonBlue {
+  stroke-width: 11;
+}
+
+.ribbonRed {
+  stroke: #e5484d;
+}
+
+.ribbonBlue {
+  stroke: #3f7fe0;
+}
+
+.stitch {
+  stroke: #fff;
+  stroke-dasharray: 7 7;
+  stroke-width: 1.6;
+  opacity: 0.85;
+}
+
+/* 區塊底色：點點紙，上緣是蕾絲花邊 */
+.cover,
+.pink,
+.yellow {
+  position: relative;
+  padding: clamp(110px, 17vh, 170px) var(--side);
+  background-size: 30px 30px;
+}
+
+.pink {
+  --lace: var(--pink);
+  background-color: var(--pink);
+  background-image: radial-gradient(rgb(255 255 255 / 75%) 2.5px, transparent 3px);
+}
+
+.yellow {
+  --lace: var(--yellow);
+  background-color: var(--yellow);
+  background-image: radial-gradient(rgb(255 255 255 / 85%) 2.5px, transparent 3px);
+}
+
+.pink::before,
+.yellow::before {
+  position: absolute;
+  top: -17px;
+  right: 0;
+  left: 0;
+  height: 18px;
+  content: '';
+  background: radial-gradient(circle at 50% 100%, var(--lace) 17px, transparent 17.5px) 0 0 / 36px 18px repeat-x;
+}
+
+.cover {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--pink);
+  background-image:
+    radial-gradient(rgb(255 255 255 / 80%) 2.5px, transparent 3px),
+    linear-gradient(112deg, var(--pink) 50%, var(--yellow) 50%);
+  background-size: 30px 30px, 100% 100%;
+}
+
+/* 紙張 */
+.sheet,
+.coverSheet {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  background: var(--paper);
+  border-radius: 26px;
+  box-shadow: 0 0 0 4px #fff, 9px 11px 0 4px rgb(91 45 68 / 12%);
+}
+
+.sheet {
+  padding: clamp(44px, 6vw, 64px) clamp(20px, 4vw, 48px) clamp(28px, 4vw, 48px);
+}
+
+.grid {
+  background-image:
+    linear-gradient(rgb(47 111 214 / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(47 111 214 / 8%) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* 日記封面 */
+.coverSheet {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(32px, 5vw, 64px) clamp(24px, 5vw, 64px) clamp(32px, 5vw, 64px) clamp(44px, 7vw, 92px);
+}
+
+.coverSheet::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(18px, 3vw, 34px);
+  content: '';
+  background: repeating-linear-gradient(180deg, #e5484d 0 22px, #fff 22px 30px, #3f7fe0 30px 52px, #fff 52px 60px);
+  border-radius: 26px 0 0 26px;
+}
+
+.photoFrame {
+  position: relative;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgb(91 45 68 / 22%);
+  rotate: -3deg;
+}
+
+.photoFrame::before {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 116px;
+  height: 30px;
+  content: '';
+  background: repeating-linear-gradient(135deg, rgb(255 189 211 / 90%) 0 8px, rgb(255 255 255 / 80%) 8px 16px);
+  translate: -50% 0;
+  rotate: 2deg;
+}
+
+.photoFrame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background:
+    radial-gradient(#fff 3px, transparent 3.5px) 0 0 / 24px 24px,
+    linear-gradient(135deg, var(--pink-deep) 50%, var(--yellow-deep) 50%);
+}
+
+.photoEmpty {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  font-weight: 700;
+  color: var(--red);
+  background:
+    radial-gradient(#fff 3px, transparent 3.5px) 0 0 / 24px 24px,
+    linear-gradient(135deg, var(--pink-deep) 50%, var(--yellow-deep) 50%);
+}
+
+.coverText {
+  position: relative;
+  min-width: 0;
+}
+
+.coverText h1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: 6px 18px;
+  font-family: var(--display);
+  font-size: clamp(58px, 11.5vw, 168px);
+  font-weight: 700;
+  line-height: 0.92;
+  font-kerning: none;
+  letter-spacing: 0.04em;
+}
+
+.hime {
+  color: var(--red);
+  text-shadow: 0.035em 0.035em 0 var(--pink-deep);
+}
+
+.hina {
+  color: var(--blue);
+  text-shadow: 0.035em 0.035em 0 var(--yellow-deep);
+}
+
+.coverMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.youtube {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 16px;
+  font-family: var(--display);
+  font-weight: 700;
+  text-decoration: none;
+  background: #fff;
+  border: 2px solid var(--pink-deep);
+  border-radius: 999px;
+  transition: translate 0.15s ease;
+}
+
+.youtube:hover {
+  translate: 0 -2px;
+}
+
+.youtube svg {
+  width: 26px;
+}
+
+.stamp {
+  display: grid;
+  place-content: center;
+  width: 164px;
+  aspect-ratio: 1;
+  margin-inline: 6px;
+  text-align: center;
+  color: var(--red);
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  outline: 1.5px solid var(--red);
+  outline-offset: 3px;
+  rotate: -8deg;
+}
+
+.stamp small {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.stamp time {
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.stamp span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.stamp strong {
+  font-family: var(--display);
+  font-size: 16px;
+}
+
+.coverCarrot {
+  position: absolute;
+  top: clamp(16px, 3vw, 34px);
+  right: clamp(18px, 4vw, 46px);
+  width: clamp(44px, 6vw, 72px);
+  rotate: 18deg;
+  animation: bob 3.4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    translate: 0 -8px;
+    rotate: 10deg;
+  }
+}
+
+/* 區塊標題 */
+.tape {
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  padding: 5px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  background: repeating-linear-gradient(135deg, var(--pink-deep) 0 9px, #ffd4e2 9px 18px);
+  translate: -50% 0;
+  rotate: -1.5deg;
+}
+
+.yellow .tape {
+  background: repeating-linear-gradient(135deg, var(--yellow-deep) 0 9px, #ffeca8 9px 18px);
+}
+
+.titleRed,
+.titleBlue {
+  font-family: var(--display);
+  font-size: clamp(54px, 9vw, 108px);
+  font-weight: 700;
+  line-height: 1;
+  font-kerning: none;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.titleRed {
+  color: var(--red);
+  text-shadow: 0.04em 0.04em 0 var(--pink-deep);
+}
+
+.titleBlue {
+  color: var(--blue);
+  text-shadow: 0.04em 0.04em 0 var(--yellow-deep);
+}
+
+/* 信紙：行高和橫線對齊 */
+.storyText {
+  --line: 40px;
+  display: grid;
+  gap: var(--line);
+  margin-top: 28px;
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 600;
+  line-height: var(--line);
+  background-image: linear-gradient(transparent calc(var(--line) - 2px), #ffc9da calc(var(--line) - 2px));
+  background-size: 100% var(--line);
+}
+
+.seal {
+  display: block;
+  width: clamp(84px, 9vw, 108px);
+  margin: 14px 6px -14px auto;
+  filter: drop-shadow(2px 4px 4px rgb(91 45 68 / 30%));
+  rotate: -9deg;
+}
+
+.collection {
+  margin-top: 56px;
+}
+
+.collection h3 {
+  width: fit-content;
+  padding: 2px 16px;
+  margin: 0 auto 34px;
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 999px;
+}
+
+.polaroids {
+  --gap: clamp(26px, 3vw, 40px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroids li {
+  flex: 0 1 calc((100% - var(--gap) * 2) / 3);
+  min-width: 0;
+}
+
+.polaroid {
+  position: relative;
+  padding: 10px 10px 14px;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 8px 20px rgb(91 45 68 / 22%);
+  transition: rotate 0.2s ease, scale 0.2s ease;
+}
+
+.polaroid::before {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  z-index: 1;
+  width: 84px;
+  height: 24px;
+  content: '';
+  background: repeating-linear-gradient(90deg, rgb(229 72 77 / 70%) 0 7px, rgb(255 255 255 / 70%) 7px 14px);
+  translate: -50% 0;
+  rotate: -3deg;
+}
+
+.polaroids li:nth-child(odd) .polaroid {
+  rotate: -2deg;
+}
+
+.polaroids li:nth-child(even) .polaroid {
+  rotate: 1.6deg;
+}
+
+.polaroids li:nth-child(even) .polaroid::before {
+  background: repeating-linear-gradient(90deg, rgb(63 127 224 / 70%) 0 7px, rgb(255 255 255 / 70%) 7px 14px);
+  rotate: 3deg;
+}
+
+.polaroids li .polaroid:hover {
+  scale: 1.03;
+  rotate: 0deg;
+}
+
+.polaroidButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+  background: none;
+  border: 0;
+}
+
+.polaroidButton img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.polaroid figcaption {
+  padding: 12px 4px 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.lightbox {
+  max-width: min(92vw, 1000px);
+  max-height: 94vh;
+  padding: 0;
+  margin: auto;
+  overflow: visible;
+  background: none;
+  border: 0;
+}
+
+.lightbox::backdrop {
+  background: rgb(91 45 68 / 78%);
+}
+
+.lightboxBody {
+  position: relative;
+  padding: 12px 12px 16px;
+  color: #5b2d44;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.lightboxBody img {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  margin-inline: auto;
+}
+
+.lightboxBody p {
+  padding: 12px 4px 0;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  background: #d9344a;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+/* 歌單：一首一張貼紙 */
+.songColumns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 36px clamp(24px, 3vw, 40px);
+  align-items: start;
+  margin-top: 30px;
+}
+
+.columnTitle {
+  width: fit-content;
+  padding: 2px 16px;
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--red);
+  border-radius: 999px;
+}
+
+.songColumns > div:nth-child(even) .columnTitle {
+  background: var(--blue);
+}
+
+/* 歌會越加越多，清單固定高度，露出半列提示還能往下捲 */
+.songs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-content: start;
+  max-height: min(640px, 72vh);
+  padding: 3px 10px 3px 3px;
+  margin-top: 11px;
+  overflow-y: auto;
+  scrollbar-color: var(--pink-deep) transparent;
+  scrollbar-width: thin;
+}
+
+.songColumns > div:nth-child(even) .songs {
+  scrollbar-color: #a9c7f3 transparent;
+}
+
+.song {
+  padding: 14px 16px;
+  background: #fff;
+  border: 2.5px solid var(--pink-deep);
+  border-radius: 18px;
+  transition: rotate 0.15s ease;
+}
+
+.song:nth-child(even) {
+  border-color: var(--yellow-deep);
+}
+
+.song:hover {
+  rotate: -0.6deg;
+}
+
+.songLine {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.songLine > div {
+  min-width: 0;
+}
+
+.song h4 {
+  overflow-wrap: anywhere;
+  font-size: clamp(18px, 1.9vw, 22px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.meta {
+  margin-top: 2px;
+  font-family: var(--display);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.play {
+  display: inline-flex;
+  flex: none;
+  gap: 5px;
+  align-items: center;
+  padding: 6px 14px 6px 8px;
+  font-family: var(--round);
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  background: var(--yellow);
+  border: 2px solid var(--yellow-deep);
+  border-radius: 999px;
+  transition: translate 0.15s ease;
+}
+
+.play:hover {
+  translate: 0 -2px;
+}
+
+.playCarrot {
+  width: 17px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* 票根 */
+.concerts {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.concerts > li,
+.empty {
+  position: relative;
+  padding: 20px 26px;
+  background: #fff;
+  border: 2.5px solid var(--pink-deep);
+  border-radius: 16px;
+}
+
+.concerts > li::before,
+.concerts > li::after {
+  position: absolute;
+  top: 36px;
+  width: 24px;
+  height: 24px;
+  content: '';
+  background: var(--paper);
+  border: 2.5px solid var(--pink-deep);
+  border-radius: 50%;
+}
+
+.concerts > li::before {
+  left: -14px;
+  clip-path: inset(-3px -3px -3px 50%);
+}
+
+.concerts > li::after {
+  right: -14px;
+  clip-path: inset(-3px 50% -3px -3px);
+}
+
+.empty {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.concerts time {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.upcoming {
+  display: inline-block;
+  padding: 1px 10px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--red);
+  border-radius: 999px;
+}
+
+.concerts h3 {
+  margin: 4px 0;
+  font-size: 19px;
+}
+
+.concertHead {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.concertToggle {
+  flex: none;
+  padding: 7px 14px;
+  font-family: var(--round);
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: var(--blue);
+  border: 0;
+  border-radius: 999px;
+}
+
+.concertToggle:hover {
+  background: var(--red);
+}
+
+.concertDetail {
+  padding-top: 20px;
+  margin-top: 18px;
+  border-top: 2px dashed var(--pink-deep);
+}
+
+.concertDetail .storyText {
+  margin-top: 0;
+}
+
+.concertDetail .collection {
+  margin-top: 40px;
+}
+
+/* 頁尾 */
+.footer {
+  display: grid;
+  gap: 8px;
+  padding-block: 28px;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.footer a {
+  font-weight: 700;
+  color: var(--red);
+}
+
+@media (max-width: 1000px) {
+  .coverCarrot {
+    top: auto;
+    bottom: 22px;
+  }
+}
+
+@media (max-width: 760px) {
+  .coverSheet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .photoFrame {
+    width: min(100%, 280px);
+    margin-inline: auto;
+  }
+
+  .coverText h1 {
+    font-size: clamp(50px, 16.5vw, 110px);
+  }
+
+  .stamp {
+    width: 142px;
+  }
+
+  .stamp time {
+    font-size: 18px;
+  }
+
+  .ribbonRed,
+  .ribbonBlue {
+    stroke-width: 8;
+  }
+
+  .polaroids li {
+    flex-basis: 100%;
+  }
+
+  .concertHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverCarrot {
+    animation: none;
+  }
+
+  .polaroid,
+  .song,
+  .play,
+  .youtube {
+    transition: none;
+  }
+}

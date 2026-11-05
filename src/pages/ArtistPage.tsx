@@ -6,6 +6,7 @@ import type { Artist } from '../types'
 // 專屬頁分開打包，只有打開該音樂家時才下載
 const pages: Record<string, LazyExoticComponent<ComponentType<{ artist: Artist }>>> = {
   'hoshimachi-suisei': lazy(() => import('./artists/hoshimachi-suisei/SuiseiPage')),
+  himehina: lazy(() => import('./artists/himehina/HimehinaPage')),
 }
 
 export function ArtistPage() {

@@ -403,9 +403,17 @@
   color: var(--songs);
 }
 
+/* 歌會越加越多，清單固定高度，露出半列提示還能往下捲 */
 .songs {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  max-height: min(640px, 72vh);
+  padding-right: 12px;
   margin-top: 12px;
+  overflow-y: auto;
+  scrollbar-color: var(--songs) transparent;
+  scrollbar-width: thin;
   border-top: 1px solid var(--songs);
 }
 
@@ -421,7 +429,12 @@
   justify-content: space-between;
 }
 
+.songLine > div {
+  min-width: 0;
+}
+
 .song h4 {
+  overflow-wrap: anywhere;
   font-family: var(--serif);
   font-size: clamp(20px, 2.2vw, 28px);
   line-height: 1.25;

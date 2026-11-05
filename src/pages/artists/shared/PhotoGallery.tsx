@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { artistImageUrl } from '../../../lib/music'
 import type { ArtistPhoto } from '../../../types'
-import styles from './SuiseiPage.module.css'
 
 /** 拍立得相簿，點照片用原生 dialog 看大圖 */
-export function PhotoGallery({ photos, title }: { photos: ArtistPhoto[]; title?: string }) {
+interface PhotoGalleryProps {
+  photos: ArtistPhoto[]
+  title?: string
+  /** 各音樂家頁自己的 CSS Module */
+  classes: CSSModuleClasses
+}
+
+export function PhotoGallery({ photos, title, classes }: PhotoGalleryProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [active, setActive] = useState<ArtistPhoto | null>(null)
 
@@ -13,15 +19,15 @@ export function PhotoGallery({ photos, title }: { photos: ArtistPhoto[]; title?:
   }, [active])
 
   return (
-    <div className={styles.collection}>
-      {title && <h3 className={styles.label}>{title}</h3>}
-      <ul className={styles.polaroids}>
+    <div className={classes.collection}>
+      {title && <h3 className={classes.label}>{title}</h3>}
+      <ul className={classes.polaroids}>
         {photos.map((photo) => (
           <li key={photo.image}>
-            <figure className={styles.polaroid}>
+            <figure className={classes.polaroid}>
               <button
                 type="button"
-                className={styles.polaroidButton}
+                className={classes.polaroidButton}
                 aria-label={`放大：${photo.alt}`}
                 onClick={() => setActive(photo)}
               >
@@ -41,7 +47,7 @@ export function PhotoGallery({ photos, title }: { photos: ArtistPhoto[]; title?:
 
       <dialog
         ref={dialogRef}
-        className={styles.lightbox}
+        className={classes.lightbox}
         aria-label="照片大圖"
         onClose={() => setActive(null)}
         onClick={(event) => {
@@ -50,10 +56,10 @@ export function PhotoGallery({ photos, title }: { photos: ArtistPhoto[]; title?:
         }}
       >
         {active && (
-          <div className={styles.lightboxBody}>
+          <div className={classes.lightboxBody}>
             <button
               type="button"
-              className={styles.lightboxClose}
+              className={classes.lightboxClose}
               aria-label="關閉"
               onClick={() => dialogRef.current?.close()}
             >
