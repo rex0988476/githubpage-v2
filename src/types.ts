@@ -36,6 +36,16 @@ export interface FavoriteSong {
   credit: string | null
 }
 
+export interface ArtistPhoto {
+  /** public/artists/ 底下的路徑 */
+  image: string
+  alt: string
+  width: number
+  height: number
+  /** 照片說明；null 代表沒有 */
+  caption: string | null
+}
+
 export interface Artist {
   /** 網址用的識別字：#/music/artists/<slug> */
   slug: string
@@ -45,6 +55,10 @@ export interface Artist {
   youtube: string
   /** public/artists/ 底下的形象照檔名；null 代表還沒有 */
   image: string | null
+  /** 自己寫的感想，一個元素一段；空陣列代表不顯示 */
+  story: string[]
+  /** 周邊等個人照片；空陣列代表不顯示 */
+  gallery: ArtistPhoto[]
   favoriteSongs: FavoriteSong[]
   /** 喜歡的翻唱，影片在本人或合作對象的官方頻道 */
   coverSongs: FavoriteSong[]

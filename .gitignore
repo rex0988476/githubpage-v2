@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 待處理的原始照片，可能含 GPS 資訊
+photos-inbox

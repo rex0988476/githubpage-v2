@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { artistImageUrl, concertsOf, isUpcoming } from '../../../lib/music'
 import type { Artist, FavoriteSong } from '../../../types'
 import { CometTrail } from './CometTrail'
+import { PhotoGallery } from './PhotoGallery'
 import styles from './SuiseiPage.module.css'
 
 interface SongRowProps {
@@ -104,7 +105,22 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
         </div>
       </section>
 
-      <section className={styles.ghost} data-act data-side="left" data-trail="#fd8f42">
+      {artist.story.length > 0 && (
+        <section className={styles.story} data-act data-side="left" data-trail="#74727b">
+          <div className={styles.inner}>
+            <p className={styles.label}>我眼中的星街</p>
+            <h2>STORY</h2>
+            <div className={styles.storyText}>
+              {artist.story.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            {artist.gallery.length > 0 && <PhotoGallery photos={artist.gallery} />}
+          </div>
+        </section>
+      )}
+
+      <section className={styles.ghost} data-act data-side="right" data-trail="#fd8f42">
         <div className={styles.inner}>
           <p className={styles.label}>喜歡的歌</p>
           <h2>SONGS</h2>
@@ -140,7 +156,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
         </div>
       </section>
 
-      <section className={styles.nova} data-act data-nova data-side="right" data-trail="#ffffff">
+      <section className={styles.nova} data-act data-nova data-side="left" data-trail="#ffffff">
         <div className={styles.burst} aria-hidden="true" />
         <div className={styles.inner}>
           <p className={styles.label}>演唱會參戰紀錄</p>
@@ -162,7 +178,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
         </div>
       </section>
 
-      <section className={styles.onward} data-act data-side="left" data-trail="#7fd4ff">
+      <section className={styles.onward} data-act data-side="right" data-trail="#7fd4ff">
         <footer className={styles.inner}>
           <Link to="/music">← 回到 Music</Link>
           <p>個人粉絲頁，與本人及官方無關。影片來自官方 YouTube 頻道，作品權利屬於各權利人。</p>

@@ -7,6 +7,48 @@ export const artists: Artist[] = [
     accent: '#2f8fe6',
     youtube: 'https://www.youtube.com/@HoshimachiSuisei',
     image: 'hoshimachi_suisei.jpg',
+    story: [
+      '最喜歡的 VTuber，一開始是喜歡她平常的可愛和唱歌時的帥氣所形成的反差感，以及有時瘋瘋的個性。',
+      '後來發現她是非常努力拼命地在追尋著夢想的人，因此看到她真的成功登上夢想中的武道館時真的非常感動。',
+      '她就是偶像的代名詞，她的努力以及拚盡全力發光發熱的樣子非常有感染力，真的如同一顆閃閃發光的彗星一樣耀眼，耀眼到甚至照亮了整個夜空，也照進了我的心中。',
+    ],
+    gallery: [
+      {
+        image: 'hoshimachi-suisei/plush-and-bag.jpg',
+        alt: '透明娃包和星街すいせい娃娃',
+        width: 1600,
+        height: 1200,
+        caption: '2026年台中國際動漫節買的星街娃包+娃娃😃',
+      },
+      {
+        image: 'hoshimachi-suisei/first-plush.jpg',
+        alt: '星街すいせい娃娃',
+        width: 1600,
+        height: 1600,
+        caption: '第一隻星街娃娃🥰',
+      },
+      {
+        image: 'hoshimachi-suisei/hand-puppet.jpg',
+        alt: '裝在包裝袋裡的星街すいせい手偶',
+        width: 1600,
+        height: 1600,
+        caption: '2026年在台中萌魂動漫祭買的星街手偶😇',
+      },
+      {
+        image: 'hoshimachi-suisei/acrylic-stand.jpg',
+        alt: '裝在包裝袋裡的星街すいせい泳裝立牌',
+        width: 1200,
+        height: 1600,
+        caption: '2024年在日本K-BOOKS買的星街立牌',
+      },
+      {
+        image: 'hoshimachi-suisei/birthday-gift.jpg',
+        alt: '印有 Q 版星街すいせい的圓形抱枕',
+        width: 1600,
+        height: 1600,
+        caption: '2023年大學同學送的生日禮物🛐',
+      },
+    ],
     favoriteSongs: [
       {
         title: '天球、彗星は夜を跨いで',
