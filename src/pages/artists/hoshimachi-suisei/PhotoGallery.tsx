@@ -4,7 +4,7 @@ import type { ArtistPhoto } from '../../../types'
 import styles from './SuiseiPage.module.css'
 
 /** 拍立得相簿，點照片用原生 dialog 看大圖 */
-export function PhotoGallery({ photos }: { photos: ArtistPhoto[] }) {
+export function PhotoGallery({ photos, title }: { photos: ArtistPhoto[]; title?: string }) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [active, setActive] = useState<ArtistPhoto | null>(null)
 
@@ -14,7 +14,7 @@ export function PhotoGallery({ photos }: { photos: ArtistPhoto[] }) {
 
   return (
     <div className={styles.collection}>
-      <h3 className={styles.label}>COLLECTION</h3>
+      {title && <h3 className={styles.label}>{title}</h3>}
       <ul className={styles.polaroids}>
         {photos.map((photo) => (
           <li key={photo.image}>

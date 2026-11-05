@@ -518,7 +518,7 @@
   margin-top: 28px;
 }
 
-.concerts li,
+.concerts > li,
 .empty {
   padding: 18px 20px;
   background: rgb(255 255 255 / 7%);
@@ -549,6 +549,47 @@
 .concerts h3 {
   margin: 4px 0;
   font-size: 20px;
+}
+
+.concertHead {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.concertToggle {
+  flex: none;
+  padding: 8px 14px;
+  font-weight: 700;
+  color: #081434;
+  cursor: pointer;
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+}
+
+.concertToggle:hover {
+  background: var(--comet);
+}
+
+.concertDetail {
+  padding-top: 20px;
+  margin-top: 18px;
+  border-top: 1px solid rgb(255 255 255 / 20%);
+}
+
+.concertDetail .storyText {
+  max-width: none;
+  margin-top: 0;
+}
+
+.concertDetail .collection {
+  margin-top: 28px;
+}
+
+.concertDetail .storyText + .collection {
+  margin-top: 36px;
 }
 
 /* 頁尾：彗尾收束 */
@@ -602,6 +643,13 @@
   }
 }
 
+@media (min-width: 760px) {
+  .concertDetail .polaroids li {
+    flex-basis: calc((100% - var(--gap)) / 2);
+    max-width: 420px;
+  }
+}
+
 @media (max-width: 759px) {
   .page {
     --side: 20px;
@@ -623,6 +671,11 @@
 
   .polaroids li {
     flex-basis: 100%;
+  }
+
+  .concertHead {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .lightboxClose {

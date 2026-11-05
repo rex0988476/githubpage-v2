@@ -75,4 +75,8 @@ export interface Concert {
   city: string | null
   /** 一場可以有多位音樂家，例如音樂祭 */
   artistSlugs: string[]
+  /** 自己寫的心得，一個元素一段；空陣列代表沒有 */
+  review: string[]
+  /** 這場的照片；空陣列代表沒有 */
+  photos: ArtistPhoto[]
 }

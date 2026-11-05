@@ -31,7 +31,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 遊戲：`src/data/games.ts`；自我介紹和興趣：`src/data/profile.ts`。
 - 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。
 - 音樂家個人照片：`public/artists/<slug>/`，由 `gallery` 欄位對應。原圖先放 `photos-inbox/`（不進 git），清除 EXIF 並壓縮到長邊 1600px 後才放進 public。
-- 演唱會：`src/data/music/concerts.ts`，用 `artistSlugs` 關聯音樂家，音樂家頁會自動列出。
+- 演唱會：`src/data/music/concerts.ts`，用 `artistSlugs` 關聯音樂家，`review` 和 `photos` 是該場心得與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。
 - `日本音樂家List.json` 和 `music-extract.json` 是未 commit 的本地來源資料，共 284 位音樂家，圖片網址指向 localhost，不能直接用。
 
 ## 已做的決定

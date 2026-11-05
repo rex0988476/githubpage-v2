@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { artistImageUrl, concertsOf, daysSince, isUpcoming } from '../../../lib/music'
-import type { Artist, FavoriteSong } from '../../../types'
+import type { Artist, Concert, FavoriteSong } from '../../../types'
 import { CometTrail } from './CometTrail'
 import { PhotoGallery } from './PhotoGallery'
 import styles from './SuiseiPage.module.css'
@@ -58,16 +58,75 @@ function SongRow({ song, creditLabel, playing, onPlay }: SongRowProps) {
   )
 }
 
+interface ConcertRowProps {
+  concert: Concert
+  open: boolean
+  onToggle: (id: string, row: HTMLElement) => void
+}
+
+function ConcertRow({ concert, open, onToggle }: ConcertRowProps) {
+  const rowRef = useRef<HTMLLIElement>(null)
+  const { id, date, title, venue, city, review, photos } = concert
+  const detailId = `${id}-detail`
+
+  return (
+    <li ref={rowRef}>
+      <div className={styles.concertHead}>
+        <div>
+          <time dateTime={date}>{date.replaceAll('-', '.')}</time>
+          {isUpcoming(date) && <span className={styles.upcoming}>即將參戰</span>}
+          <h3>{title}</h3>
+          <p>{[venue, city].filter(Boolean).join(' · ')}</p>
+        </div>
+        {(review.length > 0 || photos.length > 0) && (
+          <button
+            type="button"
+            className={styles.concertToggle}
+            aria-expanded={open}
+            aria-controls={detailId}
+            onClick={() => {
+              if (rowRef.current) onToggle(id, rowRef.current)
+            }}
+          >
+            {open ? '收起 ▲' : '展開 ▼'}
+          </button>
+        )}
+      </div>
+      {open && (
+        <div id={detailId} className={styles.concertDetail}>
+          {review.length > 0 && (
+            <div className={styles.storyText}>
+              {review.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          )}
+          {photos.length > 0 && <PhotoGallery photos={photos} />}
+        </div>
+      )}
+    </li>
+  )
+}
+
 export default function SuiseiPage({ artist }: { artist: Artist }) {
   const rootRef = useRef<HTMLDivElement>(null)
   const concerts = concertsOf(artist.slug)
   const [playingId, setPlayingId] = useState<string | null>(null)
+  const [openConcertId, setOpenConcertId] = useState<string | null>(null)
 
   // 收起上方的影片會讓版面上移，補回捲動量讓點擊的那一列留在原位
-  const play = (videoId: string, row: HTMLElement) => {
+  const keepInPlace = (row: HTMLElement, update: () => void) => {
     const top = row.getBoundingClientRect().top
-    flushSync(() => setPlayingId(videoId))
+    flushSync(update)
     window.scrollBy({ top: row.getBoundingClientRect().top - top, behavior: 'instant' })
+  }
+
+  const play = (videoId: string, row: HTMLElement) => {
+    keepInPlace(row, () => setPlayingId(videoId))
+  }
+
+  const toggleConcert = (id: string, row: HTMLElement) => {
+    keepInPlace(row, () => setOpenConcertId((current) => (current === id ? null : id)))
   }
 
   return (
@@ -123,7 +182,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {artist.gallery.length > 0 && <PhotoGallery photos={artist.gallery} />}
+            {artist.gallery.length > 0 && <PhotoGallery photos={artist.gallery} title="COLLECTION" />}
           </div>
         </section>
       )}
@@ -171,13 +230,13 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
           <h2>LIVE</h2>
           {concerts.length > 0 ? (
             <ul className={styles.concerts}>
-              {concerts.map(({ id, date, title, venue, city }) => (
-                <li key={id}>
-                  <time dateTime={date}>{date.replaceAll('-', '.')}</time>
-                  {isUpcoming(date) && <span className={styles.upcoming}>即將參戰</span>}
-                  <h3>{title}</h3>
-                  <p>{[venue, city].filter(Boolean).join(' · ')}</p>
-                </li>
+              {concerts.map((concert) => (
+                <ConcertRow
+                  key={concert.id}
+                  concert={concert}
+                  open={concert.id === openConcertId}
+                  onToggle={toggleConcert}
+                />
               ))}
             </ul>
           ) : (
