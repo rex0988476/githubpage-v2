@@ -230,7 +230,6 @@
 .storyText {
   display: grid;
   gap: 1.2em;
-  max-width: 38em;
   margin-top: 32px;
   font-family: var(--serif);
   font-size: clamp(17px, 1.6vw, 20px);
@@ -580,7 +579,6 @@
 }
 
 .concertDetail .storyText {
-  max-width: none;
   margin-top: 0;
 }
 
