@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Link } from 'react-router-dom'
-import { artistImageUrl, concertsOf, isUpcoming } from '../../../lib/music'
+import { artistImageUrl, concertsOf, daysSince, isUpcoming } from '../../../lib/music'
 import type { Artist, FavoriteSong } from '../../../types'
 import { CometTrail } from './CometTrail'
 import { PhotoGallery } from './PhotoGallery'
@@ -100,6 +100,14 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
                 </svg>
               </a>
             </div>
+            {artist.fanSince && (
+              <p className={styles.fanSince}>
+                FAN SINCE <time dateTime={artist.fanSince}>{artist.fanSince.replaceAll('-', '.')}</time>
+                <span>
+                  喜歡了 <strong>{daysSince(artist.fanSince).toLocaleString('en-US')}</strong> 天
+                </span>
+              </p>
+            )}
             <span className={styles.spark} data-spark aria-hidden="true" />
           </div>
         </div>

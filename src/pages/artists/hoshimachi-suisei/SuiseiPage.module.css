@@ -139,6 +139,25 @@
   white-space: nowrap;
 }
 
+.fanSince {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: var(--comet);
+}
+
+.fanSince span {
+  display: block;
+  margin-top: 6px;
+  color: #eef6ff;
+}
+
+.fanSince strong {
+  font-size: 1.8em;
+  color: #fff;
+}
+
 .spark {
   display: block;
   width: 10px;

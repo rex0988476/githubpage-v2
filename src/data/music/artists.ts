@@ -7,6 +7,7 @@ export const artists: Artist[] = [
     accent: '#2f8fe6',
     youtube: 'https://www.youtube.com/@HoshimachiSuisei',
     image: 'hoshimachi_suisei.jpg',
+    fanSince: '2021-01-24',
     story: [
       '最喜歡的 VTuber，一開始是喜歡她平常的可愛和唱歌時的帥氣所形成的反差感，以及有時瘋瘋的個性。',
       '後來發現她是非常努力拼命地在追尋著夢想的人，因此看到她真的成功登上夢想中的武道館時真的非常感動。',

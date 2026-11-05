@@ -55,6 +55,8 @@ export interface Artist {
   youtube: string
   /** public/artists/ 底下的形象照檔名；null 代表還沒有 */
   image: string | null
+  /** 開始追的日期 YYYY-MM-DD；null 代表不顯示 */
+  fanSince: string | null
   /** 自己寫的感想，一個元素一段；空陣列代表不顯示 */
   story: string[]
   /** 周邊等個人照片；空陣列代表不顯示 */
