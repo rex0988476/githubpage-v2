@@ -201,7 +201,11 @@
   font-size: var(--title-size);
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--story);
+  color: transparent;
+  -webkit-text-stroke: 2px #a9a6b2;
+  text-shadow:
+    0.025em 0 0 rgb(116 114 123 / 35%),
+    -0.025em 0 0 rgb(127 212 255 / 25%);
 }
 
 .storyText {
@@ -485,9 +489,8 @@
   letter-spacing: -0.03em;
   color: #fff;
   text-shadow:
-    0 2px 0 #081434,
-    0 0 26px #081434,
-    0 0 60px #081434;
+    0.025em 0 0 rgb(255 255 255 / 35%),
+    -0.025em 0 0 rgb(127 212 255 / 25%);
 }
 
 .concerts {
@@ -611,6 +614,7 @@
     stroke-width: 2;
   }
 
+  .story h2,
   .ghost h2 {
     -webkit-text-stroke-width: 1.5px;
   }
