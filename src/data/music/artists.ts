@@ -64,6 +64,12 @@ export const artists: Artist[] = [
         credit: 'なとり',
       },
       {
+        title: 'Pieces',
+        videoId: 'vcAuvl17sRs',
+        year: 2020,
+        credit: 'Lyka',
+      },
+      {
         title: 'ビビデバ',
         videoId: '8ZP5eqm4JqM',
         year: 2024,

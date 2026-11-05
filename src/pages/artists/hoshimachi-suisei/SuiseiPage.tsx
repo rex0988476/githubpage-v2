@@ -189,7 +189,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
       <section className={styles.onward} data-act data-side="right" data-trail="#7fd4ff">
         <footer className={styles.inner}>
           <Link to="/music">← 回到 Music</Link>
-          <p>個人粉絲頁，與本人及官方無關。影片來自官方 YouTube 頻道，作品權利屬於各權利人。</p>
+          <p>個人粉絲頁，與本人及官方無關。影片來自官方 YouTube 頻道（Pieces 沒有官方影片，使用粉絲製作的 MV），作品權利屬於各權利人。</p>
         </footer>
       </section>
     </div>
