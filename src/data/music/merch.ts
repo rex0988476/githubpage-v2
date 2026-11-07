@@ -71,4 +71,32 @@ export const merch: Merch[] = [
     favorite: false,
     artistSlugs: ['himehina'],
   },
+  {
+    id: 'himehina-lib-2025-clear-folder',
+    name: 'HIMEHINA LIVE 2025『LIFETIME is BUBBLIN』演唱會專屬資料夾',
+    acquiredOn: '2025-11-22',
+    favorite: false,
+    artistSlugs: ['himehina'],
+  },
+  {
+    id: 'himehina-lib-2025-taiwan-ticket',
+    name: 'HIMEHINA LIVE 2025『LIFETIME is BUBBLIN』台灣場限定紀念票',
+    acquiredOn: '2025-11-22',
+    favorite: false,
+    artistSlugs: ['himehina'],
+  },
+  {
+    id: 'himehina-lib-2025-wristband',
+    name: 'HIMEHINA LIVE 2025『LIFETIME is BUBBLIN』應援手環',
+    acquiredOn: '2025-11-22',
+    favorite: false,
+    artistSlugs: ['himehina'],
+  },
+  {
+    id: 'himehina-lib-2025-acrylic-stand',
+    name: 'HIMEHINA LIVE 2025『LIFETIME is BUBBLIN』壓克力墜飾立牌組',
+    acquiredOn: '2025-11-22',
+    favorite: false,
+    artistSlugs: ['himehina'],
+  },
 ]
