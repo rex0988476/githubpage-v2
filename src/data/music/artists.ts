@@ -13,43 +13,6 @@ export const artists: Artist[] = [
       '後來發現她是非常努力拼命地在追尋著夢想的人，因此看到她真的成功登上夢想中的武道館時真的非常感動。',
       '她就是偶像的代名詞，她的努力以及拚盡全力發光發熱的樣子非常有感染力，真的如同一顆閃閃發光的彗星一樣耀眼，耀眼到甚至照亮了整個夜空，也照進了我的心中。',
     ],
-    gallery: [
-      {
-        image: 'hoshimachi-suisei/plush-and-bag.jpg',
-        alt: '透明娃包和星街すいせい娃娃',
-        width: 1600,
-        height: 1200,
-        caption: '2026年台中國際動漫節買的星街娃包+娃娃😃',
-      },
-      {
-        image: 'hoshimachi-suisei/first-plush.jpg',
-        alt: '星街すいせい娃娃',
-        width: 1600,
-        height: 1600,
-        caption: '第一隻星街娃娃🥰',
-      },
-      {
-        image: 'hoshimachi-suisei/hand-puppet.jpg',
-        alt: '裝在包裝袋裡的星街すいせい手偶',
-        width: 1600,
-        height: 1600,
-        caption: '2026年在台中萌魂動漫祭買的星街手偶😇',
-      },
-      {
-        image: 'hoshimachi-suisei/acrylic-stand.jpg',
-        alt: '裝在包裝袋裡的星街すいせい泳裝立牌',
-        width: 1200,
-        height: 1600,
-        caption: '2024年在日本K-BOOKS買的星街立牌',
-      },
-      {
-        image: 'hoshimachi-suisei/birthday-gift.jpg',
-        alt: '印有 Q 版星街すいせい的圓形抱枕',
-        width: 1600,
-        height: 1600,
-        caption: '2023年大學同學送的生日禮物🛐',
-      },
-    ],
     favoriteSongs: [
       {
         title: '天球、彗星は夜を跨いで',
@@ -141,31 +104,8 @@ export const artists: Artist[] = [
     image: 'himehina.webp',
     fanSince: '2019-02-23',
     story: [
-      '一開始只是有在聽她們的歌跟看一些精華，還沒有到特別喜歡她們的程度，是直到2025年買Ado生日電影應援場的時候發現她們竟然有直播演唱會（HIMEHINA LIVE 2025『LIFETIME IS BUBBLIN』現場直播），看到還有位置就想說買來聽聽，結果就徹底愛上她們了，沒想到vtuber的演唱會可以比真人的還好看，而且還是沒遇過的，能用無可挑剔形容的演唱會，是我心目中的演唱會之神🛐。',
+      '一開始只是有在聽她們的歌跟看一些精華，還沒有到特別喜歡她們的程度，是直到2025年買Ado生日電影應援場的時候發現她們竟然有直播演唱會（HIMEHINA LIVE 2025『LIFETIME is BUBBLIN』現場直播），看到還有位置就想說買來聽聽，結果就徹底愛上她們了，沒想到vtuber的演唱會可以比真人的還好看，而且還是沒遇過的，能用無可挑剔形容的演唱會，是我心目中的演唱會之神🛐。',
       '還記得當初出道認識她們時感覺是很可愛又超好笑的一對v，唱功也很不錯，尤其HITOGATA的鬼之Rap印象很深刻，但在聽完電影直播場後仍然不敢想像這是同一對v，這已經不能用進步很多來形容了，感覺她們這幾年都是一路拚死拚活努力過來的，真的不覺得有人類能夠撐完那樣子的演唱會，完全被她們進化後的樣子折服了，還有百合元素也很讚，超愛這一對❤️。',
-    ],
-    gallery: [
-      {
-        image: 'himehina/hime-cushion.jpg',
-        alt: '裝在包裝袋裡的 HIME 大型丸子抱枕',
-        width: 1424,
-        height: 1076,
-        caption: '超大丸子HIME🥰（ふたり紡ぎうた特装盤 ver.HIME的特典）',
-      },
-      {
-        image: 'himehina/album-ver-hime.jpg',
-        alt: '專輯『ふたり紡ぎうた』特装盤 ver.HIME 的封面',
-        width: 1483,
-        height: 1600,
-        caption: 'HIME&HINA 1st Full Album『ふたり紡ぎうた』 特装盤 ver.HIME',
-      },
-      {
-        image: 'himehina/acrylic-charms.jpg',
-        alt: '裝在包裝袋裡的 HIME 和 HINA 壓克力吊飾，中間是愛心磁鐵',
-        width: 1600,
-        height: 1154,
-        caption: 'HIMEHINA壓克力吊飾，兩個吊飾竟然可以用愛心磁鐵吸起來太甜了吧😍（ふたり紡ぎうた特装盤的特典）',
-      },
     ],
     favoriteSongs: [
       {

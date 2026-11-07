@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { flushSync } from 'react-dom'
 
-/** 歌曲同時只播一首、演唱會同時只展開一場 */
+/** 歌曲同時只播一首、活動同時只展開一則 */
 export function useExpandableRows() {
   const [playingId, setPlayingId] = useState<string | null>(null)
-  const [openConcertId, setOpenConcertId] = useState<string | null>(null)
+  const [openEventId, setOpenEventId] = useState<string | null>(null)
 
   // 收起上方的影片會讓版面上移，補回捲動量讓點擊的那一列留在原位
   // 列在 data-scroller 清單裡時，頁面跟著清單走，列的位移由清單自己補
@@ -29,9 +29,9 @@ export function useExpandableRows() {
     keepInPlace(row, () => setPlayingId(videoId))
   }
 
-  const toggleConcert = (id: string, row: HTMLElement) => {
-    keepInPlace(row, () => setOpenConcertId((current) => (current === id ? null : id)))
+  const toggleEvent = (id: string, row: HTMLElement) => {
+    keepInPlace(row, () => setOpenEventId((current) => (current === id ? null : id)))
   }
 
-  return { playingId, openConcertId, play, toggleConcert }
+  return { playingId, openEventId, setOpenEventId, play, toggleEvent }
 }

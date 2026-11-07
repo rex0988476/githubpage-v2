@@ -1,18 +1,21 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { artistImageUrl, concertsOf, daysSince } from '../../../lib/music'
+import { artistImageUrl, collectionOf, daysSince, eventsOf } from '../../../lib/music'
 import type { Artist } from '../../../types'
-import { ConcertRow } from '../shared/ConcertRow'
-import { PhotoGallery } from '../shared/PhotoGallery'
+import { CollectionDialog, CollectionPreview } from '../shared/Collection'
+import { EventRow } from '../shared/EventRow'
 import { SongRow } from '../shared/SongRow'
+import { useEventFocus } from '../shared/useEventFocus'
 import { useExpandableRows } from '../shared/useExpandableRows'
 import { CometTrail } from './CometTrail'
 import styles from './SuiseiPage.module.css'
 
 export default function SuiseiPage({ artist }: { artist: Artist }) {
   const rootRef = useRef<HTMLDivElement>(null)
-  const concerts = concertsOf(artist.slug)
-  const { playingId, openConcertId, play, toggleConcert } = useExpandableRows()
+  const events = eventsOf(artist.slug)
+  const collection = collectionOf(artist.slug)
+  const { playingId, openEventId, setOpenEventId, play, toggleEvent } = useExpandableRows()
+  useEventFocus(events, openEventId, setOpenEventId)
 
   return (
     <div ref={rootRef} className={styles.page}>
@@ -20,6 +23,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
         ← Music
       </Link>
       <CometTrail rootRef={rootRef} />
+      <CollectionDialog slug={artist.slug} items={collection} classes={styles} />
 
       <section className={styles.hero} data-act data-side="right" data-trail="#7fd4ff">
         <div className={styles.heroInner}>
@@ -67,7 +71,7 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {artist.gallery.length > 0 && <PhotoGallery photos={artist.gallery} title="COLLECTION" classes={styles} />}
+            <CollectionPreview slug={artist.slug} items={collection} classes={styles} />
           </div>
         </section>
       )}
@@ -113,22 +117,22 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
       <section className={styles.nova} data-act data-nova data-side="left" data-trail="#ffffff">
         <div className={styles.burst} aria-hidden="true" />
         <div className={styles.inner}>
-          <p className={styles.label}>演唱會參戰紀錄</p>
-          <h2>LIVE</h2>
-          {concerts.length > 0 ? (
-            <ul className={styles.concerts}>
-              {concerts.map((concert) => (
-                <ConcertRow
-                  key={concert.id}
-                  concert={concert}
-                  open={concert.id === openConcertId}
-                  onToggle={toggleConcert}
+          <p className={styles.label}>活動紀錄</p>
+          <h2>EVENTS</h2>
+          {events.length > 0 ? (
+            <ul className={styles.events}>
+              {events.map((event) => (
+                <EventRow
+                  key={event.id}
+                  event={event}
+                  open={event.id === openEventId}
+                  onToggle={toggleEvent}
                   classes={styles}
                 />
               ))}
             </ul>
           ) : (
-            <p className={styles.empty}>參戰紀錄整理中</p>
+            <p className={styles.empty}>活動紀錄整理中</p>
           )}
         </div>
       </section>

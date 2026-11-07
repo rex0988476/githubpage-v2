@@ -354,6 +354,158 @@
   border-radius: 50%;
 }
 
+.polaroids li[data-focused] .polaroid {
+  outline: 3px solid var(--comet);
+  outline-offset: 6px;
+  scale: 1.03;
+  rotate: 0deg;
+}
+
+.polaroid .merchSource {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #1763a8;
+}
+
+/* 周邊 */
+.merchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.collection .merchGrid {
+  margin-top: 0;
+}
+
+.merchCard {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  align-content: start;
+  height: 100%;
+  padding: 10px 10px 14px;
+  color: #e9e8ec;
+  text-decoration: none;
+  background: #101014;
+  border: 1px solid var(--story);
+  transition: border-color 0.2s ease;
+}
+
+.merchCard:hover {
+  border-color: var(--comet);
+}
+
+.merchCard img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+.merchCard strong {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.merchDate {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--comet);
+}
+
+.merchFavorite {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #081434;
+  text-align: center;
+  background: var(--comet);
+  border-radius: 50%;
+}
+
+.merchFavoriteInline {
+  margin-right: 0.3em;
+  color: var(--comet);
+}
+
+.merchAll {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: 700;
+  color: var(--comet);
+}
+
+.collectionPanel {
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: #e9e8ec;
+  background: var(--night);
+  border: 0;
+}
+
+.collectionBody {
+  position: relative;
+  width: min(100%, 1180px);
+  padding: clamp(56px, 8vh, 88px) clamp(20px, 4vw, 36px) 64px;
+  margin-inline: auto;
+}
+
+.collectionBody h2 {
+  font-family: var(--heavy);
+  font-size: clamp(28px, 6vw, 64px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.collectionBody .polaroids {
+  margin-top: 36px;
+}
+
+.collectionClose {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 36px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background: #1c1b20;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.merchBack {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--comet);
+}
+
+.merchMeta {
+  margin-top: 8px;
+  color: #a9a6b2;
+}
+
 /* 喜歡的歌：畫面突然變暗 */
 .ghost {
   position: relative;
@@ -526,13 +678,13 @@
     -0.025em 0 0 rgb(127 212 255 / 25%);
 }
 
-.concerts {
+.events {
   display: grid;
   gap: 14px;
   margin-top: 28px;
 }
 
-.concerts > li,
+.events > li,
 .empty {
   padding: 18px 20px;
   background: rgb(255 255 255 / 7%);
@@ -543,7 +695,7 @@
   margin-top: 28px;
 }
 
-.concerts time {
+.events time {
   font-family: var(--mono);
   font-size: 14px;
   color: var(--comet);
@@ -560,19 +712,19 @@
   border-radius: 999px;
 }
 
-.concerts h3 {
+.events h3 {
   margin: 4px 0;
   font-size: 20px;
 }
 
-.concertHead {
+.eventHead {
   display: flex;
   gap: 16px;
   align-items: center;
   justify-content: space-between;
 }
 
-.concertToggle {
+.eventToggle {
   flex: none;
   padding: 8px 14px;
   font-weight: 700;
@@ -583,25 +735,25 @@
   border-radius: 4px;
 }
 
-.concertToggle:hover {
+.eventToggle:hover {
   background: var(--comet);
 }
 
-.concertDetail {
+.eventDetail {
   padding-top: 20px;
   margin-top: 18px;
   border-top: 1px solid rgb(255 255 255 / 20%);
 }
 
-.concertDetail .storyText {
+.eventDetail .storyText {
   margin-top: 0;
 }
 
-.concertDetail .collection {
+.eventDetail .collection {
   margin-top: 28px;
 }
 
-.concertDetail .storyText + .collection {
+.eventDetail .storyText + .collection {
   margin-top: 36px;
 }
 
@@ -637,7 +789,8 @@
     animation: none;
   }
 
-  .polaroid {
+  .polaroid,
+  .merchCard {
     transition: none;
   }
 
@@ -657,7 +810,7 @@
 }
 
 @media (min-width: 760px) {
-  .concertDetail .polaroids li {
+  .eventDetail .polaroids li {
     flex-basis: calc((100% - var(--gap)) / 2);
     max-width: 420px;
   }
@@ -686,7 +839,12 @@
     flex-basis: 100%;
   }
 
-  .concertHead {
+  .merchGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .eventHead {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -702,5 +860,10 @@
   .story h2,
   .ghost h2 {
     -webkit-text-stroke-width: 1.5px;
+  }
+
+  /* EVENTS 比其他標題多一個字，縮小才不會超出內容寬度 */
+  .nova h2 {
+    font-size: 15vw;
   }
 }

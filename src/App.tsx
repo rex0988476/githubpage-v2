@@ -21,7 +21,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
         {/* 音樂家頁不套共用外框，各頁有自己的完整設計 */}
-        <Route path="music/artists/:slug" element={<ArtistPage />} />
+        <Route path="music/artists/:slug/*" element={<ArtistPage />} />
       </Routes>
     </HashRouter>
   )

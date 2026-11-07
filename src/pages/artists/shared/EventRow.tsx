@@ -1,34 +1,34 @@
 import { useRef } from 'react'
 import { isUpcoming } from '../../../lib/music'
-import type { Concert } from '../../../types'
+import type { ArtistEvent } from '../../../types'
 import { PhotoGallery } from './PhotoGallery'
 
-interface ConcertRowProps {
-  concert: Concert
+interface EventRowProps {
+  event: ArtistEvent
   open: boolean
   onToggle: (id: string, row: HTMLElement) => void
   /** 各音樂家頁自己的 CSS Module */
   classes: CSSModuleClasses
 }
 
-export function ConcertRow({ concert, open, onToggle, classes }: ConcertRowProps) {
+export function EventRow({ event, open, onToggle, classes }: EventRowProps) {
   const rowRef = useRef<HTMLLIElement>(null)
-  const { id, date, title, venue, city, review, photos } = concert
+  const { id, type, date, title, subtitle, review, photos } = event
   const detailId = `${id}-detail`
 
   return (
     <li ref={rowRef}>
-      <div className={classes.concertHead}>
+      <div className={classes.eventHead}>
         <div>
           <time dateTime={date}>{date.replaceAll('-', '.')}</time>
-          {isUpcoming(date) && <span className={classes.upcoming}>即將參戰</span>}
+          {type === 'concert' && isUpcoming(date) && <span className={classes.upcoming}>即將參戰</span>}
           <h3>{title}</h3>
-          <p>{[venue, city].filter(Boolean).join(' · ')}</p>
+          {subtitle && <p>{subtitle}</p>}
         </div>
         {(review.length > 0 || photos.length > 0) && (
           <button
             type="button"
-            className={classes.concertToggle}
+            className={classes.eventToggle}
             aria-expanded={open}
             aria-controls={detailId}
             onClick={() => {
@@ -40,7 +40,7 @@ export function ConcertRow({ concert, open, onToggle, classes }: ConcertRowProps
         )}
       </div>
       {open && (
-        <div id={detailId} className={classes.concertDetail}>
+        <div id={detailId} className={classes.eventDetail}>
           {review.length > 0 && (
             <div className={classes.storyText}>
               {review.map((paragraph) => (

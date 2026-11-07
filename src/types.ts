@@ -44,6 +44,19 @@ export interface ArtistPhoto {
   height: number
   /** 照片說明；null 代表沒有 */
   caption: string | null
+  /** 照片裡的周邊，對應 merch.ts 的 id；沒有就是一般照片 */
+  merchIds?: string[]
+}
+
+export interface Merch {
+  id: string
+  name: string
+  /** 入手日 YYYY-MM-DD；null 代表未知，排在最後 */
+  acquiredOn: string | null
+  /** 最愛的周邊在 Collection 置頂 */
+  favorite: boolean
+  /** 一件周邊可以有多位音樂家，例如聯名商品 */
+  artistSlugs: string[]
 }
 
 export interface Artist {
@@ -59,24 +72,24 @@ export interface Artist {
   fanSince: string | null
   /** 自己寫的感想，一個元素一段；空陣列代表不顯示 */
   story: string[]
-  /** 周邊等個人照片；空陣列代表不顯示 */
-  gallery: ArtistPhoto[]
   favoriteSongs: FavoriteSong[]
   /** 喜歡的翻唱，影片在本人或合作對象的官方頻道 */
   coverSongs: FavoriteSong[]
 }
 
-export interface Concert {
+export interface ArtistEvent {
   id: string
+  /** 只有演唱會會顯示「即將參戰」 */
+  type: 'concert' | 'other'
   /** YYYY-MM-DD */
   date: string
   title: string
-  venue: string | null
-  city: string | null
-  /** 一場可以有多位音樂家，例如音樂祭 */
+  /** 標題下方的文字，演唱會放場地和城市；null 代表沒有 */
+  subtitle: string | null
+  /** 一則可以有多位音樂家，例如音樂祭 */
   artistSlugs: string[]
-  /** 自己寫的心得，一個元素一段；空陣列代表沒有 */
+  /** 自己寫的內文，一個元素一段；空陣列代表沒有 */
   review: string[]
-  /** 這場的照片；空陣列代表沒有 */
+  /** 周邊和活動的照片都放這裡；空陣列代表沒有 */
   photos: ArtistPhoto[]
 }
