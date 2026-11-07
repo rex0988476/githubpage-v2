@@ -99,4 +99,11 @@ export const merch: Merch[] = [
     favorite: false,
     artistSlugs: ['himehina'],
   },
+  {
+    id: 'himehina-ninlight-super-2',
+    name: 'ニンライトスーパーII',
+    acquiredOn: '2026-10-06',
+    favorite: false,
+    artistSlugs: ['himehina'],
+  },
 ]

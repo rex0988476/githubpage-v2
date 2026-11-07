@@ -76,6 +76,13 @@ export const events: ArtistEvent[] = [
     ],
     photos: [
       {
+        image: 'himehina/grand-finale/ready.jpg',
+        alt: '電視播著 2026.10.4 全編無料的直播待機畫面，前面擺著亮藍光的應援燈、超大丸子HIME 和壓克力立牌',
+        width: 1600,
+        height: 1409,
+        caption: '準備萬全🫡',
+      },
+      {
         image: 'himehina/grand-finale/homecoming.jpg',
         alt: '兩人站在 Studio LaRa 看板後方，從看板的洞露出臉的銀幕畫面',
         width: 1600,
@@ -145,6 +152,21 @@ export const events: ArtistEvent[] = [
         height: 900,
         caption: '日本武道館!!!(彩帶)🎉🎉🎉😭😭😭',
       },
+      {
+        image: 'himehina/grand-finale/end-message.jpg',
+        alt: '終演後舞台螢幕上兩人寫給觀眾的手寫訊息，中間是 Nippon Budokan 字樣',
+        width: 1059,
+        height: 596,
+        caption: '終演後メッセージ🥹，好想去武道館😭😭😭，希望可以到🙏🙏🙏',
+      },
+      {
+        image: 'himehina/grand-finale/ninlight-super-2.jpg',
+        alt: '手拿著還在包裝袋裡的白色 HIMEHINA 蘿蔔造型應援燈，握把是綠色',
+        width: 1200,
+        height: 1600,
+        caption: '超級蘿蔔燈2號🥕，雖然有點晚，10/6才送到😂',
+        merchIds: ['himehina-ninlight-super-2'],
+      },
     ],
   },
   {
@@ -154,8 +176,40 @@ export const events: ArtistEvent[] = [
     title: 'HIMEHINA ASIA Tour 2026『LIFETIME is BUBBLIN』in TAIPEI',
     subtitle: 'Zepp New Taipei · 台北',
     artistSlugs: ['himehina'],
-    review: [],
-    photos: [],
+    review: [
+      '完全夢回去年11月直播場😭😭😭，去年聽的時候就覺得超頂了，只可惜電影院的參與感還是差一截，今天在現場聽終於圓夢了😭😭😭😭😭，我覺得真沒啥好說的，HIMEHINA的演唱會不管在音響、燈光、畫面、歌手的技巧、與觀眾的互動、曲目安排的質跟量、曲目之間的轉接、remix到整體演唱會的流程設計還有各種的大小細節上每一項都是最頂級的，無人能敵的那種程度，以Vtuber來說HIMEHINA在演唱會上就是當之無愧的神，甚至比很多真人的演唱會都還要好看，她們的實力感覺要上武道館真沒啥問題，還不是明天就能上，而是去年直播場的時候就能上了，她們真的太強了，去年禮拜六直播場聽完我直接演唱會症候群，還好禮拜日放出了世界巡迴的消息，我整個人馬上完全好了，好啊，這次感覺要等到10月東京final場結束才能治好了🤕😭😭，不說了，我要回去抱著我的超大HIME丸子哭了🫩🫩🫩😭😭😭',
+    ],
+    photos: [
+      {
+        image: 'himehina/taipei-2026/ticket-order.jpg',
+        alt: '購票網站的訂單畫面：HIMEHINA ASIA Tour 2026『LIFETIME is BUBBLIN』in TAIPEI，Zepp New Taipei，1F Standing 全票',
+        width: 1206,
+        height: 1516,
+        caption: '我總有一天會搶票搶出病來🫩，每次都要長期抗戰我幼小的心靈快撐不住了😭',
+      },
+      {
+        image: 'himehina/taipei-2026/stage-after.jpg',
+        alt: '演出結束後的舞台，圓形螢幕顯示 LIFETIME is BUBBLIN 和 2026.6.6 Thank You',
+        width: 1600,
+        height: 900,
+        caption: '結束後的舞台照🥹',
+      },
+      {
+        image: 'himehina/taipei-2026/fanclub-joined.jpg',
+        alt: 'FC JOJICLUB+ 入會完成的畫面，開始日 2026年06月07日',
+        width: 566,
+        height: 409,
+        caption: '聽完回去直接加付費會員🫡(付費會員當天有特典可以換，為甚麼沒有早一點加入哭阿😭)',
+      },
+      {
+        image: 'himehina/taipei-2026/dango-hime-bed.jpg',
+        alt: '躺在床上的超大丸子HIME',
+        width: 1600,
+        height: 1200,
+        caption: '陪我度過演唱會症候群夜晚的超大HIME丸子',
+        merchIds: ['himehina-dango-hime'],
+      },
+    ],
   },
   {
     id: 'himehina-lifetime-is-bubblin-2025-11-22',
