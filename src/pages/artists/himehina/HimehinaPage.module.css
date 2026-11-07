@@ -555,19 +555,30 @@
   position: absolute;
   top: 16px;
   right: 16px;
+  display: grid;
+  place-items: center;
   width: 30px;
   height: 30px;
-  font-size: 17px;
-  line-height: 30px;
   color: #fff;
-  text-align: center;
   background: var(--red);
   border-radius: 50%;
+}
+
+.merchFavorite svg {
+  width: 17px;
+  height: 17px;
+  fill: currentcolor;
 }
 
 .merchFavoriteInline {
   margin-right: 0.3em;
   color: var(--red);
+}
+
+.merchFavoriteInline svg {
+  width: 0.8em;
+  height: 0.8em;
+  fill: currentcolor;
 }
 
 .merchAll {

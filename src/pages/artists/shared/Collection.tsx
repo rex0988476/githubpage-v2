@@ -18,6 +18,16 @@ interface CollectionProps {
 const pageUrl = (slug: string) => `/music/artists/${slug}`
 const listUrl = (slug: string) => `${pageUrl(slug)}/collection`
 
+function FavoriteHeart({ className }: { className: string }) {
+  return (
+    <span className={className} role="img" aria-label="最愛">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 21C5 15.6 2 12.2 2 8.3 2 5.3 4.3 3 7.2 3c1.9 0 3.7 1 4.8 2.7C13.1 4 14.9 3 16.8 3 19.7 3 22 5.3 22 8.3c0 3.9-3 7.3-10 12.7" />
+      </svg>
+    </span>
+  )
+}
+
 function AcquiredOn({ date, classes }: { date: string | null; classes: CSSModuleClasses }) {
   if (!date) return <span className={classes.merchDate}>入手日未知</span>
 
@@ -38,11 +48,7 @@ function MerchGrid({ slug, items, classes }: CollectionProps) {
           <li key={item.id}>
             <Link className={classes.merchCard} to={`${listUrl(slug)}/${item.id}`}>
               <img src={artistImageUrl(photo.image)} alt={photo.alt} loading="lazy" />
-              {item.favorite && (
-                <span className={classes.merchFavorite} role="img" aria-label="最愛">
-                  ★
-                </span>
-              )}
+              {item.favorite && <FavoriteHeart className={classes.merchFavorite} />}
               <strong>{item.name}</strong>
               <AcquiredOn date={item.acquiredOn} classes={classes} />
             </Link>
@@ -77,11 +83,7 @@ function MerchDetail({ slug, item, classes }: { slug: string; item: CollectionIt
         ← 全部周邊
       </Link>
       <h2>
-        {item.favorite && (
-          <span className={classes.merchFavoriteInline} role="img" aria-label="最愛">
-            ★
-          </span>
-        )}
+        {item.favorite && <FavoriteHeart className={classes.merchFavoriteInline} />}
         {item.name}
       </h2>
       <p className={classes.merchMeta}>
