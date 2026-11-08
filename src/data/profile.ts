@@ -1,8 +1,8 @@
 export const profile = [
   { label: 'Gender', value: 'M' },
-  { label: 'Age', value: '23' },
+  { label: 'Age', value: '24' },
   { label: 'Country', value: 'Taiwan' },
-  { label: 'Status', value: 'Suffering in CSIE graduate school now 🫠' },
+  { label: 'Status', value: 'looking for a job' },
 ]
 
 export interface Hobby {

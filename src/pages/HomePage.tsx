@@ -24,7 +24,7 @@ export function HomePage() {
       </section>
 
       <section className="profile">
-        <img src={iconUrl('pfp.jpg')} alt="rex0988476's profile picture" />
+        <img src={iconUrl('bocchi_normal_a.png')} alt="rex0988476's profile picture" />
         <dl>
           {profile.map(({ label, value }) => (
             <div key={label}>
