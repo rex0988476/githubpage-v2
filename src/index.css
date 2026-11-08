@@ -522,7 +522,7 @@ button {
   width: 80px;
 }
 
-/* 頭像逐筆畫出，畫完後輕輕晃 */
+/* 頭像逐筆畫出；畫完後的閒置小動作由 DoodleAvatar 用 JS 隨機安排 */
 .doodle-button {
   display: block;
   width: 100%;
@@ -585,17 +585,14 @@ button {
 
 .doodle-wobble {
   transform-origin: 50% 100%;
-  animation: doodle-jelly 3.6s ease-in-out 3.4s infinite;
 }
 
 .doodle-clip {
   transform-origin: 100% 50%;
-  animation: doodle-clip 3.6s ease-in-out 3.4s infinite;
 }
 
 .doodle-eyes {
   transform-origin: 50% 50%;
-  animation: doodle-squeeze 3.6s ease-in-out 3.4s infinite;
 }
 
 .doodle-button:focus-visible .doodle-wobble {
@@ -605,49 +602,6 @@ button {
 @media (hover: hover) {
   .home-avatar:hover .doodle-wobble {
     animation: doodle-jiggle 0.5s ease-in-out infinite;
-  }
-}
-
-@keyframes doodle-jelly {
-  0%,
-  60%,
-  100% {
-    transform: none;
-  }
-  70% {
-    transform: scale(1.05, 0.94);
-  }
-  80% {
-    transform: scale(0.97, 1.04);
-  }
-  90% {
-    transform: scale(1.01, 0.99);
-  }
-}
-
-@keyframes doodle-clip {
-  0%,
-  62%,
-  100% {
-    transform: none;
-  }
-  72% {
-    transform: rotate(-10deg);
-  }
-  84% {
-    transform: rotate(5deg);
-  }
-}
-
-@keyframes doodle-squeeze {
-  0%,
-  64%,
-  100% {
-    transform: none;
-  }
-  70%,
-  78% {
-    transform: scale(1.08, 0.75);
   }
 }
 
@@ -1032,8 +986,6 @@ button {
   .theme-moon,
   .doodle-line,
   .doodle-wobble,
-  .doodle-clip,
-  .doodle-eyes,
   .home-avatar:hover .doodle-wobble {
     animation: none;
   }

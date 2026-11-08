@@ -1,4 +1,4 @@
-import { useEffect, useRef, type CSSProperties } from 'react'
+import { useEffect, useRef, type CSSProperties, type RefObject } from 'react'
 
 // 從 public/images/bocchi_normal_a.png 描出來的線條，用來做逐筆畫出的動畫。
 const body =
@@ -79,9 +79,85 @@ const poke: Keyframe[] = [
   { transform: 'none' },
 ]
 
+const squash = (sx: number, sy: number) => `scale(${sx}, ${sy})`
+
+/** 閒置時的小動作：每做完一次，就隨機休息一段時間再做下一次，三個部位各自獨立 */
+const idleMotions: {
+  selector: string
+  keyframes: Keyframe[]
+  duration: number
+}[] = [
+  {
+    selector: '.doodle-wobble',
+    keyframes: [
+      { transform: 'none' },
+      { transform: squash(1.05, 0.94), offset: 0.25 },
+      { transform: squash(0.97, 1.04), offset: 0.5 },
+      { transform: squash(1.01, 0.99), offset: 0.75 },
+      { transform: 'none' },
+    ],
+    duration: 1440,
+  },
+  {
+    selector: '.doodle-clip',
+    keyframes: [
+      { transform: 'none' },
+      { transform: 'rotate(-10deg)', offset: 0.26 },
+      { transform: 'rotate(5deg)', offset: 0.58 },
+      { transform: 'none' },
+    ],
+    duration: 1370,
+  },
+  {
+    selector: '.doodle-eyes',
+    keyframes: [
+      { transform: 'none' },
+      { transform: squash(1.08, 0.75), offset: 0.17 },
+      { transform: squash(1.08, 0.75), offset: 0.39 },
+      { transform: 'none' },
+    ],
+    duration: 1300,
+  },
+]
+
+/** 兩次動作之間休息的秒數範圍，三個部位共用；各自抽籤，所以不會同步 */
+const idleRest: [number, number] = [1.5, 3.5]
+
+/** 逐筆畫完的時間（秒），之後才開始閒置動作 */
+const drawnAt = 3.4
+
+function useIdleMotion(svgRef: RefObject<SVGSVGElement | null>) {
+  useEffect(() => {
+    const svg = svgRef.current
+    if (!svg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const timers: number[] = []
+    const random = ([min, max]: [number, number]) => (min + Math.random() * (max - min)) * 1000
+
+    for (const motion of idleMotions) {
+      const el = svg.querySelector(motion.selector)
+      if (!el) continue
+      const next = (delay: number) => {
+        timers.push(
+          window.setTimeout(() => {
+            // 滑鼠停在頭像上時身體在抖，這時不要再疊一個 Q 彈
+            const hovering = svg.closest('.home-avatar')?.matches(':hover') && window.matchMedia('(hover: hover)').matches
+            if (!(motion.selector === '.doodle-wobble' && hovering)) {
+              el.animate(motion.keyframes, { duration: motion.duration, easing: 'ease-in-out' })
+            }
+            next(motion.duration + random(idleRest))
+          }, delay),
+        )
+      }
+      next(drawnAt * 1000 + random(idleRest))
+    }
+    return () => timers.forEach((timer) => window.clearTimeout(timer))
+  }, [svgRef])
+}
+
 export function DoodleAvatar({ label }: { label: string }) {
   const svgRef = useRef<SVGSVGElement>(null)
   const sound = usePokeSound()
+  useIdleMotion(svgRef)
 
   const handleClick = () => {
     void sound.play()
