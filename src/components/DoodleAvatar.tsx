@@ -122,3 +122,22 @@ export function DoodleAvatar({ label }: { label: string }) {
     </button>
   )
 }
+
+/** 導覽列用的小頭像：同一組線條，不畫動畫 */
+export function DoodleMark() {
+  return (
+    <svg className="doodle-mark" viewBox="10 40 250 190" aria-hidden="true">
+      <g stroke="#ffaec9">
+        <path d={body} />
+        {tails.map((d) => (
+          <path key={d} d={d} />
+        ))}
+      </g>
+      <path d={blueClip} stroke="#00a2e8" />
+      <path d={yellowClip} stroke="#f5d800" />
+      <path d={leftEye} />
+      <path d={rightEye} />
+      <path d={mouth} />
+    </svg>
+  )
+}

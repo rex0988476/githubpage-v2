@@ -1,4 +1,3 @@
-import '@fontsource-variable/nunito/wght.css'
 import { Link } from 'react-router-dom'
 import { DoodleAvatar } from '../components/DoodleAvatar'
 import { hobbies, profile, type Hobby } from '../data/profile'
