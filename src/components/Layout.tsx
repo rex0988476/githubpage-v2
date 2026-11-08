@@ -2,6 +2,8 @@ import '@fontsource-variable/nunito/wght.css'
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { DoodleMark } from './DoodleAvatar'
+import { ThemeToggle } from './ThemeToggle'
+import { useTheme } from './useTheme'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -38,6 +40,7 @@ function useMarker() {
 
 export function Layout() {
   const { navRef, marker } = useMarker()
+  const { theme, toggle } = useTheme()
 
   return (
     <>
@@ -54,6 +57,7 @@ export function Layout() {
             </NavLink>
           ))}
         </nav>
+        <ThemeToggle theme={theme} onToggle={toggle} />
       </header>
       <main>
         <Outlet />

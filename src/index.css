@@ -8,12 +8,63 @@
   --ink: #2f3336;
   --muted: #5f6468;
   --line: #d8d3c3;
+  /* 文字用的藍；--blue-dark 也當按鈕底色，夜晚版兩者要分開 */
+  --link: #2f5ba3;
+  --surface: #fff;
+  --header-bg: rgba(251, 250, 245, 0.86);
+  --header-shadow: rgba(47, 51, 54, 0.08);
+  --dot: #cfc9b4;
+  --pink: #ffaec9;
+  --pink-soft: #ffe1ec;
+  --sky-soft: #d6e6fb;
+  --sun-soft: #fff1b8;
+  --marker: rgba(153, 150, 227, 0.55);
+  --marker-end: rgba(153, 150, 227, 0.4);
+  --tape-gap: rgba(255, 255, 255, 0.55);
+  --doodle-ink: #000;
+  --sticker-shadow: 0 1px 0 rgba(47, 51, 54, 0.06), 0 8px 18px rgba(47, 51, 54, 0.12);
+  --sticker-shadow-up: 0 1px 0 rgba(47, 51, 54, 0.06), 0 14px 26px rgba(47, 51, 54, 0.18);
+  --status-active: #1c7a3e;
+  --status-semi: #9a6200;
+  --status-no: #b3261e;
+  color-scheme: light;
   --radius: 14px;
   --gutter: clamp(16px, 4vw, 48px);
   --round: 'Nunito Variable', system-ui, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
   font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
   color: var(--ink);
   line-height: 1.5;
+}
+
+/* 夜晚版：只有共用外框的頁面會切換，音樂家頁不受影響 */
+:root[data-theme='dark'] {
+  --blue: #2c4778;
+  --blue-dark: #3a64ad;
+  --lavender: #34335a;
+  --lavender-soft: #34344f;
+  --cream: #1b202b;
+  --paper: #252b38;
+  --ink: #e9e4d6;
+  --muted: #a7abb3;
+  --line: #3a4150;
+  --link: #9dbcf0;
+  --surface: #282f3d;
+  --header-bg: rgba(27, 32, 43, 0.86);
+  --header-shadow: rgba(0, 0, 0, 0.35);
+  --dot: #313848;
+  --pink-soft: #46303e;
+  --sky-soft: #2a3a55;
+  --sun-soft: #463f27;
+  --marker: rgba(132, 128, 236, 0.6);
+  --marker-end: rgba(132, 128, 236, 0.45);
+  --tape-gap: rgba(255, 255, 255, 0.12);
+  --doodle-ink: #ece6d6;
+  --sticker-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 18px rgba(0, 0, 0, 0.35);
+  --sticker-shadow-up: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 14px 26px rgba(0, 0, 0, 0.45);
+  --status-active: #6fd396;
+  --status-semi: #e6b04f;
+  --status-no: #ff8a80;
+  color-scheme: dark;
 }
 
 *,
@@ -62,7 +113,7 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--blue-dark);
+  outline: 3px solid var(--link);
   outline-offset: 2px;
 }
 
@@ -77,12 +128,12 @@ button {
   gap: 16px;
   min-height: 58px;
   padding: 0 var(--gutter);
-  background: rgba(251, 250, 245, 0.86);
+  background: var(--header-bg);
   -webkit-backdrop-filter: blur(10px) saturate(1.2);
   backdrop-filter: blur(10px) saturate(1.2);
   box-shadow:
     0 1px 0 var(--line),
-    0 6px 16px rgba(47, 51, 54, 0.08);
+    0 6px 16px var(--header-shadow);
 }
 
 .site-brand {
@@ -101,7 +152,7 @@ button {
   width: 38px;
   height: auto;
   fill: none;
-  stroke: #000;
+  stroke: var(--doodle-ink);
   stroke-width: 9;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -115,6 +166,7 @@ button {
 .site-header nav {
   position: relative;
   display: flex;
+  margin-left: auto;
   gap: 2px;
 }
 
@@ -142,8 +194,8 @@ button {
   background: linear-gradient(
     100deg,
     transparent 1%,
-    rgba(153, 150, 227, 0.6) 4%,
-    rgba(153, 150, 227, 0.45) 95%,
+    var(--marker) 4%,
+    var(--marker-end) 95%,
     transparent 99%
   );
   border-radius: 0.3em 0.6em 0.4em 0.7em;
@@ -151,6 +203,55 @@ button {
   transition:
     left 0.35s cubic-bezier(0.3, 1.4, 0.5, 1),
     width 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--lavender-soft);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-sun {
+  stroke: #e0a400;
+  transform-origin: 16px 16px;
+  animation: theme-in 0.4s ease-out;
+}
+
+.theme-moon {
+  fill: #f5d76e;
+  stroke: #f5d76e;
+  transform-origin: 16px 16px;
+  animation: theme-in 0.4s ease-out;
+}
+
+@keyframes theme-in {
+  from {
+    opacity: 0;
+    transform: rotate(-60deg) scale(0.6);
+  }
 }
 
 .site-header :focus-visible {
@@ -191,12 +292,6 @@ button {
 
 /* Home：手繪貼紙手帳風 */
 .home {
-  --dot: #cfc9b4;
-  --pink: #ffaec9;
-  --pink-soft: #ffe1ec;
-  --sky-soft: #d6e6fb;
-  --sun-soft: #fff1b8;
-  --sticker-shadow: 0 1px 0 rgba(47, 51, 54, 0.06), 0 8px 18px rgba(47, 51, 54, 0.12);
   padding: clamp(40px, 7vw, 88px) var(--gutter) 72px;
   background-color: var(--cream);
   background-image: radial-gradient(var(--dot) 1.3px, transparent 1.5px);
@@ -221,8 +316,8 @@ button {
   background: linear-gradient(
       100deg,
       transparent 1%,
-      rgba(153, 150, 227, 0.55) 3%,
-      rgba(153, 150, 227, 0.4) 96%,
+      var(--marker) 3%,
+      var(--marker-end) 96%,
       transparent 99%
     )
     no-repeat 0 85% / 100% 0.5em;
@@ -252,7 +347,7 @@ button {
   position: relative;
   width: min(320px, 100%);
   padding: 18px;
-  background: #fff;
+  background: var(--surface);
   border-radius: 18px;
   box-shadow: var(--sticker-shadow);
   rotate: -3deg;
@@ -269,7 +364,7 @@ button {
   background: repeating-linear-gradient(
     45deg,
     rgba(255, 174, 201, 0.75) 0 8px,
-    rgba(255, 255, 255, 0.55) 8px 14px
+    var(--tape-gap) 8px 14px
   );
   clip-path: polygon(
     0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 85%, 96% 100%,
@@ -390,7 +485,7 @@ button {
   text-align: center;
   color: var(--ink);
   text-decoration: none;
-  background: #fff;
+  background: var(--surface);
   border-radius: 16px;
   box-shadow: var(--sticker-shadow);
   rotate: var(--tilt);
@@ -401,14 +496,14 @@ button {
 }
 
 .home-hobbies a span {
-  color: var(--blue-dark);
+  color: var(--link);
 }
 
 .home-hobbies a:hover,
 .home-hobbies a:focus-visible {
   rotate: 0deg;
   translate: 0 -6px;
-  box-shadow: 0 1px 0 rgba(47, 51, 54, 0.06), 0 14px 26px rgba(47, 51, 54, 0.18);
+  box-shadow: var(--sticker-shadow-up);
 }
 
 .home-hobbies img {
@@ -437,7 +532,7 @@ button {
 
 .doodle-line {
   fill: none;
-  stroke: #000;
+  stroke: var(--doodle-ink);
   stroke-width: 3.4;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -578,15 +673,15 @@ button {
 }
 
 .status-active {
-  color: #1c7a3e;
+  color: var(--status-active);
 }
 
 .status-semi-active {
-  color: #9a6200;
+  color: var(--status-semi);
 }
 
 .status-no {
-  color: #b3261e;
+  color: var(--status-no);
 }
 
 /* Anime toolbar */
@@ -734,7 +829,7 @@ button {
   font-size: 30px;
   font-weight: 700;
   line-height: 1;
-  color: var(--blue-dark);
+  color: var(--link);
 }
 
 .details-score small {
@@ -875,8 +970,13 @@ button {
     white-space: nowrap;
   }
 
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
   .site-header nav a {
-    padding: 8px 9px;
+    padding: 8px 7px;
     font-size: 16px;
   }
 
@@ -907,6 +1007,8 @@ button {
   }
 
   .marker,
+  .theme-sun,
+  .theme-moon,
   .doodle-line,
   .doodle-wobble,
   .doodle-clip,
