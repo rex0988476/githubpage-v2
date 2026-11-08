@@ -5,6 +5,7 @@ import { artistImageUrl, collectionOf, daysSince, eventsOf } from '../../../lib/
 import type { Artist, FavoriteSong } from '../../../types'
 import { CollectionDialog, CollectionPreview } from '../shared/Collection'
 import { EventRow } from '../shared/EventRow'
+import { FanSinceProof } from '../shared/FanSinceProof'
 import { SongRow } from '../shared/SongRow'
 import { useEventFocus } from '../shared/useEventFocus'
 import { useExpandableRows } from '../shared/useExpandableRows'
@@ -88,13 +89,13 @@ export default function HimehinaPage({ artist }: { artist: Artist }) {
                 YouTube
               </a>
               {artist.fanSince && (
-                <p className={styles.stamp}>
+                <FanSinceProof proof={artist.fanSinceProof} className={styles.stamp} classes={styles}>
                   <small>FAN SINCE</small>
                   <time dateTime={artist.fanSince}>{artist.fanSince.replaceAll('-', '.')}</time>
                   <span>
                     喜歡了 <strong>{daysSince(artist.fanSince).toLocaleString('en-US')}</strong> 天
                   </span>
-                </p>
+                </FanSinceProof>
               )}
             </div>
           </div>

@@ -4,6 +4,7 @@ import { artistImageUrl, collectionOf, daysSince, eventsOf } from '../../../lib/
 import type { Artist } from '../../../types'
 import { CollectionDialog, CollectionPreview } from '../shared/Collection'
 import { EventRow } from '../shared/EventRow'
+import { FanSinceProof } from '../shared/FanSinceProof'
 import { SongRow } from '../shared/SongRow'
 import { useEventFocus } from '../shared/useEventFocus'
 import { useExpandableRows } from '../shared/useExpandableRows'
@@ -49,12 +50,12 @@ export default function SuiseiPage({ artist }: { artist: Artist }) {
               </a>
             </div>
             {artist.fanSince && (
-              <p className={styles.fanSince}>
+              <FanSinceProof proof={artist.fanSinceProof} className={styles.fanSince} classes={styles}>
                 FAN SINCE <time dateTime={artist.fanSince}>{artist.fanSince.replaceAll('-', '.')}</time>
                 <span>
                   喜歡了 <strong>{daysSince(artist.fanSince).toLocaleString('en-US')}</strong> 天
                 </span>
-              </p>
+              </FanSinceProof>
             )}
             <span className={styles.spark} data-spark aria-hidden="true" />
           </div>

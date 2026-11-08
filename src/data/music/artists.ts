@@ -8,6 +8,13 @@ export const artists: Artist[] = [
     youtube: 'https://www.youtube.com/@HoshimachiSuisei',
     image: 'hoshimachi_suisei.jpg',
     fanSince: '2021-01-24',
+    fanSinceProof: {
+      image: 'hoshimachi-suisei/fan-since.png',
+      alt: 'Google 我的活動紀錄：2021年1月24日在 YouTube 訂閱「Suisei Channel」',
+      width: 598,
+      height: 266,
+      caption: null,
+    },
     story: [
       '最喜歡的 VTuber，一開始是喜歡她平常的可愛和唱歌時的帥氣所形成的反差感，以及有時瘋瘋的個性。',
       '後來發現她是非常努力拼命地在追尋著夢想的人，因此看到她真的成功登上夢想中的武道館時真的非常感動。',
@@ -103,6 +110,13 @@ export const artists: Artist[] = [
     youtube: 'https://www.youtube.com/@HimeHina',
     image: 'himehina.webp',
     fanSince: '2019-02-23',
+    fanSinceProof: {
+      image: 'himehina/fan-since.png',
+      alt: 'Google 我的活動紀錄：2019年2月23日在 YouTube 訂閱「HIMEHINA Channel」',
+      width: 599,
+      height: 284,
+      caption: null,
+    },
     story: [
       '一開始只是有在聽她們的歌跟看一些精華，還沒有到特別喜歡她們的程度，是直到2025年買Ado生日電影應援場的時候發現她們竟然有直播演唱會（HIMEHINA LIVE 2025『LIFETIME is BUBBLIN』現場直播），看到還有位置就想說買來聽聽，結果就徹底愛上她們了，沒想到vtuber的演唱會可以比真人的還好看，而且還是沒遇過的，能用無可挑剔形容的演唱會，是我心目中的演唱會之神🛐。',
       '還記得當初出道認識她們時感覺是很可愛又超好笑的一對v，唱功也很不錯，尤其HITOGATA的鬼之Rap印象很深刻，但在聽完電影直播場後仍然不敢想像這是同一對v，這已經不能用進步很多來形容了，感覺她們這幾年都是一路拚死拚活努力過來的，真的不覺得有人類能夠撐完那樣子的演唱會，完全被她們進化後的樣子折服了，還有百合元素也很讚，超愛這一對❤️。',

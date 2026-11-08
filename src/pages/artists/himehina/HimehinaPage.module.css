@@ -312,6 +312,26 @@
   font-size: 16px;
 }
 
+/* 印章本身就是按鈕：只拿掉按鈕預設外觀，框線和顏色沿用 .stamp */
+.proofButton {
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  appearance: none;
+  transition: rotate 0.2s ease, scale 0.2s ease;
+}
+
+.proofButton:hover,
+.proofButton:focus-visible {
+  rotate: -3deg;
+  scale: 1.04;
+}
+
+.proofButton:focus-visible {
+  outline-width: 3px;
+}
+
 .coverCarrot {
   position: absolute;
   top: clamp(16px, 3vw, 34px);

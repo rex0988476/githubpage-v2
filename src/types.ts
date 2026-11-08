@@ -70,6 +70,8 @@ export interface Artist {
   image: string | null
   /** 開始追的日期 YYYY-MM-DD；null 代表不顯示 */
   fanSince: string | null
+  /** 點 FAN SINCE 會放大的證明截圖；null 代表不能點 */
+  fanSinceProof: ArtistPhoto | null
   /** 自己寫的感想，一個元素一段；空陣列代表不顯示 */
   story: string[]
   favoriteSongs: FavoriteSong[]

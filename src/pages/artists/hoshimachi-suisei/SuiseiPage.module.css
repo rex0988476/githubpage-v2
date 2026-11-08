@@ -158,6 +158,36 @@
   color: #fff;
 }
 
+/* 整段文字就是按鈕：拿掉按鈕預設外觀，字型和顏色沿用 .fanSince */
+.proofButton {
+  display: block;
+  padding: 0;
+  margin-inline: 0;
+  margin-bottom: 0;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  appearance: none;
+}
+
+.proofButton time {
+  text-decoration: underline dotted 1px;
+  text-underline-offset: 5px;
+  transition: color 0.2s ease;
+}
+
+.proofButton:hover time,
+.proofButton:focus-visible time {
+  color: #fff;
+}
+
+.proofButton:focus-visible {
+  outline: 2px solid var(--comet);
+  outline-offset: 6px;
+}
+
 .spark {
   display: block;
   width: 10px;
