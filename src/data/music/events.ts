@@ -115,7 +115,7 @@ export const events: ArtistEvent[] = [
         alt: '兩人在婚禮階梯舞台上親吻的銀幕畫面',
         width: 1600,
         height: 900,
-        caption: '親!😚',
+        caption: '親!😚，本來HIME一副嘿嘿不會讓你跑掉的樣子😈，結果HINA主動把臉湊過去🤯，HIME反而縮了，不太敢親😂，難道HIME是高攻低防?🫣',
       },
       {
         image: 'himehina/grand-finale/married.jpg',
@@ -129,7 +129,7 @@ export const events: ArtistEvent[] = [
         alt: '穿黑色和白色帽 T 的兩人親吻臉頰的銀幕畫面',
         width: 1600,
         height: 900,
-        caption: '親回去😘',
+        caption: '親回去😘，這一對真的是太甜了😋😋😋😍😍😍，我受不了了😇😇😇',
       },
       {
         image: 'himehina/grand-finale/announce-2027-july.jpg',
@@ -157,7 +157,7 @@ export const events: ArtistEvent[] = [
         alt: '終演後舞台螢幕上兩人寫給觀眾的手寫訊息，中間是 Nippon Budokan 字樣',
         width: 1059,
         height: 596,
-        caption: '終演後メッセージ🥹，好想去武道館😭😭😭，希望可以到🙏🙏🙏',
+        caption: '終演後メッセージ🥹，她們一直以來的武道館目標終於要實現了😭😭😭，好想去😭😭😭，希望可以到🙏🙏🙏',
       },
       {
         image: 'himehina/grand-finale/ninlight-super-2.jpg',
