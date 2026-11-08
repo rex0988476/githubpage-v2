@@ -1,4 +1,4 @@
-import { useRef, type CSSProperties } from 'react'
+import { useEffect, useRef, type CSSProperties } from 'react'
 
 // 從 public/images/bocchi_normal_a.png 描出來的線條，用來做逐筆畫出的動畫。
 const body =
@@ -18,6 +18,57 @@ const draw = (delay: number, time = 0.3) =>
   ({ '--draw-delay': `${delay}s`, '--draw-time': `${time}s` }) as CSSProperties
 
 const soundUrl = `${import.meta.env.BASE_URL}sounds/bocchi_sound.mp3`
+/** 音檔開頭約 0.05 秒是靜音，播放時跳過 */
+const soundOffset = 0.04
+
+/**
+ * 用 Web Audio 播放，手機上比 Audio 元素快很多。
+ * 音檔在頁面載入時先抓好；AudioContext 要等使用者碰到頭像才建立，瀏覽器才允許出聲。
+ */
+function usePokeSound() {
+  const fileRef = useRef<Promise<ArrayBuffer> | null>(null)
+  const ctxRef = useRef<AudioContext | null>(null)
+  const bufferRef = useRef<Promise<AudioBuffer> | null>(null)
+  const playingRef = useRef<AudioBufferSourceNode | null>(null)
+
+  useEffect(() => {
+    fileRef.current = fetch(soundUrl).then((res) => res.arrayBuffer())
+    fileRef.current.catch(() => {})
+    return () => void ctxRef.current?.close()
+  }, [])
+
+  const prepare = () => {
+    if (ctxRef.current || typeof AudioContext === 'undefined') return
+    const ctx = new AudioContext()
+    ctxRef.current = ctx
+    bufferRef.current = (fileRef.current ?? fetch(soundUrl).then((res) => res.arrayBuffer())).then((file) =>
+      ctx.decodeAudioData(file.slice(0)),
+    )
+  }
+
+  const play = async () => {
+    prepare()
+    const ctx = ctxRef.current
+    if (!ctx || !bufferRef.current) {
+      void new Audio(soundUrl).play().catch(() => {})
+      return
+    }
+    try {
+      if (ctx.state !== 'running') void ctx.resume()
+      const source = ctx.createBufferSource()
+      source.buffer = await bufferRef.current
+      source.connect(ctx.destination)
+      // 上一次還沒播完就先停掉，從頭重播
+      playingRef.current?.stop()
+      playingRef.current = source
+      source.start(0, soundOffset)
+    } catch {
+      // 解碼或播放失敗就安靜地略過
+    }
+  }
+
+  return { prepare, play }
+}
 
 /** 被戳的時候壓扁再彈回來 */
 const poke: Keyframe[] = [
@@ -30,13 +81,10 @@ const poke: Keyframe[] = [
 
 export function DoodleAvatar({ label }: { label: string }) {
   const svgRef = useRef<SVGSVGElement>(null)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const sound = usePokeSound()
 
   const handleClick = () => {
-    audioRef.current ??= new Audio(soundUrl)
-    const audio = audioRef.current
-    audio.currentTime = 0
-    void audio.play().catch(() => {})
+    void sound.play()
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       svgRef.current?.animate(poke, { duration: 450, easing: 'ease-out' })
     }
@@ -47,6 +95,7 @@ export function DoodleAvatar({ label }: { label: string }) {
       type="button"
       className="doodle-button"
       aria-label={`${label} (click to play a sound)`}
+      onPointerDown={sound.prepare}
       onClick={handleClick}
     >
       <svg ref={svgRef} className="doodle" viewBox="10 40 250 190" aria-hidden="true">
