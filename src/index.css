@@ -123,81 +123,353 @@ button {
   line-height: 1.2;
 }
 
-.hero-home {
-  min-height: 60vh;
-}
-
-.hero-home p {
-  font-size: clamp(18px, 3vw, 30px);
-}
-
 .page-body {
   padding: 28px var(--gutter) 48px;
 }
 
-/* Home */
-.profile {
+/* Home：手繪貼紙手帳風 */
+.home {
+  --dot: #cfc9b4;
+  --pink: #ffaec9;
+  --pink-soft: #ffe1ec;
+  --sky-soft: #d6e6fb;
+  --sun-soft: #fff1b8;
+  --sticker-shadow: 0 1px 0 rgba(47, 51, 54, 0.06), 0 8px 18px rgba(47, 51, 54, 0.12);
+  --round: 'Nunito Variable', system-ui, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  padding: clamp(40px, 7vw, 88px) var(--gutter) 72px;
+  background-color: var(--cream);
+  background-image: radial-gradient(var(--dot) 1.3px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.home h2 {
+  margin: 0;
+}
+
+/* 標題、標籤值和興趣名稱用圓體，小字維持系統字型 */
+.home h1,
+.home h2,
+.home-tags dd,
+.home-hobbies span {
+  font-family: var(--round);
+  font-weight: 800;
+}
+
+.marker {
+  padding: 0 0.12em;
+  background: linear-gradient(
+      100deg,
+      transparent 1%,
+      rgba(153, 150, 227, 0.55) 3%,
+      rgba(153, 150, 227, 0.4) 96%,
+      transparent 99%
+    )
+    no-repeat 0 85% / 100% 0.5em;
+  border-radius: 0.3em 0.6em 0.4em 0.7em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: marker-in 0.6s ease-out 0.3s backwards;
+}
+
+@keyframes marker-in {
+  from {
+    background-size: 0 0.5em;
+  }
+}
+
+.home-intro {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 32px clamp(32px, 8vw, 96px);
-  padding: 48px var(--gutter);
-  background: var(--lavender);
+  gap: 40px clamp(32px, 7vw, 88px);
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
-.profile img {
+.home-avatar {
+  position: relative;
   width: min(320px, 100%);
-  border-radius: var(--radius);
+  padding: 18px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--sticker-shadow);
+  rotate: -3deg;
 }
 
-.profile dl {
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 104px;
+  height: 28px;
+  translate: -50% 0;
+  rotate: 4deg;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 174, 201, 0.75) 0 8px,
+    rgba(255, 255, 255, 0.55) 8px 14px
+  );
+  clip-path: polygon(
+    0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 85%, 96% 100%,
+    0 100%, 4% 88%, 0 75%, 4% 60%, 0 45%, 4% 30%
+  );
+}
+
+.home-intro-text {
   display: grid;
   gap: 16px;
-  font-size: 20px;
+  max-width: 520px;
 }
 
-.profile dt {
-  font-size: 14px;
+.home-intro h1 {
+  font-size: clamp(32px, 5.4vw, 56px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.home-intro p {
+  font-size: clamp(18px, 2.4vw, 24px);
+  color: var(--muted);
+}
+
+.home-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.home-tags div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--tag, var(--sky-soft));
+  border-radius: 10px;
+  box-shadow: var(--sticker-shadow);
+  rotate: var(--tilt, 0deg);
+}
+
+.home-tags div:nth-child(4n + 1) {
+  --tag: var(--sky-soft);
+  --tilt: -2deg;
+}
+
+.home-tags div:nth-child(4n + 2) {
+  --tag: var(--pink-soft);
+  --tilt: 1.5deg;
+}
+
+.home-tags div:nth-child(4n + 3) {
+  --tag: var(--sun-soft);
+  --tilt: -1deg;
+}
+
+.home-tags div:nth-child(4n + 4) {
+  --tag: var(--lavender-soft);
+  --tilt: 2deg;
+}
+
+.home-tags dt {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.home-tags dd {
+  font-size: 17px;
   font-weight: 700;
 }
 
-.hobbies {
-  padding: 56px var(--gutter);
+.home-hobbies {
+  max-width: 960px;
+  margin: clamp(56px, 9vw, 96px) auto 0;
 }
 
-.hobbies ul {
+.home-hobbies h2 {
+  margin-bottom: 32px;
+  font-size: clamp(26px, 4vw, 36px);
+  text-align: center;
+}
+
+.home-hobbies ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px 16px;
-  max-width: 960px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 700;
+  gap: 28px 24px;
 }
 
-.hobbies li,
-.hobbies a {
+.home-hobbies li:nth-child(4n + 1) {
+  --tilt: -2.5deg;
+}
+
+.home-hobbies li:nth-child(4n + 2) {
+  --tilt: 1.5deg;
+}
+
+.home-hobbies li:nth-child(4n + 3) {
+  --tilt: -1deg;
+}
+
+.home-hobbies li:nth-child(4n + 4) {
+  --tilt: 2.5deg;
+}
+
+.home-hobbies li > * {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  height: 100%;
+  padding: 20px 12px 16px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--sticker-shadow);
+  rotate: var(--tilt);
+  transition:
+    rotate 0.2s ease,
+    translate 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.hobbies a {
+.home-hobbies a span {
   color: var(--blue-dark);
-  text-underline-offset: 4px;
 }
 
-.hobbies a:hover img {
-  transform: translateY(-4px);
+.home-hobbies a:hover,
+.home-hobbies a:focus-visible {
+  rotate: 0deg;
+  translate: 0 -6px;
+  box-shadow: 0 1px 0 rgba(47, 51, 54, 0.06), 0 14px 26px rgba(47, 51, 54, 0.18);
 }
 
-.hobbies img {
-  width: 96px;
-  border-radius: 10px;
-  transition: transform 0.15s ease;
+.home-hobbies img {
+  width: 80px;
+}
+
+/* 頭像逐筆畫出，畫完後輕輕晃 */
+.doodle {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.doodle-line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: doodle-draw var(--draw-time, 0.3s) ease-in-out var(--draw-delay, 0s) forwards;
+}
+
+.doodle-pink .doodle-line {
+  stroke: var(--pink);
+}
+
+.doodle-blue {
+  stroke: #00a2e8;
+}
+
+.doodle-yellow {
+  stroke: #f5d800;
+}
+
+@keyframes doodle-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.doodle-wobble,
+.doodle-clip,
+.doodle-eyes {
+  transform-box: fill-box;
+}
+
+.doodle-wobble {
+  transform-origin: 50% 100%;
+  animation: doodle-jelly 3.6s ease-in-out 3.4s infinite;
+}
+
+.doodle-clip {
+  transform-origin: 100% 50%;
+  animation: doodle-clip 3.6s ease-in-out 3.4s infinite;
+}
+
+.doodle-eyes {
+  transform-origin: 50% 50%;
+  animation: doodle-squeeze 3.6s ease-in-out 3.4s infinite;
+}
+
+.home-avatar:hover .doodle-wobble {
+  animation: doodle-jiggle 0.5s ease-in-out infinite;
+}
+
+@keyframes doodle-jelly {
+  0%,
+  60%,
+  100% {
+    transform: none;
+  }
+  70% {
+    transform: scale(1.05, 0.94);
+  }
+  80% {
+    transform: scale(0.97, 1.04);
+  }
+  90% {
+    transform: scale(1.01, 0.99);
+  }
+}
+
+@keyframes doodle-clip {
+  0%,
+  62%,
+  100% {
+    transform: none;
+  }
+  72% {
+    transform: rotate(-10deg);
+  }
+  84% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes doodle-squeeze {
+  0%,
+  64%,
+  100% {
+    transform: none;
+  }
+  70%,
+  78% {
+    transform: scale(1.08, 0.75);
+  }
+}
+
+@keyframes doodle-jiggle {
+  0%,
+  100% {
+    transform: none;
+  }
+  25% {
+    transform: scale(1.04, 0.95) rotate(-2deg);
+  }
+  75% {
+    transform: scale(0.97, 1.03) rotate(2deg);
+  }
 }
 
 /* Games */
@@ -510,8 +782,23 @@ button {
 }
 
 @media (max-width: 560px) {
-  .hobbies ul {
+  .home-avatar {
+    width: min(240px, 100%);
+    padding: 14px;
+  }
+
+  .home-intro-text {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .home-tags {
+    justify-content: center;
+  }
+
+  .home-hobbies ul {
     grid-template-columns: repeat(2, 1fr);
+    gap: 22px 18px;
   }
 }
 
@@ -519,5 +806,18 @@ button {
   * {
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+
+  .marker,
+  .doodle-line,
+  .doodle-wobble,
+  .doodle-clip,
+  .doodle-eyes,
+  .home-avatar:hover .doodle-wobble {
+    animation: none;
+  }
+
+  .doodle-line {
+    stroke-dashoffset: 0;
   }
 }
