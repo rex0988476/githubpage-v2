@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { useRef, type CSSProperties } from 'react'
 
 // 從 public/images/bocchi_normal_a.png 描出來的線條，用來做逐筆畫出的動畫。
 const body =
@@ -17,28 +17,59 @@ const mouth = 'M172 135 171 134 150 134 139 137 138 145 135 149 135 153 133 156 
 const draw = (delay: number, time = 0.3) =>
   ({ '--draw-delay': `${delay}s`, '--draw-time': `${time}s` }) as CSSProperties
 
+const soundUrl = `${import.meta.env.BASE_URL}sounds/bocchi_sound.mp3`
+
+/** 被戳的時候壓扁再彈回來 */
+const poke: Keyframe[] = [
+  { transform: 'none' },
+  { transform: 'scale(1.12, 0.84)', offset: 0.25 },
+  { transform: 'scale(0.94, 1.08)', offset: 0.55 },
+  { transform: 'scale(1.02, 0.98)', offset: 0.8 },
+  { transform: 'none' },
+]
+
 export function DoodleAvatar({ label }: { label: string }) {
+  const svgRef = useRef<SVGSVGElement>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  const handleClick = () => {
+    audioRef.current ??= new Audio(soundUrl)
+    const audio = audioRef.current
+    audio.currentTime = 0
+    void audio.play().catch(() => {})
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      svgRef.current?.animate(poke, { duration: 450, easing: 'ease-out' })
+    }
+  }
+
   return (
-    <svg className="doodle" viewBox="10 40 250 190" role="img" aria-label={label}>
-      <g className="doodle-wobble">
-        <g className="doodle-pink">
-          <path className="doodle-line" pathLength={1} d={body} style={draw(0.2, 1.3)} />
-          {tails.map((d, i) => (
-            <path key={d} className="doodle-line" pathLength={1} d={d} style={draw(1.5 + i * 0.15)} />
-          ))}
-        </g>
-        <g className="doodle-clip">
-          <path className="doodle-line doodle-blue" pathLength={1} d={blueClip} style={draw(1.9)} />
-          <path className="doodle-line doodle-yellow" pathLength={1} d={yellowClip} style={draw(2.1)} />
-        </g>
-        <g className="doodle-face">
-          <g className="doodle-eyes">
-            <path className="doodle-line" pathLength={1} d={leftEye} style={draw(2.4)} />
-            <path className="doodle-line" pathLength={1} d={rightEye} style={draw(2.6)} />
+    <button
+      type="button"
+      className="doodle-button"
+      aria-label={`${label} (click to play a sound)`}
+      onClick={handleClick}
+    >
+      <svg ref={svgRef} className="doodle" viewBox="10 40 250 190" aria-hidden="true">
+        <g className="doodle-wobble">
+          <g className="doodle-pink">
+            <path className="doodle-line" pathLength={1} d={body} style={draw(0.2, 1.3)} />
+            {tails.map((d, i) => (
+              <path key={d} className="doodle-line" pathLength={1} d={d} style={draw(1.5 + i * 0.15)} />
+            ))}
           </g>
-          <path className="doodle-line" pathLength={1} d={mouth} style={draw(2.85, 0.45)} />
+          <g className="doodle-clip">
+            <path className="doodle-line doodle-blue" pathLength={1} d={blueClip} style={draw(1.9)} />
+            <path className="doodle-line doodle-yellow" pathLength={1} d={yellowClip} style={draw(2.1)} />
+          </g>
+          <g className="doodle-face">
+            <g className="doodle-eyes">
+              <path className="doodle-line" pathLength={1} d={leftEye} style={draw(2.4)} />
+              <path className="doodle-line" pathLength={1} d={rightEye} style={draw(2.6)} />
+            </g>
+            <path className="doodle-line" pathLength={1} d={mouth} style={draw(2.85, 0.45)} />
+          </g>
         </g>
-      </g>
-    </svg>
+      </svg>
+    </button>
   )
 }

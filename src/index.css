@@ -355,7 +355,19 @@ button {
 }
 
 /* 頭像逐筆畫出，畫完後輕輕晃 */
+.doodle-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .doodle {
+  transform-origin: 50% 100%;
   display: block;
   width: 100%;
   height: auto;
@@ -412,7 +424,8 @@ button {
   animation: doodle-squeeze 3.6s ease-in-out 3.4s infinite;
 }
 
-.home-avatar:hover .doodle-wobble {
+.home-avatar:hover .doodle-wobble,
+.doodle-button:focus-visible .doodle-wobble {
   animation: doodle-jiggle 0.5s ease-in-out infinite;
 }
 
