@@ -159,8 +159,10 @@ button {
   transition: rotate 0.2s ease;
 }
 
-.site-brand:hover .doodle-mark {
-  rotate: -8deg;
+@media (hover: hover) {
+  .site-brand:hover .doodle-mark {
+    rotate: -8deg;
+  }
 }
 
 .site-header nav {
@@ -220,8 +222,10 @@ button {
   transition: background-color 0.2s ease;
 }
 
-.theme-toggle:hover {
-  background: var(--lavender-soft);
+@media (hover: hover) {
+  .theme-toggle:hover {
+    background: var(--lavender-soft);
+  }
 }
 
 .theme-toggle svg {
@@ -499,11 +503,19 @@ button {
   color: var(--link);
 }
 
-.home-hobbies a:hover,
 .home-hobbies a:focus-visible {
   rotate: 0deg;
   translate: 0 -6px;
   box-shadow: var(--sticker-shadow-up);
+}
+
+/* 手機點一下會留下 hover 狀態，所以 hover 效果只給有滑鼠的裝置 */
+@media (hover: hover) {
+  .home-hobbies a:hover {
+    rotate: 0deg;
+    translate: 0 -6px;
+    box-shadow: var(--sticker-shadow-up);
+  }
 }
 
 .home-hobbies img {
@@ -586,9 +598,14 @@ button {
   animation: doodle-squeeze 3.6s ease-in-out 3.4s infinite;
 }
 
-.home-avatar:hover .doodle-wobble,
 .doodle-button:focus-visible .doodle-wobble {
   animation: doodle-jiggle 0.5s ease-in-out infinite;
+}
+
+@media (hover: hover) {
+  .home-avatar:hover .doodle-wobble {
+    animation: doodle-jiggle 0.5s ease-in-out infinite;
+  }
 }
 
 @keyframes doodle-jelly {
@@ -779,8 +796,10 @@ button {
   transition: transform 0.2s ease;
 }
 
-.cover-button:hover .cover img {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .cover-button:hover .cover img {
+    transform: scale(1.04);
+  }
 }
 
 .badge {
@@ -952,8 +971,10 @@ button {
   transition: transform 0.15s;
 }
 
-.artist-wall a:hover {
-  transform: translateY(-3px);
+@media (hover: hover) {
+  .artist-wall a:hover {
+    transform: translateY(-3px);
+  }
 }
 
 @media (max-width: 560px) {
