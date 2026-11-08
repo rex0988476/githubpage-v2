@@ -340,6 +340,41 @@
   line-height: 1.6;
 }
 
+.lightboxNav {
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  background: #1c1b20;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  translate: 0 -50%;
+}
+
+.lightboxPrev {
+  left: max(12px, calc(50vw - 560px));
+  padding-right: 3px;
+}
+
+.lightboxNext {
+  right: max(12px, calc(50vw - 560px));
+  padding-left: 3px;
+}
+
+.lightboxCount {
+  display: block;
+  padding: 6px 4px 0;
+  text-align: right;
+  font-family: var(--serif);
+  font-size: 13px;
+  opacity: 0.6;
+}
+
 .lightboxClose {
   position: absolute;
   top: -14px;
@@ -876,5 +911,21 @@
   /* EVENTS 比其他標題多一個字，縮小才不會超出內容寬度 */
   .nova h2 {
     font-size: 15vw;
+  }
+}
+
+@media (max-width: 760px) {
+  .lightboxNav {
+    width: 38px;
+    height: 38px;
+    font-size: 26px;
+  }
+
+  .lightboxPrev {
+    left: 6px;
+  }
+
+  .lightboxNext {
+    right: 6px;
   }
 }

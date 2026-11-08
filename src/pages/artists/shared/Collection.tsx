@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { artistImageUrl, type CollectionItem } from '../../../lib/music'
-import type { ArtistPhoto } from '../../../types'
 import { Lightbox } from './Lightbox'
 
 /** 區塊上先露出的周邊數量 */
@@ -75,7 +74,8 @@ export function CollectionPreview({ slug, items, classes }: CollectionProps) {
 }
 
 function MerchDetail({ slug, item, classes }: { slug: string; item: CollectionItem; classes: CSSModuleClasses }) {
-  const [active, setActive] = useState<ArtistPhoto | null>(null)
+  const [active, setActive] = useState<number | null>(null)
+  const photos = item.photos.map(({ photo }) => photo)
 
   return (
     <>
@@ -90,14 +90,14 @@ function MerchDetail({ slug, item, classes }: { slug: string; item: CollectionIt
         入手日 <AcquiredOn date={item.acquiredOn} classes={classes} />
       </p>
       <ul className={classes.polaroids}>
-        {item.photos.map(({ photo, event }) => (
+        {item.photos.map(({ photo, event }, index) => (
           <li key={photo.image}>
             <figure className={classes.polaroid}>
               <button
                 type="button"
                 className={classes.polaroidButton}
                 aria-label={`放大：${photo.alt}`}
-                onClick={() => setActive(photo)}
+                onClick={() => setActive(index)}
               >
                 <img src={artistImageUrl(photo.image)} alt={photo.alt} width={photo.width} height={photo.height} />
               </button>
@@ -111,7 +111,13 @@ function MerchDetail({ slug, item, classes }: { slug: string; item: CollectionIt
           </li>
         ))}
       </ul>
-      <Lightbox photo={active} onClose={() => setActive(null)} classes={classes} />
+      <Lightbox
+        photos={photos}
+        index={active}
+        onIndexChange={setActive}
+        onClose={() => setActive(null)}
+        classes={classes}
+      />
     </>
   )
 }

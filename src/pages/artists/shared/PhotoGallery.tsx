@@ -11,19 +11,19 @@ interface PhotoGalleryProps {
 }
 
 export function PhotoGallery({ photos, classes }: PhotoGalleryProps) {
-  const [active, setActive] = useState<ArtistPhoto | null>(null)
+  const [active, setActive] = useState<number | null>(null)
 
   return (
     <div className={classes.collection}>
       <ul className={classes.polaroids}>
-        {photos.map((photo) => (
+        {photos.map((photo, index) => (
           <li key={photo.image} data-photo={photo.image}>
             <figure className={classes.polaroid}>
               <button
                 type="button"
                 className={classes.polaroidButton}
                 aria-label={`放大：${photo.alt}`}
-                onClick={() => setActive(photo)}
+                onClick={() => setActive(index)}
               >
                 <img
                   src={artistImageUrl(photo.image)}
@@ -39,7 +39,13 @@ export function PhotoGallery({ photos, classes }: PhotoGalleryProps) {
         ))}
       </ul>
 
-      <Lightbox photo={active} onClose={() => setActive(null)} classes={classes} />
+      <Lightbox
+        photos={photos}
+        index={active}
+        onIndexChange={setActive}
+        onClose={() => setActive(null)}
+        classes={classes}
+      />
     </div>
   )
 }
