@@ -11,6 +11,10 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 
 專案沒有測試框架。改動後至少跑 build 和 lint，介面改動要在瀏覽器確認，包含約 390px 的手機寬度。
 
+## 部署
+
+- 已上線：https://rex0988476.github.io/githubpage-v2/ ，push 到 `main` 就會由 `.github/workflows/deploy.yml` 自動部署。
+
 ## 架構
 
 - React + TypeScript + Vite，靜態部署到 GitHub Pages。
@@ -18,6 +22,9 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - public 底下的資源要用 `import.meta.env.BASE_URL` 組路徑，不要寫 `/covers/...` 這種絕對路徑。
 - 路由在 `src/App.tsx`；共用外框在 `src/components/Layout.tsx`。音樂家頁 `#/music/artists/<slug>` 不套共用外框。
 - 樣式在 `src/index.css`，顏色和間距用 `:root` 的變數，配色沿用舊站。音樂家專屬頁例外：各自用 CSS Module，避免樣式互相污染。
+- 白天／夜晚主題：`:root[data-theme='dark']` 覆寫同一組變數，切換邏輯在 `src/components/useTheme.ts`，只有共用外框的頁面會切換。新樣式的顏色一律用變數（如 `var(--surface)`、`var(--ink)`），不要直接寫 `#fff` 這類色碼，否則夜晚版會出現亮白色塊；只有放在固定彩色底上的白字可以寫死。
+- hover 效果要包在 `@media (hover: hover)` 裡，否則手機點一下會一直停在 hover 狀態。
+- Anime、Games、Music 頁用 `.paper-page` 點格紙背景，標題用 `src/components/PageTitle.tsx`（彩色紙片加一條紙膠帶），紙片顏色 `tone` 和紙膠帶 `tape` 在各頁設定。
 - 音樂家專屬頁放在 `src/pages/artists/<slug>/`，在 `src/pages/ArtistPage.tsx` 註冊並按需載入。
 - 歌曲列、活動列、相簿、Collection 和展開狀態在 `src/pages/artists/shared/`，各頁用 `classes` 傳入自己的 CSS Module，只共用行為不共用外觀。
 - 歌曲清單固定最大高度，超過就在欄內捲動。清單的 `ul` 要加 `data-scroller`，`useExpandableRows` 靠它分開處理頁面和清單的捲動。
@@ -32,7 +39,8 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 未知或未評分的值填 `null`。`null` 不論升降冪都排最後。
 - 尚未開播的季（`watched` 和 `total` 為 `null`）會讓該部動畫的進度和總集數變成未知，這是刻意的行為。
 - 舊 Excel 已停用，不要再把資料同步回去。
-- 遊戲：`src/data/games.ts`；自我介紹和興趣：`src/data/profile.ts`。
+- 遊戲：`src/data/games.ts`，`active` 放在上方的 Dock，`semi-active` 和 `no` 一起放在 Game library。icon 由使用者提供，放 `public/games/`，由 `icon` 欄位對應；統一轉成 200×200 的 WebP 並清掉圖片資訊，原圖移到 `photos-inbox/games/`。沒有 icon 的遊戲會顯示名稱縮寫方塊。
+- 自我介紹和興趣：`src/data/profile.ts`。
 - 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。
 - 音樂家個人照片：`public/artists/<slug>/`，由活動的 `photos` 對應。原圖先放 `photos-inbox/`（不進 git），清除 EXIF 並壓縮到長邊 1600px 後才放進 public。
 - 活動紀錄：`src/data/music/events.ts`，用 `artistSlugs` 關聯音樂家，`type` 分 `concert` 和 `other`，`subtitle` 是標題下方的文字（演唱會放場地和城市），`review` 和 `photos` 是內文與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。
@@ -51,13 +59,6 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 
 ## 待處理
 
-- 尚未上線：GitHub repo 還沒建立，`.github/workflows/deploy.yml` 也還沒實際跑過。
-  建立公開 repo 要由使用者確認或親自執行：
-  ```sh
-  gh repo create rex0988476/githubpage-v2 --public --source . --remote origin
-  gh api -X POST repos/rex0988476/githubpage-v2/pages -f build_type=workflow
-  git push -u origin main
-  ```
 - HIMEHINA 頁其他場次的心得和照片，等使用者提供。
 - 星街すいせい頁 11/12 場的心得和照片，等使用者提供。
 - Music 總覽的演唱會區塊還沒做，等使用者整理資料。
