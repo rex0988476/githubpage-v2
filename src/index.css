@@ -24,9 +24,6 @@
   --doodle-ink: #000;
   --sticker-shadow: 0 1px 0 rgba(47, 51, 54, 0.06), 0 8px 18px rgba(47, 51, 54, 0.12);
   --sticker-shadow-up: 0 1px 0 rgba(47, 51, 54, 0.06), 0 14px 26px rgba(47, 51, 54, 0.18);
-  --status-active: #1c7a3e;
-  --status-semi: #9a6200;
-  --status-no: #b3261e;
   color-scheme: light;
   --radius: 14px;
   --gutter: clamp(16px, 4vw, 48px);
@@ -61,9 +58,6 @@
   --doodle-ink: #ece6d6;
   --sticker-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 18px rgba(0, 0, 0, 0.35);
   --sticker-shadow-up: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 14px 26px rgba(0, 0, 0, 0.45);
-  --status-active: #6fd396;
-  --status-semi: #e6b04f;
-  --status-no: #ff8a80;
   color-scheme: dark;
 }
 
@@ -272,26 +266,16 @@ button {
 }
 
 /* Hero */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: 20vh;
-  padding: 32px var(--gutter);
-  text-align: center;
-  color: #fff;
-  background: var(--blue);
-}
-
-.hero h1 {
-  font-size: clamp(32px, 6vw, 60px);
-  line-height: 1.2;
-}
-
-.page-body {
-  padding: 28px var(--gutter) 48px;
+/* Anime、Games、Music 共用的點格紙頁面 */
+.paper-page {
+  display: grid;
+  align-content: start;
+  gap: clamp(40px, 6vw, 64px);
+  min-height: 100%;
+  padding: clamp(32px, 5vw, 56px) var(--gutter) 72px;
+  background-color: var(--cream);
+  background-image: radial-gradient(var(--dot) 1.3px, transparent 1.5px);
+  background-size: 22px 22px;
 }
 
 /* Home：手繪貼紙手帳風 */
@@ -618,41 +602,195 @@ button {
   }
 }
 
-/* Games */
-.game-list {
-  max-width: 560px;
-  margin: 0 auto;
-  background: var(--paper);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.game-list li {
+/* 頁面標題：紙膠帶貼著的彩色紙片 */
+.page-title {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 20px;
-  font-size: 18px;
+  justify-content: center;
+  padding: 8px 0 4px;
 }
 
-.game-list li + li {
-  border-top: 1px solid var(--line);
+.page-title h1 {
+  position: relative;
+  padding: 18px clamp(28px, 5vw, 48px) 20px;
+  font-family: var(--round);
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  background: var(--tag);
+  border-radius: 4px 6px 5px 3px;
+  box-shadow: var(--sticker-shadow);
+  rotate: -1.5deg;
 }
 
-.status {
+/* 一條紙膠帶貼在上緣中間 */
+.page-title h1::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 96px;
+  height: 28px;
+  translate: -50% 0;
+  rotate: 3deg;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--tape, rgba(255, 174, 201, 0.75)) 0 8px,
+    var(--tape-gap) 8px 14px
+  );
+  clip-path: polygon(
+    0 10%, 5% 0, 95% 0, 100% 12%, 96% 30%, 100% 50%, 96% 70%, 100% 88%, 95% 100%,
+    5% 100%, 0 88%, 4% 70%, 0 50%, 4% 30%
+  );
+}
+
+/* emoji 是右下角的小圓貼紙 */
+.page-title-emoji {
+  position: absolute;
+  right: -26px;
+  bottom: -22px;
+  display: grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  font-size: clamp(26px, 3.6vw, 36px);
+  background: var(--surface);
+  border-radius: 50%;
+  box-shadow: var(--sticker-shadow);
+  rotate: 12deg;
+}
+
+/* Games：手機桌面，正在玩的放在 Dock */
+.game-shelf {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.game-shelf h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 24px;
+  font-family: var(--round);
+  font-size: clamp(24px, 3.4vw, 30px);
+  font-weight: 800;
+}
+
+.game-shelf h2 small {
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.game-dock,
+.game-grid {
+  --icon: 76px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--icon) + 26px), 1fr));
+  gap: 26px 12px;
+}
+
+/* Dock：半透明的圓角長條 */
+.game-dock {
+  --icon: 88px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px clamp(16px, 4vw, 40px);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 22px clamp(18px, 4vw, 36px) 16px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  border-radius: 32px;
+  box-shadow: var(--sticker-shadow);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.game-dock .game-app {
+  width: calc(var(--icon) + 28px);
+}
+
+.game-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.game-app:nth-child(4n + 1) {
+  --tilt: -3deg;
+}
+
+.game-app:nth-child(4n + 2) {
+  --tilt: 2deg;
+}
+
+.game-app:nth-child(4n + 3) {
+  --tilt: -1.5deg;
+}
+
+.game-app:nth-child(4n + 4) {
+  --tilt: 2.5deg;
+}
+
+/* icon 像貼紙一樣有白邊 */
+.game-icon {
+  display: block;
+  width: var(--icon);
+  height: var(--icon);
+  padding: 4px;
+  background: var(--surface);
+  border-radius: 26%;
+  box-shadow: var(--sticker-shadow);
+  rotate: var(--tilt, 0deg);
+}
+
+.game-icon img,
+.game-initials {
+  width: 100%;
+  height: 100%;
+  border-radius: 23%;
+}
+
+.game-initials {
+  display: grid;
+  place-items: center;
+  font-family: var(--round);
+  font-size: calc(var(--icon) * 0.3);
+  font-weight: 800;
+  color: #fff;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.25), transparent 50%),
+    var(--app);
+}
+
+.game-name {
+  max-width: 100%;
+  font-family: var(--round);
+  font-size: 14px;
   font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
 }
 
-.status-active {
-  color: var(--status-active);
-}
+@media (hover: hover) {
+  .game-icon {
+    transition:
+      rotate 0.2s ease,
+      translate 0.2s ease;
+  }
 
-.status-semi-active {
-  color: var(--status-semi);
-}
-
-.status-no {
-  color: var(--status-no);
+  .game-app:hover .game-icon {
+    rotate: 0deg;
+    translate: 0 -5px;
+  }
 }
 
 /* Anime toolbar */
@@ -661,8 +799,20 @@ button {
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 14px 28px;
-  padding: 16px var(--gutter);
-  background: var(--lavender);
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--sticker-shadow);
+}
+
+.anime-body,
+.music-body {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .control-label {
@@ -670,6 +820,7 @@ button {
   margin-bottom: 4px;
   font-size: 14px;
   font-weight: 700;
+  color: var(--muted);
 }
 
 .control-options {
@@ -932,6 +1083,20 @@ button {
 }
 
 @media (max-width: 560px) {
+  .game-grid {
+    --icon: 68px;
+  }
+
+  .game-dock {
+    --icon: 72px;
+    gap: 16px 10px;
+    padding: 18px 12px 14px;
+  }
+
+  .game-dock .game-app {
+    width: calc(var(--icon) + 22px);
+  }
+
   .site-header {
     gap: 8px;
   }

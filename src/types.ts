@@ -25,6 +25,10 @@ export type GameStatus = 'active' | 'semi-active' | 'no'
 export interface Game {
   name: string
   status: GameStatus
+  /** public/games/ 底下的 icon 檔名 */
+  icon?: string
+  /** 沒有 icon 時，縮寫方塊的底色；沒填就依名稱自動挑 */
+  color?: string
 }
 
 export interface FavoriteSong {

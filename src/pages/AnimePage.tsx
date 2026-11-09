@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { AnimeGrid } from '../components/AnimeGrid'
 import { AnimeTable } from '../components/AnimeTable'
+import { PageTitle } from '../components/PageTitle'
 import { Segmented } from '../components/Segmented'
 import animeData from '../data/anime.json'
 import { sortAnime, type SortKey, type SortOrder } from '../lib/anime'
@@ -46,10 +47,8 @@ export function AnimePage() {
   }
 
   return (
-    <>
-      <section className="hero">
-        <h1>My Anime List 🌸</h1>
-      </section>
+    <div className="paper-page">
+      <PageTitle title="My Anime List" emoji="🌸" tone="--pink-soft" tape="orange" />
 
       <section className="toolbar" aria-label="Display options">
         <Segmented label="View" options={viewOptions} value={view} onChange={setView} />
@@ -69,7 +68,7 @@ export function AnimePage() {
         </div>
       </section>
 
-      <section className="page-body">
+      <section className="anime-body">
         {view === 'card' ? (
           <AnimeGrid list={list} sortKey={sortKey} expanded={expanded} onToggle={toggle} />
         ) : (
@@ -82,6 +81,6 @@ export function AnimePage() {
           />
         )}
       </section>
-    </>
+    </div>
   )
 }
