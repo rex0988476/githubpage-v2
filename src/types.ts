@@ -22,9 +22,18 @@ export interface Anime {
 
 export type GameStatus = 'active' | 'semi-active' | 'no'
 
+export interface GameLink {
+  name: string
+  url: string
+  /** 自己準備的圖示，public/links/ 底下的檔名 */
+  image: string
+}
+
 export interface Game {
   name: string
   status: GameStatus
+  /** 點 icon 會跳出的相關連結，例如自己做的譜面 */
+  links?: GameLink[]
   /** public/games/ 底下的 icon 檔名 */
   icon?: string
   /** 沒有 icon 時，縮寫方塊的底色；沒填就依名稱自動挑 */

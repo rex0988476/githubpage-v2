@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { PageTitle } from '../components/PageTitle'
 import { games } from '../data/games'
 import type { Game, GameStatus } from '../types'
@@ -26,9 +26,11 @@ const initials = (name: string) =>
     .slice(0, 3)
     .toUpperCase()
 
-function GameIcon({ game }: { game: Game }) {
-  return (
-    <li className="game-app">
+const linkImage = (image: string) => `${import.meta.env.BASE_URL}links/${image}`
+
+function GameIcon({ game, onOpen }: { game: Game; onOpen: (game: Game) => void }) {
+  const content = (
+    <>
       <span className="game-icon">
         {game.icon ? (
           <img src={`${import.meta.env.BASE_URL}games/${game.icon}`} alt="" width={200} height={200} loading="lazy" />
@@ -37,13 +39,77 @@ function GameIcon({ game }: { game: Game }) {
             {initials(game.name)}
           </span>
         )}
+        {game.links && (
+          <span className="game-badge" aria-hidden="true">
+            {game.links.length}
+          </span>
+        )}
       </span>
       <span className="game-name">{game.name}</span>
+    </>
+  )
+
+  return (
+    <li className="game-app">
+      {game.links ? (
+        <button type="button" className="game-app-button" aria-haspopup="dialog" onClick={() => onOpen(game)}>
+          {content}
+        </button>
+      ) : (
+        content
+      )}
     </li>
   )
 }
 
+/** 點有連結的遊戲時跳出的小視窗 */
+function GameLinksDialog({ game, onClose }: { game: Game | null; onClose: () => void }) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (game && dialog && !dialog.open) dialog.showModal()
+  }, [game])
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className="game-dialog"
+      aria-label={game ? `${game.name} links` : undefined}
+      onClose={onClose}
+      onClick={(event) => {
+        // 點到視窗外的背景就關閉
+        if (event.target === event.currentTarget) event.currentTarget.close()
+      }}
+    >
+      {game?.links && (
+        <div className="game-dialog-body">
+          <button type="button" className="game-dialog-close" aria-label="關閉" onClick={() => dialogRef.current?.close()}>
+            ✕
+          </button>
+          <h2>{game.name}</h2>
+          <ul>
+            {game.links.map((link) => (
+              <li key={link.url}>
+                <a href={link.url} target="_blank" rel="noreferrer">
+                  <img src={linkImage(link.image)} alt="" width={144} height={144} />
+                  <span>{link.name}</span>
+                  <span className="game-dialog-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </dialog>
+  )
+}
+
 export function GamesPage() {
+  const [openGame, setOpenGame] = useState<Game | null>(null)
+
   return (
     <div className="paper-page">
       <PageTitle title="My Gaming List" emoji="🎮" tone="--sky-soft" tape="green" />
@@ -58,12 +124,13 @@ export function GamesPage() {
             </h2>
             <ul className={dock ? 'game-dock' : 'game-grid'}>
               {list.map((game) => (
-                <GameIcon key={game.name} game={game} />
+                <GameIcon key={game.name} game={game} onOpen={setOpenGame} />
               ))}
             </ul>
           </section>
         )
       })}
+      <GameLinksDialog game={openGame} onClose={() => setOpenGame(null)} />
     </div>
   )
 }

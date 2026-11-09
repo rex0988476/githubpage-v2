@@ -506,6 +506,58 @@ button {
   width: 80px;
 }
 
+/* 社群連結：開頭資料標籤下方的小圖示 */
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.social-icons a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  background: var(--brand);
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  box-shadow: var(--sticker-shadow);
+}
+
+.social-icons li:nth-child(odd) a {
+  rotate: -6deg;
+}
+
+.social-icons li:nth-child(even) a {
+  rotate: 5deg;
+}
+
+.social-icons svg {
+  /* 圓圈內徑 36px，圖示用偶數 20px 才能剛好置中，奇數會偏半個像素 */
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.social-icons a:focus-visible {
+  rotate: 0deg;
+  translate: 0 -3px;
+}
+
+@media (hover: hover) {
+  .social-icons a {
+    transition:
+      rotate 0.2s ease,
+      translate 0.2s ease;
+  }
+
+  .social-icons a:hover {
+    rotate: 0deg;
+    translate: 0 -3px;
+  }
+}
+
 /* 頭像逐筆畫出；畫完後的閒置小動作由 DoodleAvatar 用 JS 隨機安排 */
 .doodle-button {
   display: block;
@@ -739,8 +791,23 @@ button {
   --tilt: 2.5deg;
 }
 
+/* 有連結的遊戲整個是按鈕，外觀和其他遊戲一樣 */
+.game-app-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
 /* icon 像貼紙一樣有白邊 */
 .game-icon {
+  position: relative;
   display: block;
   width: var(--icon);
   height: var(--icon);
@@ -770,6 +837,97 @@ button {
     var(--app);
 }
 
+/* 右上角的數字標記，提示點下去有東西 */
+.game-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  font-family: var(--round);
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: #e5484d;
+  border: 2px solid var(--surface);
+  border-radius: 999px;
+}
+
+.game-dialog {
+  width: min(360px, calc(100vw - 32px));
+  padding: 0;
+  color: var(--ink);
+  background: var(--surface);
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.game-dialog::backdrop {
+  background: rgba(20, 22, 30, 0.45);
+}
+
+.game-dialog-body {
+  position: relative;
+  padding: 20px;
+}
+
+.game-dialog h2 {
+  margin: 0 0 14px;
+  font-family: var(--round);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.game-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 16px;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.game-dialog ul {
+  display: grid;
+  gap: 10px;
+}
+
+.game-dialog a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px 8px 8px;
+  font-family: var(--round);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--cream);
+  border-radius: 14px;
+}
+
+.game-dialog a img {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.game-dialog-arrow {
+  margin-left: auto;
+  color: var(--muted);
+}
+
 .game-name {
   max-width: 100%;
   font-family: var(--round);
@@ -790,6 +948,11 @@ button {
   .game-app:hover .game-icon {
     rotate: 0deg;
     translate: 0 -5px;
+  }
+
+  .game-dialog-close:hover,
+  .game-dialog a:hover {
+    background: var(--lavender-soft);
   }
 }
 
@@ -1083,6 +1246,10 @@ button {
 }
 
 @media (max-width: 560px) {
+  .social-icons {
+    justify-content: center;
+  }
+
   .game-grid {
     --icon: 68px;
   }
