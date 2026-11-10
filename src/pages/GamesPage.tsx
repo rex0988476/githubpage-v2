@@ -11,13 +11,15 @@ const shelves: { title: string; statuses: GameStatus[]; dock?: boolean }[] = [
 /** Game library 再依平台分組；沒有遊戲的組不顯示。options 是組內的篩選按鈕 */
 const libraryGroups: { title: string; filter: (game: Game) => boolean; options: GamePlatform[] }[] = [
   { title: 'Mobile & PC', filter: (game) => !game.cover, options: ['mobile', 'pc'] },
-  { title: 'Console', filter: (game) => Boolean(game.cover), options: ['wii'] },
+  { title: 'Console', filter: (game) => Boolean(game.cover), options: ['wii', 'switch', 'ps4'] },
 ]
 
 const platformLabels: Record<GamePlatform, string> = {
   mobile: 'Mobile',
   pc: 'PC',
   wii: 'Wii',
+  switch: 'Switch',
+  ps4: 'PS4',
 }
 
 /** 沒有 icon 時縮寫方塊的底色，依名稱固定挑一個，不靠順序 */

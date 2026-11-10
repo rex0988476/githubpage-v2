@@ -23,7 +23,7 @@ export interface Anime {
 export type GameStatus = 'active' | 'semi-active' | 'no'
 
 /** Game library 篩選用的平台 */
-export type GamePlatform = 'mobile' | 'pc' | 'wii'
+export type GamePlatform = 'mobile' | 'pc' | 'wii' | 'switch' | 'ps4'
 
 export interface GameLink {
   name: string

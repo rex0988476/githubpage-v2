@@ -41,7 +41,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 舊 Excel 已停用，不要再把資料同步回去。
 - 遊戲：`src/data/games.ts`，`active` 放在上方的 Dock，`semi-active` 和 `no` 一起放在 Game library。icon 由使用者提供，放 `public/games/`，由 `icon` 欄位對應；統一轉成 200×200 的 WebP 並清掉圖片資訊，原圖移到 `photos-inbox/games/`。沒有 icon 的遊戲會顯示名稱縮寫方塊。
 - 主機遊戲不用正方形 icon，改填 `cover`（盒裝封面，轉成 200×300 的 WebP），會在 Game library 裡另分一組 Console，其餘是 Mobile & PC；沒有遊戲的組不顯示。外觀和 icon 一樣只有白邊和圓角，使用者不要平台色帶之類的裝飾。
-- 遊戲的 `platforms`（`mobile`、`pc`、`wii`）每款都要填，Game library 的兩組各自用它篩選（Mobile & PC 分 Mobile／PC，Console 分 Wii）；Active 也填，但不顯示篩選。新增平台時改 `GamePlatform` 型別和 `GamesPage.tsx` 的 `libraryGroups`。
+- 遊戲的 `platforms`（`mobile`、`pc`、`wii`、`switch`、`ps4`）每款都要填，Game library 的兩組各自用它篩選（Mobile & PC 分 Mobile／PC，Console 分 Wii／Switch／PS4）；Active 也填，但不顯示篩選。新增平台時改 `GamePlatform` 型別和 `GamesPage.tsx` 的 `libraryGroups`。
 - 遊戲名稱在中文字之間不換行，長名稱用 `​` 標出換行位置，例如 `'世界計畫​繽紛舞台！​feat. 初音未來'`。
 - 遊戲的 `links` 會讓 icon 變成按鈕，點了跳出連結視窗（目前只有 osu!），連結的圖示放 `public/links/`，轉成 144×144 的 WebP。
 - 首頁的社群連結在 `src/data/profile.ts` 的 `socialLinks`，圖示和品牌色來自 `simple-icons` 套件。
