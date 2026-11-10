@@ -8,6 +8,12 @@ const shelves: { title: string; statuses: GameStatus[]; dock?: boolean }[] = [
   { title: 'Game library', statuses: ['semi-active', 'no'] },
 ]
 
+/** Game library 再依平台分組；沒有遊戲的組不顯示 */
+const libraryGroups: { title: string; filter: (game: Game) => boolean }[] = [
+  { title: 'Mobile & PC', filter: (game) => !game.cover },
+  { title: 'Console', filter: (game) => Boolean(game.cover) },
+]
+
 /** 沒有 icon 時縮寫方塊的底色，依名稱固定挑一個，不靠順序 */
 const fallbackColors = ['#e05a6d', '#4a7bca', '#7c6fd6', '#2fa58a', '#e89a3c', '#d46aa8', '#3f8fb5', '#8a6e5a']
 
@@ -31,8 +37,10 @@ const linkImage = (image: string) => `${import.meta.env.BASE_URL}links/${image}`
 function GameIcon({ game, onOpen }: { game: Game; onOpen: (game: Game) => void }) {
   const content = (
     <>
-      <span className="game-icon">
-        {game.icon ? (
+      <span className={game.cover ? 'game-icon game-cover' : 'game-icon'}>
+        {game.cover ? (
+          <img src={`${import.meta.env.BASE_URL}games/${game.cover}`} alt="" loading="lazy" />
+        ) : game.icon ? (
           <img src={`${import.meta.env.BASE_URL}games/${game.icon}`} alt="" width={200} height={200} loading="lazy" />
         ) : (
           <span className="game-initials" style={{ '--app': game.color ?? fallbackColor(game.name) } as CSSProperties}>
@@ -116,17 +124,31 @@ export function GamesPage() {
       {shelves.map(({ title, statuses, dock }, i) => {
         const list = games.filter((game) => statuses.includes(game.status))
         if (list.length === 0) return null
+        const icons = (items: Game[]) =>
+          items.map((game) => <GameIcon key={game.name} game={game} onOpen={setOpenGame} />)
         return (
           <section key={title} className="game-shelf" aria-labelledby={`games-shelf-${i}`}>
             <h2 id={`games-shelf-${i}`}>
               <span className="marker">{title}</span>
               <small>{list.length}</small>
             </h2>
-            <ul className={dock ? 'game-dock' : 'game-grid'}>
-              {list.map((game) => (
-                <GameIcon key={game.name} game={game} onOpen={setOpenGame} />
-              ))}
-            </ul>
+            {dock ? (
+              <ul className="game-dock">{icons(list)}</ul>
+            ) : (
+              libraryGroups.map((group) => {
+                const items = list.filter(group.filter)
+                if (items.length === 0) return null
+                return (
+                  <div key={group.title} className="game-group">
+                    <h3>
+                      {group.title}
+                      <small>{items.length}</small>
+                    </h3>
+                    <ul className="game-grid">{icons(items)}</ul>
+                  </div>
+                )
+              })
+            )}
           </section>
         )
       })}

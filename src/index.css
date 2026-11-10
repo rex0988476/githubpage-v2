@@ -729,10 +729,27 @@ button {
   font-weight: 800;
 }
 
-.game-shelf h2 small {
+.game-shelf h2 small,
+.game-group h3 small {
   font-family: system-ui, sans-serif;
   font-size: 14px;
   font-weight: 400;
+  color: var(--muted);
+}
+
+/* Game library 裡的平台分組，標題比 h2 小一級、不加螢光筆 */
+.game-group + .game-group {
+  margin-top: 40px;
+}
+
+.game-group h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 20px;
+  font-family: var(--round);
+  font-size: 19px;
+  font-weight: 800;
   color: var(--muted);
 }
 
@@ -823,6 +840,19 @@ button {
   width: 100%;
   height: 100%;
   border-radius: 23%;
+}
+
+/* 主機遊戲的封面：比 icon 寬一點，高度照封面比例，圓角和 icon 相同 */
+.game-cover {
+  width: calc(var(--icon) * 1.5);
+  height: auto;
+  border-radius: calc(var(--icon) * 0.26);
+}
+
+.game-cover img {
+  display: block;
+  height: auto;
+  border-radius: calc((var(--icon) - 8px) * 0.23);
 }
 
 .game-initials {

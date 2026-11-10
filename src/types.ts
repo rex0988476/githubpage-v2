@@ -36,6 +36,8 @@ export interface Game {
   links?: GameLink[]
   /** public/games/ 底下的 icon 檔名 */
   icon?: string
+  /** 主機遊戲的盒裝封面，public/games/ 底下的檔名；有填就排在 Console，照封面比例顯示 */
+  cover?: string
   /** 沒有 icon 時，縮寫方塊的底色；沒填就依名稱自動挑 */
   color?: string
 }
