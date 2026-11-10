@@ -22,6 +22,9 @@ export interface Anime {
 
 export type GameStatus = 'active' | 'semi-active' | 'no'
 
+/** Game library 篩選用的平台 */
+export type GamePlatform = 'mobile' | 'pc' | 'wii'
+
 export interface GameLink {
   name: string
   url: string
@@ -32,6 +35,8 @@ export interface GameLink {
 export interface Game {
   name: string
   status: GameStatus
+  /** 可以在哪些平台玩，Game library 依這個篩選；Active 不分平台，但也照實填 */
+  platforms?: GamePlatform[]
   /** 點 icon 會跳出的相關連結，例如自己做的譜面 */
   links?: GameLink[]
   /** public/games/ 底下的 icon 檔名 */

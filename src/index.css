@@ -742,11 +742,19 @@ button {
   margin-top: 40px;
 }
 
+.game-group-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 0 0 20px;
+}
+
 .game-group h3 {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin: 0 0 20px;
+  margin: 0;
   font-family: var(--round);
   font-size: 19px;
   font-weight: 800;
@@ -840,6 +848,31 @@ button {
   width: 100%;
   height: 100%;
   border-radius: 23%;
+}
+
+/* 組標題旁的平台篩選，選中的用淡紫底 */
+.game-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.game-filter button {
+  padding: 4px 12px;
+  font-family: var(--round);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.game-filter button[aria-pressed='true'] {
+  color: var(--ink);
+  background: var(--lavender-soft);
+  border-color: transparent;
 }
 
 /* 主機遊戲的封面：比 icon 寬一點，高度照封面比例，圓角和 icon 相同 */
@@ -981,6 +1014,10 @@ button {
   .game-app:hover .game-icon {
     rotate: 0deg;
     translate: 0 -5px;
+  }
+
+  .game-filter button[aria-pressed='false']:hover {
+    color: var(--ink);
   }
 
   .game-dialog-close:hover,

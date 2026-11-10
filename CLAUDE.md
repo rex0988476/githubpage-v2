@@ -40,8 +40,13 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 尚未開播的季（`watched` 和 `total` 為 `null`）會讓該部動畫的進度和總集數變成未知，這是刻意的行為。
 - 舊 Excel 已停用，不要再把資料同步回去。
 - 遊戲：`src/data/games.ts`，`active` 放在上方的 Dock，`semi-active` 和 `no` 一起放在 Game library。icon 由使用者提供，放 `public/games/`，由 `icon` 欄位對應；統一轉成 200×200 的 WebP 並清掉圖片資訊，原圖移到 `photos-inbox/games/`。沒有 icon 的遊戲會顯示名稱縮寫方塊。
+- 主機遊戲不用正方形 icon，改填 `cover`（盒裝封面，轉成 200×300 的 WebP），會在 Game library 裡另分一組 Console，其餘是 Mobile & PC；沒有遊戲的組不顯示。外觀和 icon 一樣只有白邊和圓角，使用者不要平台色帶之類的裝飾。
+- 遊戲的 `platforms`（`mobile`、`pc`、`wii`）每款都要填，Game library 的兩組各自用它篩選（Mobile & PC 分 Mobile／PC，Console 分 Wii）；Active 也填，但不顯示篩選。新增平台時改 `GamePlatform` 型別和 `GamesPage.tsx` 的 `libraryGroups`。
+- 遊戲名稱在中文字之間不換行，長名稱用 `​` 標出換行位置，例如 `'世界計畫​繽紛舞台！​feat. 初音未來'`。
+- 遊戲的 `links` 會讓 icon 變成按鈕，點了跳出連結視窗（目前只有 osu!），連結的圖示放 `public/links/`，轉成 144×144 的 WebP。
+- 首頁的社群連結在 `src/data/profile.ts` 的 `socialLinks`，圖示和品牌色來自 `simple-icons` 套件。
 - 自我介紹和興趣：`src/data/profile.ts`。
-- 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。
+- 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。Music 總覽的卡片是拍立得，照片用 `image`，紙膠帶顏色用 `accent`，下方顯示 `fanSince` 的年份；沒有形象照時用 `accent` 底加名字第一個字。
 - 音樂家個人照片：`public/artists/<slug>/`，由活動的 `photos` 對應。原圖先放 `photos-inbox/`（不進 git），清除 EXIF 並壓縮到長邊 1600px 後才放進 public。
 - 活動紀錄：`src/data/music/events.ts`，用 `artistSlugs` 關聯音樂家，`type` 分 `concert` 和 `other`，`subtitle` 是標題下方的文字（演唱會放場地和城市），`review` 和 `photos` 是內文與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。
 - 周邊：`src/data/music/merch.ts`，照片用 `merchIds` 對應。周邊照片只來自活動紀錄，沒有照片的周邊不會顯示。`favorite` 的周邊在 Collection 置頂，其餘依入手日新到舊，`null` 排最後。

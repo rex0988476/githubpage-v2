@@ -1,18 +1,24 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { PageTitle } from '../components/PageTitle'
 import { games } from '../data/games'
-import type { Game, GameStatus } from '../types'
+import type { Game, GamePlatform, GameStatus } from '../types'
 
 const shelves: { title: string; statuses: GameStatus[]; dock?: boolean }[] = [
   { title: 'Active', statuses: ['active'], dock: true },
   { title: 'Game library', statuses: ['semi-active', 'no'] },
 ]
 
-/** Game library 再依平台分組；沒有遊戲的組不顯示 */
-const libraryGroups: { title: string; filter: (game: Game) => boolean }[] = [
-  { title: 'Mobile & PC', filter: (game) => !game.cover },
-  { title: 'Console', filter: (game) => Boolean(game.cover) },
+/** Game library 再依平台分組；沒有遊戲的組不顯示。options 是組內的篩選按鈕 */
+const libraryGroups: { title: string; filter: (game: Game) => boolean; options: GamePlatform[] }[] = [
+  { title: 'Mobile & PC', filter: (game) => !game.cover, options: ['mobile', 'pc'] },
+  { title: 'Console', filter: (game) => Boolean(game.cover), options: ['wii'] },
 ]
+
+const platformLabels: Record<GamePlatform, string> = {
+  mobile: 'Mobile',
+  pc: 'PC',
+  wii: 'Wii',
+}
 
 /** 沒有 icon 時縮寫方塊的底色，依名稱固定挑一個，不靠順序 */
 const fallbackColors = ['#e05a6d', '#4a7bca', '#7c6fd6', '#2fa58a', '#e89a3c', '#d46aa8', '#3f8fb5', '#8a6e5a']
@@ -115,6 +121,45 @@ function GameLinksDialog({ game, onClose }: { game: Game | null; onClose: () => 
   )
 }
 
+/** 組標題加上篩選按鈕；null 代表全部 */
+function GameGroup({
+  title,
+  games: groupGames,
+  options,
+  renderIcons,
+}: {
+  title: string
+  games: Game[]
+  options: GamePlatform[]
+  renderIcons: (items: Game[]) => ReactNode
+}) {
+  const [platform, setPlatform] = useState<GamePlatform | null>(null)
+  const items = platform ? groupGames.filter((game) => game.platforms?.includes(platform)) : groupGames
+  const choices: { value: GamePlatform | null; label: string }[] = [
+    { value: null, label: 'All' },
+    ...options.map((value) => ({ value, label: platformLabels[value] })),
+  ]
+
+  return (
+    <div className="game-group">
+      <div className="game-group-head">
+        <h3>
+          {title}
+          <small>{items.length}</small>
+        </h3>
+        <div className="game-filter" role="group" aria-label={`${title} platform`}>
+          {choices.map(({ value, label }) => (
+            <button key={label} type="button" aria-pressed={platform === value} onClick={() => setPlatform(value)}>
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <ul className="game-grid">{renderIcons(items)}</ul>
+    </div>
+  )
+}
+
 export function GamesPage() {
   const [openGame, setOpenGame] = useState<Game | null>(null)
 
@@ -139,13 +184,13 @@ export function GamesPage() {
                 const items = list.filter(group.filter)
                 if (items.length === 0) return null
                 return (
-                  <div key={group.title} className="game-group">
-                    <h3>
-                      {group.title}
-                      <small>{items.length}</small>
-                    </h3>
-                    <ul className="game-grid">{icons(items)}</ul>
-                  </div>
+                  <GameGroup
+                    key={group.title}
+                    title={group.title}
+                    games={items}
+                    options={group.options}
+                    renderIcons={icons}
+                  />
                 )
               })
             )}
