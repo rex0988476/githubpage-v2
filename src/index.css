@@ -936,6 +936,9 @@ button {
   line-height: 1.25;
   text-align: center;
   text-wrap: balance;
+  /* 中文名稱不在字和字之間斷行，只在標點、空格和 \u200b 換行；太長才強制斷開 */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 @media (hover: hover) {

@@ -1,10 +1,10 @@
 import type { Game } from '../types'
 
 export const games: Game[] = [
-  { name: 'BrownDust2', status: 'active', icon: 'bd2.webp' },
+  { name: '棕色塵埃2', status: 'active', icon: 'bd2.webp' },
   { name: 'hololive Dreams', status: 'active', icon: 'hd.webp' },
-  { name: 'BanG Dream! Our Notes', status: 'active', icon: 'bdon.webp' },
-  { name: 'Summoners War', status: 'semi-active', icon: 'sw.webp' },
+  { name: 'BanG Dream! 交織的樂章', status: 'active', icon: 'bdon.webp' },
+  { name: '魔靈召喚：天空之役', status: 'semi-active', icon: 'sw.webp' },
   {
     name: 'osu!',
     status: 'semi-active',
@@ -27,10 +27,28 @@ export const games: Game[] = [
       },
     ],
   },
-  { name: 'NIKKE', status: 'semi-active', icon: 'nk.webp' },
-  { name: 'MahjongSoul', status: 'semi-active', icon: 'mjs.webp' },
-  { name: 'Blue Archive', status: 'no', icon: 'ba.webp' },
-  { name: 'Project SEKAI', status: 'no', icon: 'pjsk.webp' },
-  { name: 'Genshin', status: 'no', icon: 'gs.webp' },
-  { name: 'Riichi City', status: 'no', icon: 'rc.webp' },
+  { name: '勝利女神：妮姬', status: 'semi-active', icon: 'nk.webp' },
+  { name: '雀魂', status: 'semi-active', icon: 'mjs.webp' },
+  { name: '蔚藍檔案', status: 'no', icon: 'ba.webp' },
+  {
+    // \u200b 標出名稱可以換行的地方
+    name: '世界計畫\u200b繽紛舞台！\u200bfeat. 初音未來',
+    status: 'no',
+    icon: 'pjsk.webp',
+  },
+  { name: '原神', status: 'no', icon: 'gs.webp' },
+  { name: '麻雀一番街', status: 'no', icon: 'rc.webp' },
+  { name: 'BanG Dream! 少女樂團派對', status: 'no', icon: 'bdgbp.webp' },
+  { name: '嘟嘟臉惡作劇', status: 'no', icon: 'tr.webp' },
+  { name: 'Shadowverse: Worlds Beyond', status: 'no', icon: 'swb.webp' },
+  { name: 'Postknight', status: 'no', icon: 'pk.webp' },
+  { name: 'Postknight 2', status: 'no', icon: 'pk2.webp' },
+  { name: 'Crash Fever', status: 'no', icon: 'cf.webp' },
+  { name: 'Terra Battle', status: 'no', icon: 'tb.webp' },
+  { name: '光速軌道', status: 'no', icon: 'ad.webp' },
+  { name: '暗夜血姬', status: 'no', icon: 'bl.webp' },
+  { name: '神魔之塔', status: 'no', icon: 'tos.webp' },
+  { name: '怪物彈珠', status: 'no', icon: 'ms.webp' },
+  { name: 'METAL SLUG DEFENSE', status: 'no', icon: 'msd.webp' },
+  { name: '貓咪大戰爭', status: 'no', icon: 'tbc.webp' },
 ]
