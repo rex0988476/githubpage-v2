@@ -56,6 +56,7 @@ export const games: Game[] = [
   { name: 'Cytus', status: 'no', platforms: ['mobile'], icon: 'cytus.webp' },
   { name: 'Cytus II', status: 'no', platforms: ['mobile'], icon: 'cytus2.webp' },
   { name: '彈射世界', status: 'no', platforms: ['mobile'], icon: 'wf.webp' },
+  { name: '魔物獵人Now', status: 'no', platforms: ['mobile'], icon: 'mhnow.webp' },
   { name: '魔物獵人 世界', status: 'no', platforms: ['pc'], icon: 'mhw.webp' },
   { name: '魔物獵人 崛起', status: 'no', platforms: ['pc'], icon: 'mhr.webp' },
   { name: '魔物獵人 荒野', status: 'no', platforms: ['pc'], icon: 'mhws.webp' },
