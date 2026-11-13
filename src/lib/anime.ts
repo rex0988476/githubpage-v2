@@ -86,3 +86,27 @@ export function currentSeason(anime: Anime): { index: number; season: Season } |
   )
   return index === -1 ? null : { index, season: anime.seasons[index] }
 }
+
+/** 卡片封面上的進度標籤：還沒看完才有，下一季還沒播出時標 upcoming */
+export function progressTag(anime: Anime): string | null {
+  const current = currentSeason(anime)
+  if (!current) return null
+  const { index, season } = current
+  const label = `S${index + 1}`
+  if (season.watched === null || season.total === null) return `${label} · upcoming`
+  return `${label} · ${season.watched}/${season.total}`
+}
+
+export type ScoreTier = 'perfect' | 'great' | 'good' | 'plain'
+
+/** 分數貼紙的顏色等級 */
+export function scoreTier(score: number | null): ScoreTier {
+  if (score === null) return 'plain'
+  if (score >= 10) return 'perfect'
+  if (score >= 9) return 'great'
+  if (score >= 8) return 'good'
+  return 'plain'
+}
+
+/** 依 id 決定卡片的小角度，同一部每次都一樣 */
+export const cardTilt = (anime: Anime) => (((anime.id * 37) % 5) - 2) * 0.6

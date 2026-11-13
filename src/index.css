@@ -18,6 +18,7 @@
   --pink-soft: #ffe1ec;
   --sky-soft: #d6e6fb;
   --sun-soft: #fff1b8;
+  --gold: #e0a526;
   --marker: rgba(153, 150, 227, 0.55);
   --marker-end: rgba(153, 150, 227, 0.4);
   --tape-gap: rgba(255, 255, 255, 0.55);
@@ -52,6 +53,7 @@
   --pink-soft: #46303e;
   --sky-soft: #2a3a55;
   --sun-soft: #463f27;
+  --gold: #e8b94a;
   --marker: rgba(132, 128, 236, 0.6);
   --marker-end: rgba(132, 128, 236, 0.45);
   --tape-gap: rgba(255, 255, 255, 0.12);
@@ -1129,11 +1131,14 @@ button {
   width: 170px;
 }
 
-.anime-card.open .cover-title {
+.anime-card.open .cover-title,
+.anime-card.open .cover-meta {
   display: none;
 }
 
+/* 封面像貼在點格紙上的貼紙：白邊、微微歪一點，hover 時扶正浮起 */
 .cover-button {
+  position: relative;
   display: block;
   width: 100%;
   padding: 0;
@@ -1147,43 +1152,122 @@ button {
   position: relative;
   display: block;
   aspect-ratio: 188 / 268;
+  padding: 5px;
+  background: var(--surface);
   border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--blue);
-  box-shadow: 0 6px 16px rgb(0 0 0 / 25%);
+  box-shadow: var(--sticker-shadow);
+  rotate: var(--tilt, 0deg);
+}
+
+.anime-card.open .cover {
+  rotate: 0deg;
 }
 
 .cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.2s ease;
+  border-radius: calc(var(--radius) - 5px);
+  background: var(--blue);
 }
 
 @media (hover: hover) {
-  .cover-button:hover .cover img {
-    transform: scale(1.04);
+  .cover {
+    transition:
+      rotate 0.2s ease,
+      translate 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .cover-button:hover .cover {
+    rotate: 0deg;
+    translate: 0 -4px;
+    box-shadow: var(--sticker-shadow-up);
   }
 }
 
-.badge {
+/* 還沒看完的作品，在封面左下角標目前看到哪一季 */
+.progress-tag {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  left: 11px;
+  bottom: 11px;
   padding: 2px 8px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
+  font-family: var(--round);
+  font-size: 12px;
+  font-weight: 800;
   color: #fff;
-  background: rgb(0 0 0 / 72%);
+  background: rgb(20 22 28 / 72%);
+  border-radius: 999px;
+}
+
+/* 分數貼紙：壓在封面右上角外側，顏色依分數分級，10 分加星星 */
+.score-sticker {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-family: var(--round);
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--surface);
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  box-shadow: var(--sticker-shadow);
+  rotate: 10deg;
+}
+
+.score-sticker[data-tier='perfect'] {
+  background: var(--sun-soft);
+  outline: 2px solid var(--gold);
+  outline-offset: -5px;
+}
+
+.score-sticker[data-tier='great'] {
+  background: var(--pink-soft);
+}
+
+.score-sticker[data-tier='good'] {
+  background: var(--lavender-soft);
+}
+
+.score-sticker[data-tier='plain'] {
+  color: var(--muted);
+}
+
+.score-star {
+  position: absolute;
+  top: -7px;
+  left: -4px;
+  font-size: 16px;
+  color: var(--gold);
+  rotate: -14deg;
+  text-shadow: 0 1px 0 var(--surface);
+}
+
+.anime-card.open .score-sticker {
+  display: none;
 }
 
 .cover-title {
   display: block;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.35;
+}
+
+.cover-meta {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--round);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
 }
 
 /* Details */
