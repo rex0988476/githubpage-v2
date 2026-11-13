@@ -31,6 +31,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - Collection 由網址控制（`#/music/artists/<slug>/collection/<周邊 id>`），用 `dialog` 蓋在音樂家頁上，所以 `ScrollToTop` 在同一位音樂家底下不回頂端。周邊照片點下去是放大，點說明下方的貼文連結才會用 `focusPhoto` state 回到頁面，`useEventFocus` 負責展開活動並捲到照片。
 - 動畫的排序和計算邏輯集中在 `src/lib/anime.ts`，元件不要自己算。
 - 動畫卡片是白邊貼紙，角度由 id 決定（`cardTilt`）；右上角的分數貼紙依分數分色（10 金色加星、9 粉、8 紫、其餘白，`scoreTier`），封面左下角的標籤只顯示目前排序的值（`coverChip`）：依進度排序時沒看完的標目前那一季、看完的標 Completed（綠底），依集數或年份排序時標排序值，依分數排序時不顯示；除了 Completed 是淡綠底，其餘都是淡藍底。
+- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列進度條（看完綠、未完藍、未播出是虛線，`seasonState`）加該季的小分數貼紙，心得是貼了紙膠帶的便條紙。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
 - 首頁頭像 `src/components/DoodleAvatar.tsx` 是從 `public/images/bocchi_normal_a.png` 描出來的 SVG 線條（逐筆畫出的動畫、點擊播 `public/sounds/bocchi_sound.mp3`），不是直接顯示 PNG。換頭像時只換 PNG 不會改到首頁，要重新描線；favicon 也是從這張 PNG 做的。
 
 ## 資料

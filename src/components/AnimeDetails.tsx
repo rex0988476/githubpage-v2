@@ -1,51 +1,35 @@
-import { seasonProgress } from '../lib/anime'
+import type { CSSProperties } from 'react'
+import { seasonState } from '../lib/anime'
 import type { Anime } from '../types'
+import { ScoreSticker } from './ScoreSticker'
 
 export function AnimeDetails({ anime }: { anime: Anime }) {
   return (
     <div className="details">
       <div className="details-head">
         <h3>{anime.title}</h3>
-        <p className="details-score">
-          {anime.score === null ? '-' : anime.score}
-          <small> / 10</small>
-        </p>
+        <ScoreSticker score={anime.score} variant="large" />
       </div>
 
-      <div className="table-scroll">
-        <table className="season-table">
-          <thead>
-            <tr>
-              <td />
-              {anime.seasons.map((_, i) => (
-                <th key={i} scope="col">
-                  S{i + 1}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Year</th>
-              {anime.seasons.map((season, i) => (
-                <td key={i}>{season.year}</td>
-              ))}
-            </tr>
-            <tr>
-              <th scope="row">Progress</th>
-              {anime.seasons.map((season, i) => (
-                <td key={i}>{seasonProgress(season)}</td>
-              ))}
-            </tr>
-            <tr>
-              <th scope="row">Score</th>
-              {anime.seasons.map((season, i) => (
-                <td key={i}>{season.score ?? '-'}</td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <ol className="season-list">
+        {anime.seasons.map((season, i) => {
+          const { state, percent, text } = seasonState(season)
+          return (
+            <li key={i} className="season" data-state={state}>
+              <span className="season-name">S{i + 1}</span>
+              <span className="season-year">{season.year}</span>
+              <span
+                className="season-bar"
+                role="img"
+                aria-label={text}
+                style={{ '--percent': `${percent}%` } as CSSProperties}
+              />
+              <span className="season-count">{text}</span>
+              <ScoreSticker score={season.score} variant="mini" />
+            </li>
+          )
+        })}
+      </ol>
 
       {anime.tags.length > 0 && (
         <ul className="tags">
@@ -55,7 +39,7 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
         </ul>
       )}
 
-      {anime.review && <p className="review">{anime.review}</p>}
+      {anime.review && <p className="review-note">{anime.review}</p>}
     </div>
   )
 }

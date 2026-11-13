@@ -1,7 +1,8 @@
 import type { CSSProperties } from 'react'
-import { cardTilt, coverChip, coverUrl, scoreTier, type SortKey } from '../lib/anime'
+import { cardTilt, coverChip, coverUrl, type SortKey } from '../lib/anime'
 import type { Anime } from '../types'
 import { AnimeDetails } from './AnimeDetails'
+import { ScoreSticker } from './ScoreSticker'
 
 interface AnimeGridProps {
   list: Anime[]
@@ -43,18 +44,7 @@ export function AnimeGrid({ list, sortKey, expanded, onToggle }: AnimeGridProps)
                   </span>
                 )}
               </span>
-              <span
-                className="score-sticker"
-                data-tier={scoreTier(anime.score)}
-                aria-label={anime.score === null ? 'Not rated' : `Score ${anime.score}`}
-              >
-                {anime.score === 10 && (
-                  <span className="score-star" aria-hidden="true">
-                    ★
-                  </span>
-                )}
-                {anime.score ?? '-'}
-              </span>
+              <ScoreSticker score={anime.score} variant="on-cover" />
               <span className="cover-title">{anime.title}</span>
             </button>
             {isOpen && <AnimeDetails anime={anime} />}

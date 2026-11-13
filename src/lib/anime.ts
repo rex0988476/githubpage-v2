@@ -76,6 +76,21 @@ export function sortLabel(anime: Anime, key: SortKey): string {
   }
 }
 
+export type SeasonState = 'done' | 'watching' | 'unstarted' | 'upcoming'
+
+/** 展開後各季進度條用的狀態、百分比和文字 */
+export function seasonState({ watched, total }: Season): {
+  state: SeasonState
+  percent: number
+  text: string
+} {
+  if (watched === null || total === null) return { state: 'upcoming', percent: 0, text: 'upcoming' }
+  const text = `${watched} / ${total}`
+  if (watched >= total) return { state: 'done', percent: 100, text }
+  const percent = total === 0 ? 0 : (watched / total) * 100
+  return { state: watched === 0 ? 'unstarted' : 'watching', percent, text }
+}
+
 export const seasonProgress = ({ watched, total }: Season) =>
   watched === null || total === null ? '-' : `${watched} / ${total}`
 
