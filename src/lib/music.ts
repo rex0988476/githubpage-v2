@@ -45,3 +45,14 @@ export const daysSince = (date: string) => (Date.parse(today()) - Date.parse(dat
 
 /** 場次還沒結束：演出當天仍算，隔天才不算。日期依訪客當地時間。 */
 export const isUpcoming = (date: string) => date >= today()
+
+/** Music 總覽的演唱會時間軸，一律新到舊，分成還沒到和已參加 */
+export const concertTimeline = () => {
+  const concerts = events
+    .filter((event) => event.type === 'concert')
+    .sort((a, b) => b.date.localeCompare(a.date))
+  return {
+    upcoming: concerts.filter((event) => isUpcoming(event.date)),
+    past: concerts.filter((event) => !isUpcoming(event.date)),
+  }
+}

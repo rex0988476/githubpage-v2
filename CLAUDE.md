@@ -49,6 +49,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 首頁的社群連結在 `src/data/profile.ts` 的 `socialLinks`，圖示和品牌色來自 `simple-icons` 套件。
 - 自我介紹和興趣：`src/data/profile.ts`。
 - 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。Music 總覽的卡片是拍立得，照片用 `image`，紙膠帶顏色用 `accent`，下方顯示 `fanSince` 的年份；沒有形象照時用 `accent` 底加名字第一個字。
+- Music 總覽在音樂家上方有 Concerts 區塊，自動列出 `events.ts` 裡所有 `concert`（`concertTimeline`），做成單欄時間軸，一律新到舊，時間軸線左側在每年最早一場的下面標年份（由下往上讀）。每場是票根，日期存根用第一位音樂家的 `accent`，點了用 `focusEvent` state 跳到該音樂家頁並展開那場（`useEventFocus`）。
 - 音樂家個人照片：`public/artists/<slug>/`，由活動的 `photos` 對應。原圖先放 `photos-inbox/`（不進 git），清除 EXIF 並壓縮到長邊 1600px 後才放進 public。
 - 活動紀錄：`src/data/music/events.ts`，用 `artistSlugs` 關聯音樂家，`type` 分 `concert` 和 `other`，`subtitle` 是標題下方的文字（演唱會放場地和城市），`review` 和 `photos` 是內文與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。
 - 周邊：`src/data/music/merch.ts`，照片用 `merchIds` 對應。周邊照片只來自活動紀錄，沒有照片的周邊不會顯示。`favorite` 的周邊在 Collection 置頂，其餘依入手日新到舊，`null` 排最後。
@@ -69,7 +70,5 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 
 - HIMEHINA 頁其他場次的心得和照片，等使用者提供。
 - 星街すいせい頁 11/12 場的心得和照片，等使用者提供。
-- Music 總覽的演唱會區塊還沒做，等使用者整理資料。
 - BanG Dream! Ave Mujica：舊資料有封面（`../githubpage/anime_covers/`）但沒有動畫資料，等使用者提供分數和進度。
 - 51 部中有 46 部還沒有 `tags`。
-- `© 2025` 沿用舊站，可能需要更新。

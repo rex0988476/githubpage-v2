@@ -17,7 +17,7 @@ export function EventRow({ event, open, onToggle, classes }: EventRowProps) {
   const detailId = `${id}-detail`
 
   return (
-    <li ref={rowRef}>
+    <li ref={rowRef} data-event={id}>
       <div className={classes.eventHead}>
         <div>
           <time dateTime={date}>{date.replaceAll('-', '.')}</time>

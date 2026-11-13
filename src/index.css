@@ -1494,6 +1494,213 @@ button {
   align-self: flex-start;
 }
 
+/* Music 的區塊標題，和 Games 的 shelf 標題同一套 */
+.music-section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 24px;
+  font-family: var(--round);
+  font-size: clamp(24px, 3.4vw, 30px);
+  font-weight: 800;
+}
+
+.music-section h2 small {
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* 演唱會時間軸：單欄新到舊，左邊一條線，每張票根前一個代表色圓點 */
+.ticket-list {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  max-width: 814px;
+  padding: 0 0 0 84px;
+  margin: 0;
+  list-style: none;
+}
+
+.ticket-list::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 66px;
+  width: 3px;
+  background: var(--bar-track);
+  border-radius: 999px;
+}
+
+.ticket-list > li {
+  position: relative;
+}
+
+.ticket-list > li:not(.timeline-year)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  width: 17px;
+  height: 17px;
+  translate: 0 -50%;
+  background: var(--artist-accent);
+  border: 3px solid var(--cream);
+  border-radius: 50%;
+}
+
+/* 年份牌放在時間軸線的左側、每年最早一場的下面，由下往上讀 */
+.timeline-year {
+  justify-self: start;
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  margin: 0 0 0 -84px;
+  padding: 2px 0;
+  text-align: center;
+  font-family: var(--round);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--cream);
+  background: var(--ink);
+  border-radius: 999px;
+}
+
+.ticket {
+  display: flex;
+  height: 100%;
+  color: var(--ink);
+  text-decoration: none;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.14));
+}
+
+.ticket-stub,
+.ticket-body {
+  /* 兩邊在虛線處各挖一個半圓缺口 */
+  --notch: radial-gradient(circle 9px at var(--notch-x) 0, transparent 98%, #000) top / 100% 51%
+      no-repeat,
+    radial-gradient(circle 9px at var(--notch-x) 100%, transparent 98%, #000) bottom / 100% 51%
+      no-repeat;
+  mask: var(--notch);
+}
+
+.ticket-stub {
+  --notch-x: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 92px;
+  padding: 14px 8px;
+  font-family: var(--round);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--artist-accent) 32%, var(--surface));
+  border-radius: 10px 0 0 10px;
+  border-right: 2px dashed color-mix(in srgb, var(--artist-accent) 60%, var(--surface));
+}
+
+.ticket-day {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.ticket-year {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.ticket-body {
+  --notch-x: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px 14px 20px;
+  background: var(--surface);
+  border-radius: 0 10px 10px 0;
+}
+
+.ticket-upcoming {
+  padding: 1px 10px;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: #e2556f;
+  border-radius: 999px;
+}
+
+.ticket-title {
+  font-family: var(--round);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.ticket-place {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.ticket-artists {
+  margin-top: 4px;
+  font-family: var(--round);
+  font-size: 13px;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--artist-accent) 70%, var(--ink));
+}
+
+@media (hover: hover) {
+  .ticket {
+    transition:
+      translate 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .ticket:hover {
+    translate: 0 -3px;
+    filter: drop-shadow(0 6px 8px rgb(0 0 0 / 0.16));
+  }
+}
+
+@media (max-width: 560px) {
+  .ticket-list {
+    padding-left: 62px;
+  }
+
+  .ticket-list::before {
+    left: 48px;
+  }
+
+  .ticket-list > li:not(.timeline-year)::before {
+    left: -20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .timeline-year {
+    width: 42px;
+    margin-left: -62px;
+    font-size: 12px;
+  }
+
+  .ticket-stub {
+    width: 78px;
+  }
+
+  .ticket-day {
+    font-size: 20px;
+  }
+}
+
 /* Music：音樂家卡片做成拍立得，紙膠帶用各自的代表色 */
 .artist-wall {
   display: grid;

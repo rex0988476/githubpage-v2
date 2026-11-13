@@ -62,7 +62,7 @@ export function Layout() {
       <main>
         <Outlet />
       </main>
-      <footer className="site-footer">© 2025 rex0988476</footer>
+      <footer className="site-footer">© 2026 rex0988476</footer>
     </>
   )
 }
