@@ -1,8 +1,8 @@
-import { Fragment, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
+import type { CSSProperties } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { PageTitle } from '../components/PageTitle'
 import { artists } from '../data/music/artists'
-import { concertTimeline } from '../lib/music'
+import { concertTimeline, currentYear } from '../lib/music'
 import type { ArtistEvent } from '../types'
 
 /** 每張拍立得歪的角度，用 slug 算出來，重新整理也不會變 */
@@ -47,6 +47,23 @@ function ConcertTicket({ event, upcoming }: { event: ArtistEvent; upcoming: bool
 
 export function MusicPage() {
   const { upcoming, past } = concertTimeline()
+  const concerts = [...upcoming, ...past]
+  const years = [...new Set(concerts.map((event) => event.date.slice(0, 4)))]
+  // 選的年份放在網址上，從音樂家頁按上一頁回來時還在
+  const [params, setParams] = useSearchParams()
+  const thisYear = currentYear()
+  const fallbackYear = years.includes(thisYear) ? thisYear : (years[0] ?? 'all')
+  const requested = params.get('year')
+  const year = requested === 'all' || years.includes(requested ?? '') ? requested! : fallbackYear
+  const shown = year === 'all' ? concerts : concerts.filter((event) => event.date.startsWith(year))
+  const yearOptions = [
+    { value: 'all', label: 'All', count: concerts.length },
+    ...years.map((value) => ({
+      value,
+      label: value,
+      count: concerts.filter((event) => event.date.startsWith(value)).length,
+    })),
+  ]
 
   return (
     <div className="paper-page">
@@ -57,21 +74,24 @@ export function MusicPage() {
             <span className="marker">Concerts</span>
             <small>{past.length} attended</small>
           </h2>
+          <div className="concert-years" role="group" aria-label="Year">
+            {yearOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                className="chip"
+                aria-pressed={option.value === year}
+                onClick={() => setParams({ year: option.value }, { replace: true })}
+              >
+                {option.label}
+                <span className="chip-count">{option.count}</span>
+              </button>
+            ))}
+          </div>
           <ul className="ticket-list">
-            {[...upcoming, ...past].map((event, i, all) => {
-              const year = event.date.slice(0, 4)
-              return (
-                <Fragment key={event.id}>
-                  <ConcertTicket event={event} upcoming={i < upcoming.length} />
-                  {/* 由下往上讀：年份標在那一年最早一場的下面 */}
-                  {year !== all[i + 1]?.date.slice(0, 4) && (
-                    <li className="timeline-year" aria-hidden="true">
-                      {year}
-                    </li>
-                  )}
-                </Fragment>
-              )
-            })}
+            {shown.map((event) => (
+              <ConcertTicket key={event.id} event={event} upcoming={upcoming.includes(event)} />
+            ))}
           </ul>
         </section>
       )}

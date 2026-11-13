@@ -43,6 +43,9 @@ const today = () => new Date().toLocaleDateString('sv-SE')
 /** 從某天到今天過了幾天，依訪客當地日期 */
 export const daysSince = (date: string) => (Date.parse(today()) - Date.parse(date)) / 86_400_000
 
+/** 今年，依訪客當地日期 */
+export const currentYear = () => today().slice(0, 4)
+
 /** 場次還沒結束：演出當天仍算，隔天才不算。日期依訪客當地時間。 */
 export const isUpcoming = (date: string) => date >= today()
 
