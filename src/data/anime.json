@@ -2,7 +2,7 @@
   {
     "id": 0,
     "title": "紫羅蘭永恆花園",
-    "cover": "0.png",
+    "cover": "0.webp",
     "score": 10,
     "tags": [
       "療癒",
@@ -24,7 +24,7 @@
   {
     "id": 1,
     "title": "鬼滅之刃",
-    "cover": "1.jpg",
+    "cover": "1.webp",
     "score": 8,
     "tags": [
       "少年漫畫",
@@ -65,7 +65,7 @@
   {
     "id": 2,
     "title": "刀劍神域",
-    "cover": "2.jpg",
+    "cover": "2.webp",
     "score": 8,
     "tags": [
       "VR",
@@ -112,7 +112,7 @@
   {
     "id": 3,
     "title": "怕痛的我，把防禦力點滿就對了",
-    "cover": "3.png",
+    "cover": "3.webp",
     "score": 7,
     "tags": [
       "網遊小說",
@@ -140,7 +140,7 @@
   {
     "id": 4,
     "title": "孤獨搖滾",
-    "cover": "4.png",
+    "cover": "4.webp",
     "score": 10,
     "tags": [
       "四格漫畫",
@@ -159,7 +159,7 @@
   {
     "id": 5,
     "title": "BanG Dream! It's MyGO!!!!!",
-    "cover": "5.png",
+    "cover": "5.webp",
     "score": 8,
     "tags": [],
     "review": "八點檔少女樂隊番，很神奇的一部作品，前面各種狗血劇情，但後面收得不錯，好評",
@@ -175,7 +175,7 @@
   {
     "id": 6,
     "title": "葬送的芙莉蓮",
-    "cover": "6.jpg",
+    "cover": "6.webp",
     "score": 10,
     "tags": [],
     "review": "神，作畫跟音樂都是上乘，而劇情則是可以讓人大量深刻反思的作品，我認為這部作品帶給了我們現今社會越來越缺乏的各種待人處事之道，並且這些道理與劇情融合得非常完美，常常看著看著不知不覺就看到心裡了，評分這種東西是主觀的，一部作品每個人給的分數不同才正常，但這部我覺得每個看過的都應該給滿分，且每個人都應該去看",
@@ -197,7 +197,7 @@
   {
     "id": 7,
     "title": "Endro～！",
-    "cover": "7.jpg",
+    "cover": "7.webp",
     "score": 8,
     "tags": [],
     "review": "可愛至上，可愛就完事了",
@@ -213,7 +213,7 @@
   {
     "id": 8,
     "title": "侵略！花枝娘",
-    "cover": "8.png",
+    "cover": "8.webp",
     "score": 10,
     "tags": [],
     "review": "超級可愛，而且是陪伴我很久的一部動畫，滿滿回憶",
@@ -235,7 +235,7 @@
   {
     "id": 9,
     "title": "流浪神差",
-    "cover": "9.jpg",
+    "cover": "9.webp",
     "score": 10,
     "tags": [],
     "review": "帥慘了，對當初正值中二病的我影響很深xd",
@@ -257,7 +257,7 @@
   {
     "id": 10,
     "title": "冰菓",
-    "cover": "10.jpg",
+    "cover": "10.webp",
     "score": 10,
     "tags": [],
     "review": "神，米澤老師永遠的神",
@@ -273,7 +273,7 @@
   {
     "id": 11,
     "title": "日常",
-    "cover": "11.png",
+    "cover": "11.webp",
     "score": 9,
     "tags": [],
     "review": "博士超級可愛，沒了:3(好啦其他人之間的互動也很有趣xd",
@@ -289,7 +289,7 @@
   {
     "id": 12,
     "title": "少女終末旅行",
-    "cover": "12.png",
+    "cover": "12.webp",
     "score": 8,
     "tags": [],
     "review": "兩個可愛的少女在戰後孤獨的末日極地下還能夠積極樂觀地踏上旅程，這種反差感讓我印象非常深刻",
@@ -305,7 +305,7 @@
   {
     "id": 13,
     "title": "發條精靈戰記 天鏡的極北之星",
-    "cover": "13.jpg",
+    "cover": "13.webp",
     "score": 8,
     "tags": [],
     "review": "一部普通的鬥智類作品，但我喜歡鬥智所以給高分:3，有機會想收全實體小說",
@@ -321,7 +321,7 @@
   {
     "id": 14,
     "title": "為美好的世界獻上祝福！",
-    "cover": "14.png",
+    "cover": "14.webp",
     "score": 10,
     "tags": [],
     "review": "位於異世界題材頂點的作品，這部給9分我想不到其他異世界有誰可以給10分",
@@ -349,7 +349,7 @@
   {
     "id": 15,
     "title": "笨拙之極的上野",
-    "cover": "15.jpg",
+    "cover": "15.webp",
     "score": 7,
     "tags": [],
     "review": "看著女主為了男主做出各種自爆羞恥發明超級好笑www",
@@ -365,7 +365,7 @@
   {
     "id": 16,
     "title": "來自繽紛世界的明日",
-    "cover": "16.png",
+    "cover": "16.webp",
     "score": 9,
     "tags": [],
     "review": "很棒，各種意義上很美的一部作品",
@@ -381,7 +381,7 @@
   {
     "id": 17,
     "title": "遊戲3人娘",
-    "cover": "17.jpg",
+    "cover": "17.webp",
     "score": 8.5,
     "tags": [],
     "review": "我看過最好笑的作品",
@@ -397,7 +397,7 @@
   {
     "id": 18,
     "title": "虛構推理",
-    "cover": "18.png",
+    "cover": "18.webp",
     "score": 6,
     "tags": [],
     "review": "強調推理不是找真相，而是為了讓人相信自己的主張的作品，顛覆了一般推理作品應該要有的基於事實的嚴謹性，對於喜歡看推理作品的我來說算蠻新奇的，整體還行",
@@ -419,7 +419,7 @@
   {
     "id": 19,
     "title": "約定的夢幻島",
-    "cover": "19.jpg",
+    "cover": "19.webp",
     "score": 8,
     "tags": [],
     "review": "整體來說算很不錯的作品，世界觀、鬥智跟旅行的部分我都很喜歡，可惜結尾普通",
@@ -441,7 +441,7 @@
   {
     "id": 20,
     "title": "佐賀偶像是傳奇",
-    "cover": "20.png",
+    "cover": "20.webp",
     "score": 8,
     "tags": [],
     "review": "很腦洞的作品，妙很可愛w",
@@ -463,7 +463,7 @@
   {
     "id": 21,
     "title": "女高中生的虛度日常",
-    "cover": "21.jpg",
+    "cover": "21.webp",
     "score": 8.5,
     "tags": [],
     "review": "非常好笑的作品",
@@ -479,7 +479,7 @@
   {
     "id": 22,
     "title": "艾梅洛閣下II世事件簿 -魔眼蒐集列車 Grace note-",
-    "cover": "22.jpg",
+    "cover": "22.webp",
     "score": 9,
     "tags": [],
     "review": "除了劇情音樂畫風還有Fate的IP外，世界觀跟氛圍也都很棒，還有格蕾很讚",
@@ -495,7 +495,7 @@
   {
     "id": 23,
     "title": "此花綺譚",
-    "cover": "23.jpg",
+    "cover": "23.webp",
     "score": 9,
     "tags": [],
     "review": null,
@@ -511,7 +511,7 @@
   {
     "id": 24,
     "title": "K",
-    "cover": "24.png",
+    "cover": "24.webp",
     "score": 10,
     "tags": [],
     "review": "最強打鬥番，打鬥畫面每一下都看得到，而不是用特效或轉場帶過去，非常",
@@ -533,7 +533,7 @@
   {
     "id": 25,
     "title": "花開物語",
-    "cover": "25.jpg",
+    "cover": "25.webp",
     "score": 8,
     "tags": [],
     "review": null,
@@ -549,7 +549,7 @@
   {
     "id": 26,
     "title": "櫻花任務",
-    "cover": "26.jpg",
+    "cover": "26.webp",
     "score": 7,
     "tags": [],
     "review": null,
@@ -565,7 +565,7 @@
   {
     "id": 27,
     "title": "歡迎來到實力至上主義的教室",
-    "cover": "27.jpg",
+    "cover": "27.webp",
     "score": 9,
     "tags": [],
     "review": "很喜歡故事中各種規則超複雜的競賽",
@@ -599,7 +599,7 @@
   {
     "id": 28,
     "title": "一個人的○○小日子",
-    "cover": "28.png",
+    "cover": "28.webp",
     "score": 7,
     "tags": [],
     "review": null,
@@ -615,7 +615,7 @@
   {
     "id": 29,
     "title": "流汗吧！健身少女",
-    "cover": "29.png",
+    "cover": "29.webp",
     "score": 6,
     "tags": [],
     "review": "就，少女健身番，蠻有趣的",
@@ -631,7 +631,7 @@
   {
     "id": 30,
     "title": "科學超電磁砲",
-    "cover": "30.jpg",
+    "cover": "30.webp",
     "score": 7,
     "tags": [],
     "review": "炮姐就是帥，然後不知道為啥我挺喜歡黑子的聲音w",
@@ -659,7 +659,7 @@
   {
     "id": 31,
     "title": "狂賭之淵",
-    "cover": "31.jpg",
+    "cover": "31.webp",
     "score": 8,
     "tags": [],
     "review": "很喜歡劇中各種瘋子跟超強顏藝www",
@@ -681,7 +681,7 @@
   {
     "id": 32,
     "title": "POP TEAM EPIC",
-    "cover": "32.jpg",
+    "cover": "32.webp",
     "score": 8,
     "tags": [],
     "review": "前無古人後無來者的奇耙作品，不知道作者到底吸了啥www，凸(#ﾟДﾟ)凸",
@@ -703,7 +703,7 @@
   {
     "id": 33,
     "title": "哥布林殺手",
-    "cover": "33.jpg",
+    "cover": "33.webp",
     "score": 8,
     "tags": [],
     "review": null,
@@ -725,7 +725,7 @@
   {
     "id": 34,
     "title": "鹿乃子乃子乃子虎視眈眈",
-    "cover": "34.jpg",
+    "cover": "34.webp",
     "score": 8,
     "tags": [],
     "review": null,
@@ -741,7 +741,7 @@
   {
     "id": 35,
     "title": "NO GAME NO LIFE 遊戲人生",
-    "cover": "35.jpg",
+    "cover": "35.webp",
     "score": 7,
     "tags": [],
     "review": null,
@@ -757,7 +757,7 @@
   {
     "id": 36,
     "title": "邪神與廚二病少女",
-    "cover": "36.png",
+    "cover": "36.webp",
     "score": 8,
     "tags": [],
     "review": null,
@@ -785,7 +785,7 @@
   {
     "id": 37,
     "title": "關於我轉生變成史萊姆這檔事",
-    "cover": "37.jpg",
+    "cover": "37.webp",
     "score": 6,
     "tags": [],
     "review": "經典異世界龍傲天，還行",
@@ -813,7 +813,7 @@
   {
     "id": 38,
     "title": "末日時在做什麼？有沒有空？可以來拯救嗎？",
-    "cover": "38.jpg",
+    "cover": "38.webp",
     "score": 8,
     "tags": [],
     "review": null,
@@ -829,7 +829,7 @@
   {
     "id": 39,
     "title": "中二病也想談戀愛！",
-    "cover": "39.jpg",
+    "cover": "39.webp",
     "score": 9,
     "tags": [],
     "review": null,
@@ -851,7 +851,7 @@
   {
     "id": 40,
     "title": "多羅羅",
-    "cover": "40.jpg",
+    "cover": "40.webp",
     "score": 6,
     "tags": [],
     "review": null,
@@ -867,7 +867,7 @@
   {
     "id": 41,
     "title": "文豪Stray Dogs",
-    "cover": "41.jpg",
+    "cover": "41.webp",
     "score": 10,
     "tags": [],
     "review": "畫風跟音樂我很喜歡，但重點是劇情，是最讓我出乎意料的一部作品，完全猜不到接下來會怎麼發展",
@@ -907,7 +907,7 @@
   {
     "id": 42,
     "title": "博多豚骨拉麵團",
-    "cover": "42.jpg",
+    "cover": "42.webp",
     "score": 6,
     "tags": [],
     "review": null,
@@ -923,7 +923,7 @@
   {
     "id": 43,
     "title": "歌舞伎町夏洛克",
-    "cover": "43.jpg",
+    "cover": "43.webp",
     "score": 7.5,
     "tags": [],
     "review": null,
@@ -939,7 +939,7 @@
   {
     "id": 44,
     "title": "搖曳露營△",
-    "cover": "44.jpg",
+    "cover": "44.webp",
     "score": 10,
     "tags": [],
     "review": "神，可愛休閒番，壓力大或有負面情緒的時候看一集就能滿血恢復",
@@ -967,7 +967,7 @@
   {
     "id": 45,
     "title": "房間露營△",
-    "cover": "45.jpg",
+    "cover": "45.webp",
     "score": 10,
     "tags": [],
     "review": "泡麵番，跟搖曳露營一樣棒",
@@ -983,7 +983,7 @@
   {
     "id": 46,
     "title": "彼方的阿斯特拉",
-    "cover": "46.jpg",
+    "cover": "46.webp",
     "score": 6,
     "tags": [],
     "review": null,
@@ -999,7 +999,7 @@
   {
     "id": 47,
     "title": "公主殿下，「拷問」的時間到了",
-    "cover": "47.jpg",
+    "cover": "47.webp",
     "score": 7,
     "tags": [],
     "review": null,
@@ -1015,7 +1015,7 @@
   {
     "id": 48,
     "title": "進擊的巨人",
-    "cover": "48.jpg",
+    "cover": "48.webp",
     "score": 9,
     "tags": [],
     "review": null,
@@ -1049,7 +1049,7 @@
   {
     "id": 49,
     "title": "Re:從零開始的異世界生活",
-    "cover": "49.jpg",
+    "cover": "49.webp",
     "score": 8,
     "tags": [],
     "review": null,
@@ -1083,7 +1083,7 @@
   {
     "id": 50,
     "title": "憂國的莫里亞蒂",
-    "cover": "50.jpg",
+    "cover": "50.webp",
     "score": 7.5,
     "tags": [],
     "review": null,

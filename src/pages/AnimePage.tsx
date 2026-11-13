@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { AnimeGrid } from '../components/AnimeGrid'
 import { AnimeTable } from '../components/AnimeTable'
 import { PageTitle } from '../components/PageTitle'
-import { Segmented } from '../components/Segmented'
 import animeData from '../data/anime.json'
 import { sortAnime, type SortKey, type SortOrder } from '../lib/anime'
 import type { Anime } from '../types'
@@ -17,17 +16,14 @@ const viewOptions: { value: ViewMode; label: string }[] = [
 ]
 
 const sortOptions: { value: SortKey; label: string }[] = [
-  { value: 'score', label: 'Total Score' },
+  { value: 'score', label: 'Score' },
   { value: 'progress', label: 'Progress' },
-  { value: 'episodes', label: 'Total Episodes' },
-  { value: 'firstYear', label: 'First Season Year' },
-  { value: 'lastYear', label: 'Last Season Year' },
+  { value: 'episodes', label: 'Episodes' },
+  { value: 'firstYear', label: 'First Year' },
+  { value: 'lastYear', label: 'Last Year' },
 ]
 
-const orderOptions: { value: SortOrder; label: string }[] = [
-  { value: 'asc', label: 'Ascending' },
-  { value: 'desc', label: 'Descending' },
-]
+const orderNames: Record<SortOrder, string> = { asc: 'ascending', desc: 'descending' }
 
 export function AnimePage() {
   const [view, setView] = useState<ViewMode>('card')
@@ -37,6 +33,13 @@ export function AnimePage() {
 
   const list = useMemo(() => sortAnime(allAnime, sortKey, order), [sortKey, order])
   const sortName = sortOptions.find((option) => option.value === sortKey)!.label
+  const anyExpanded = expanded.size > 0
+
+  // 點目前的排序就反轉方向，點別的排序只換依據、方向不變
+  const chooseSort = (key: SortKey) => {
+    if (key === sortKey) setOrder((previous) => (previous === 'asc' ? 'desc' : 'asc'))
+    else setSortKey(key)
+  }
 
   const toggle = (id: number) => {
     setExpanded((previous) => {
@@ -50,21 +53,56 @@ export function AnimePage() {
     <div className="paper-page">
       <PageTitle title="My Anime List" emoji="🌸" tone="--pink-soft" tape="orange" />
 
-      <section className="toolbar" aria-label="Display options">
-        <Segmented label="View" options={viewOptions} value={view} onChange={setView} />
-        <Segmented label="Sort" options={sortOptions} value={sortKey} onChange={setSortKey} />
-        <Segmented label="Order" options={orderOptions} value={order} onChange={setOrder} />
-        <div className="control-options">
+      <section className="anime-toolbar" aria-label="Display options">
+        <div className="anime-sort" role="group" aria-label="Sort">
+          <span className="anime-toolbar-label" aria-hidden="true">
+            Sort
+          </span>
+          {sortOptions.map((option) => {
+            const active = option.value === sortKey
+            return (
+              <button
+                key={option.value}
+                type="button"
+                className="chip"
+                aria-pressed={active}
+                aria-label={active ? `${option.label}, ${orderNames[order]}` : undefined}
+                title={active ? 'Click again to reverse' : undefined}
+                onClick={() => chooseSort(option.value)}
+              >
+                {option.label}
+                {active && (
+                  <span className="sort-arrow" aria-hidden="true">
+                    {order === 'desc' ? '↓' : '↑'}
+                  </span>
+                )}
+              </button>
+            )
+          })}
+        </div>
+
+        <div className="anime-toolbar-end">
           <button
             type="button"
-            className="pill"
-            onClick={() => setExpanded(new Set(allAnime.map((anime) => anime.id)))}
+            className="chip"
+            onClick={() =>
+              setExpanded(anyExpanded ? new Set() : new Set(allAnime.map((anime) => anime.id)))
+            }
           >
-            Expand All
+            {anyExpanded ? 'Collapse all' : 'Expand all'}
           </button>
-          <button type="button" className="pill" onClick={() => setExpanded(new Set())}>
-            Collapse All
-          </button>
+          <div className="view-switch" role="group" aria-label="View">
+            {viewOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                aria-pressed={option.value === view}
+                onClick={() => setView(option.value)}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 

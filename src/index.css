@@ -1016,7 +1016,9 @@ button {
     translate: 0 -5px;
   }
 
-  .game-filter button[aria-pressed='false']:hover {
+  .game-filter button[aria-pressed='false']:hover,
+  .chip:not([aria-pressed='true']):hover,
+  .view-switch button[aria-pressed='false']:hover {
     color: var(--ink);
   }
 
@@ -1026,19 +1028,16 @@ button {
   }
 }
 
-/* Anime toolbar */
-.toolbar {
+/* Anime toolbar：排序膠囊在左，展開和檢視切換在右；點目前的排序會反轉方向 */
+.anime-toolbar {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 14px 28px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 16px 20px;
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: var(--sticker-shadow);
 }
 
 .anime-body,
@@ -1048,32 +1047,59 @@ button {
   margin: 0 auto;
 }
 
-.control-label {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--muted);
-}
-
-.control-options {
+.anime-sort,
+.anime-toolbar-end {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 
-.pill {
-  padding: 7px 13px;
-  border: 0;
-  border-radius: 10px;
-  background: var(--cream);
+.anime-toolbar-label {
+  margin-right: 4px;
+  font-family: var(--round);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.chip,
+.view-switch button {
+  padding: 5px 13px;
+  font-family: var(--round);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
   cursor: pointer;
 }
 
-.pill:hover,
-.pill[aria-pressed='true'] {
-  color: #fff;
-  background: var(--blue-dark);
+.chip[aria-pressed='true'],
+.view-switch button[aria-pressed='true'] {
+  color: var(--ink);
+  background: var(--lavender-soft);
+  border-color: transparent;
+}
+
+.sort-arrow {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+/* 檢視切換是一顆分成兩半的膠囊 */
+.view-switch {
+  display: flex;
+  padding: 3px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.view-switch button {
+  padding: 3px 12px;
+  border-color: transparent;
 }
 
 /* Anime card view */
