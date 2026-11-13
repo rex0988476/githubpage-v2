@@ -38,6 +38,15 @@ export const collectionOf = (slug: string): CollectionItem[] => {
     )
 }
 
+/** 底色上要用黑字還是白字，依底色的相對亮度決定 */
+export const inkOn = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
+  })
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.25 ? '#23201c' : '#ffffff'
+}
+
 const today = () => new Date().toLocaleDateString('sv-SE')
 
 /** 從某天到今天過了幾天，依訪客當地日期 */

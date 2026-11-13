@@ -118,6 +118,8 @@ export interface ArtistEvent {
    * 之後替某人做了專屬頁，把名字換成 slug 就會連到他的頁面。
    */
   performers: string[]
+  /** 時間軸票根的顏色，優先於演出者的顏色；適合音樂祭、聯合公演這類多位演出者的場次 */
+  color?: string
   /** 自己寫的內文，一個元素一段；空陣列代表沒有 */
   review: string[]
   /** 周邊和活動的照片都放這裡；空陣列代表沒有 */

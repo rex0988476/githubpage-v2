@@ -49,7 +49,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 首頁的社群連結在 `src/data/profile.ts` 的 `socialLinks`，圖示和品牌色來自 `simple-icons` 套件。
 - 自我介紹和興趣：`src/data/profile.ts`。
 - 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。Music 總覽的卡片是拍立得，照片用 `image`，紙膠帶顏色用 `accent`，下方顯示 `fanSince` 的年份；沒有形象照時用 `accent` 底加名字第一個字。
-- Music 總覽在音樂家上方有 Concerts 區塊，自動列出 `events.ts` 裡所有 `concert` 和 `fanmeeting`（`concertTimeline`），做成單欄時間軸，一律新到舊；上方有年份篩選膠囊（All 和各年份，預設今年，沒有今年就用最新的一年），選的年份放在網址 `?year=`，從音樂家頁回來時保留。每場是票根，日期存根用第一位有專屬頁的音樂家的 `accent`，都沒有專屬頁時依名字從固定色盤挑。只有一位演出者且有專屬頁時整張票根可點；多位時改成點有專屬頁的名字。點了用 `focusEvent` state 跳到該音樂家頁並展開那場（`useEventFocus`）。
+- Music 總覽在音樂家上方有 Concerts 區塊，自動列出 `events.ts` 裡所有 `concert` 和 `fanmeeting`（`concertTimeline`），做成單欄時間軸，一律新到舊；上方有年份篩選膠囊（All 和各年份，預設今年，沒有今年就用最新的一年），選的年份放在網址 `?year=`，從音樂家頁回來時保留。每場是票根，日期存根是實色、白天夜晚一樣，字色依底色自動選黑或白（`inkOn`）：活動有 `color`（音樂祭、聯合公演用）就用它，否則有專屬頁的用 `accent`，沒有的用 `src/data/music/performers.ts` 的 `performerColors`（key 是 performers 裡的名字），都沒指定就依名字從固定色盤挑。演出者顯示成一排小標籤，底色是各自的代表色（同樣的優先順序，但不看活動的 `color`），字色自動選黑或白。只有一位演出者且有專屬頁時整張票根可點；多位時改成點有專屬頁的名字。點了用 `focusEvent` state 跳到該音樂家頁並展開那場（`useEventFocus`）。
 - Others（slug `others`，`category: true`）是放在音樂家牆最後的分類頁，不是真的音樂家：收沒辦法歸到某位音樂家的活動（例如動畫音樂會），在 `performers` 加 `'others'` 就會列進去。`others` 不會在票根上顯示成演出者，只有它一個專屬頁時整張票根連過去；Artists 的數量不算它。頁面在 `src/pages/artists/others/`，牛皮紙票夾風格。
 - 音樂家個人照片：`public/artists/<slug>/`，由活動的 `photos` 對應。原圖先放 `photos-inbox/`（不進 git），清除 EXIF 並壓縮到長邊 1600px 後才放進 public。
 - 活動紀錄：`src/data/music/events.ts`，`performers` 依順序列演出者：有專屬頁的寫 slug，還沒有的直接寫名字（之後做了專屬頁就把名字換成 slug）。`type` 分 `concert`、`fanmeeting`（粉絲見面會，票根和活動列會加 Fan Meeting 標籤）和 `other`，`subtitle` 是標題下方的文字（演唱會放場地和城市），`review` 和 `photos` 是內文與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。

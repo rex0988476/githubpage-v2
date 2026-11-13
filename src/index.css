@@ -1563,6 +1563,8 @@ button {
   background: var(--artist-accent);
   border: 3px solid var(--cream);
   border-radius: 50%;
+  /* 白色或很深的顏色也看得出圓點 */
+  box-shadow: 0 0 0 1px var(--line);
 }
 
 .ticket {
@@ -1593,10 +1595,11 @@ button {
   width: 92px;
   padding: 14px 8px;
   font-family: var(--round);
-  color: var(--ink);
-  background: color-mix(in srgb, var(--artist-accent) 32%, var(--surface));
+  /* 實色底，白天和夜晚都一樣；字色依底色自動選黑或白 */
+  color: var(--stub-ink);
+  background: var(--artist-accent);
   border-radius: 10px 0 0 10px;
-  border-right: 2px dashed color-mix(in srgb, var(--artist-accent) 60%, var(--surface));
+  border-right: 2px dashed color-mix(in srgb, var(--stub-ink) 45%, transparent);
 }
 
 .ticket-day {
@@ -1608,7 +1611,7 @@ button {
 .ticket-year {
   font-size: 13px;
   font-weight: 700;
-  color: var(--muted);
+  opacity: 0.75;
 }
 
 .ticket-body {
@@ -1658,19 +1661,31 @@ button {
   color: var(--muted);
 }
 
-.ticket-artists a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+/* 演出者是一排小標籤，底色是各自的代表色，字色自動選黑或白 */
+.ticket-artists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
 }
 
-.ticket-artists {
-  margin-top: 4px;
+.ticket-artist {
+  padding: 1px 9px;
   font-family: var(--round);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  color: color-mix(in srgb, var(--artist-accent) 70%, var(--ink));
+  line-height: 1.6;
+  color: var(--chip-ink);
+  background: var(--chip-bg);
+  border-radius: 999px;
+  /* 很淺的顏色在白色票根上也看得出邊 */
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
+}
+
+/* 可以點的演出者加底線 */
+a.ticket-artist {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 @media (hover: hover) {

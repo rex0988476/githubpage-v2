@@ -2,7 +2,8 @@ import type { CSSProperties } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageTitle } from '../components/PageTitle'
 import { artists } from '../data/music/artists'
-import { concertTimeline, currentYear } from '../lib/music'
+import { performerColors } from '../data/music/performers'
+import { concertTimeline, currentYear, inkOn } from '../lib/music'
 import type { ArtistEvent } from '../types'
 
 /** 每張拍立得歪的角度，用 slug 算出來，重新整理也不會變 */
@@ -14,13 +15,22 @@ function tilt(slug: string) {
 
 const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? '' : 's'}`
 
-/** 沒有專屬頁的演出者用的存根顏色，依名字固定挑一個 */
+/** 沒有專屬頁、也還沒在 performerColors 指定顏色的演出者，依名字固定挑一個 */
 const guestAccents = ['#f28bb0', '#2f8fe6', '#8f7ae6', '#3fb58b', '#f0a23a', '#e86a5a', '#3bb3c9']
 
 function guestAccent(name: string) {
   let hash = 0
   for (const char of name) hash = (hash * 31 + char.charCodeAt(0)) >>> 0
   return guestAccents[hash % guestAccents.length]
+}
+
+/** 演出者的代表色：有專屬頁的用 accent，其次是 performerColors，都沒有就從色盤挑 */
+function colorOf(name: string) {
+  return (
+    artists.find((artist) => artist.slug === name)?.accent ??
+    performerColors[name] ??
+    guestAccent(name)
+  )
 }
 
 /**
@@ -38,7 +48,9 @@ function ConcertTicket({ event, upcoming }: { event: ArtistEvent; upcoming: bool
   const linked = all.flatMap(({ artist }) => (artist ? [artist] : []))
   const firstArtist = linked.length === 1 ? linked[0] : undefined
   const realArtist = performers.find(({ artist }) => artist)?.artist
-  const accent = realArtist?.accent ?? guestAccent(performers[0]?.name ?? event.title)
+  const firstName = performers[0]?.name ?? event.title
+  const accent =
+    event.color ?? realArtist?.accent ?? performerColors[firstName] ?? guestAccent(firstName)
   const wholeLink =
     firstArtist !== undefined && (performers.length === 1 || firstArtist.category === true)
   const [year, month, day] = event.date.split('-')
@@ -58,25 +70,32 @@ function ConcertTicket({ event, upcoming }: { event: ArtistEvent; upcoming: bool
         <span className="ticket-title">{event.title}</span>
         {event.subtitle && <span className="ticket-place">{event.subtitle}</span>}
         <span className="ticket-artists" lang="ja">
-          {performers.map(({ name, artist }, i) => (
-            <span key={name}>
-              {i > 0 && ' · '}
-              {artist && !wholeLink ? (
-                <Link to={`/music/artists/${artist.slug}`} state={linkState}>
-                  {artist.name}
-                </Link>
-              ) : (
-                (artist?.name ?? name)
-              )}
-            </span>
-          ))}
+          {performers.map(({ name, artist }) => {
+            const color = colorOf(name)
+            const style = { '--chip-bg': color, '--chip-ink': inkOn(color) } as CSSProperties
+            return artist && !wholeLink ? (
+              <Link
+                key={name}
+                to={`/music/artists/${artist.slug}`}
+                state={linkState}
+                className="ticket-artist"
+                style={style}
+              >
+                {artist.name}
+              </Link>
+            ) : (
+              <span key={name} className="ticket-artist" style={style}>
+                {artist?.name ?? name}
+              </span>
+            )
+          })}
         </span>
       </span>
     </>
   )
 
   return (
-    <li style={{ '--artist-accent': accent } as CSSProperties}>
+    <li style={{ '--artist-accent': accent, '--stub-ink': inkOn(accent) } as CSSProperties}>
       {wholeLink ? (
         <Link to={`/music/artists/${firstArtist.slug}`} state={linkState} className="ticket">
           {content}

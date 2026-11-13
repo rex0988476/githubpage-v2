@@ -758,6 +758,7 @@ export const events: ArtistEvent[] = [
     date: '2025-04-27',
     title: 'MyGO!!!!!×Ave Mujica 合同ライブ「わかれ道の、その先へ」',
     subtitle: 'eplus · 線上',
+    color: '#4E6170',
     performers: ['MyGO!!!!!', 'Ave Mujica', 'sumimi'],
     review: [],
     photos: [],
@@ -768,6 +769,7 @@ export const events: ArtistEvent[] = [
     date: '2025-05-24',
     title: 'ANISAMA WORLD 2025 in TAOYUAN',
     subtitle: '桃園會展中心 · 桃園',
+    color: '#291B48',
     performers: [
       '西川貴教(T.M.Revolution)',
       'ASCA',
@@ -869,6 +871,7 @@ export const events: ArtistEvent[] = [
     date: '2026-02-28',
     title: 'BanG Dream! 10th Anniversary LIVE「In the name of BanG Dream!」',
     subtitle: 'eplus · 線上',
+    color: '#FFFFFF',
     performers: [
       "Poppin'Party",
       'Afterglow',
@@ -900,6 +903,7 @@ export const events: ArtistEvent[] = [
     date: '2026-04-11',
     title: 'BanG Dream! Special LIVE in TAIPEI',
     subtitle: '大佳河濱公園 · 台北',
+    color: '#E5004F',
     performers: ['MyGO!!!!!', 'Ave Mujica'],
     review: [],
     photos: [],
@@ -910,6 +914,7 @@ export const events: ArtistEvent[] = [
     date: '2026-05-10',
     title: 'ANISAMA in TAIPEI 2026 -DOSHA！-',
     subtitle: '南港展覽館 · 台北',
+    color: '#021F2D',
     performers: [
       '藍井エイル',
       '小倉唯',
