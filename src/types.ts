@@ -97,6 +97,11 @@ export interface Artist {
   favoriteSongs: FavoriteSong[]
   /** 喜歡的翻唱，影片在本人或合作對象的官方頻道 */
   coverSongs: FavoriteSong[]
+  /**
+   * 不是真的音樂家，只用來收沒辦法歸類的活動（Others）。
+   * 票根上不列出這個名字，Artists 的數量也不算它。
+   */
+  category?: boolean
 }
 
 export interface ArtistEvent {

@@ -239,4 +239,17 @@ export const artists: Artist[] = [
       { title: 'KING', videoId: 'jNnkUU8i0t8', year: 2025, credit: 'Kanaria' },
     ],
   },
+  {
+    slug: 'others',
+    name: 'Others',
+    accent: '#a9834f',
+    youtube: '',
+    image: null,
+    fanSince: null,
+    fanSinceProof: null,
+    story: [],
+    favoriteSongs: [],
+    coverSongs: [],
+    category: true,
+  },
 ]

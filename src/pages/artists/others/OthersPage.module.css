@@ -1,0 +1,410 @@
+/* Others：牛皮紙票夾，活動是用圖釘釘上去的白色卡片 */
+.page {
+  --kraft: #c9a57a;
+  --kraft-dark: #a9834f;
+  --ink: #2b2118;
+  --pin: #e2556f;
+  --stamp: #b2402f;
+  --serif: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', 'Noto Serif TC', serif;
+  --mono: ui-monospace, 'Cascadia Mono', Consolas, 'Noto Sans Mono', monospace;
+  position: relative;
+  min-height: 100vh;
+  padding: 96px clamp(16px, 6vw, 72px) 96px;
+  overflow-x: clip;
+  color: var(--ink);
+  background-color: var(--kraft);
+  background-image:
+    radial-gradient(rgb(255 255 255 / 9%) 1px, transparent 1.5px),
+    radial-gradient(rgb(60 35 10 / 10%) 1px, transparent 1.5px),
+    repeating-linear-gradient(
+      93deg,
+      transparent 0 3px,
+      rgb(90 60 25 / 4%) 3px 4px,
+      transparent 4px 11px
+    );
+  background-position:
+    0 0,
+    7px 9px,
+    0 0;
+  background-size:
+    13px 13px,
+    17px 17px,
+    auto;
+}
+
+.page h1,
+.page h3 {
+  margin: 0;
+}
+
+.page :focus-visible {
+  outline: 3px solid var(--ink);
+}
+
+.back {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  padding: 6px 14px;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgb(255 250 240 / 85%);
+  border: 1px solid rgb(43 33 24 / 30%);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+/* 標題做成檔案夾上的標籤和印章 */
+.head {
+  width: min(100%, 760px);
+  margin: 0 auto 48px;
+}
+
+.label {
+  width: fit-content;
+  padding: 4px 12px;
+  margin-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: #fffaf0;
+  background: var(--ink);
+  rotate: -1.5deg;
+}
+
+.head h1 {
+  width: fit-content;
+  padding: 2px 18px 6px;
+  font-family: var(--serif);
+  font-size: clamp(56px, 12vw, 120px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--stamp);
+  border: 5px double var(--stamp);
+  border-radius: 6px;
+  rotate: -3deg;
+  mix-blend-mode: multiply;
+}
+
+.lead {
+  margin-top: 22px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.board {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.events {
+  display: grid;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* 每則活動是一張釘上去的卡片，角度輪流微歪 */
+.events > li,
+.empty {
+  position: relative;
+  padding: 26px 22px 20px;
+  background: #fffaf0;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 0 rgb(0 0 0 / 6%),
+    0 10px 22px rgb(60 35 10 / 28%);
+}
+
+.events > li:nth-child(odd) {
+  rotate: -0.6deg;
+}
+
+.events > li:nth-child(even) {
+  rotate: 0.5deg;
+}
+
+.events > li::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  translate: -50% 0;
+  background: radial-gradient(circle at 35% 35%, #ff9aae, var(--pin) 55%, #9c2c40);
+  border-radius: 50%;
+  box-shadow: 0 3px 4px rgb(0 0 0 / 30%);
+}
+
+.empty {
+  font-family: var(--serif);
+  text-align: center;
+}
+
+.events time {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--stamp);
+}
+
+.upcoming {
+  display: inline-block;
+  padding: 1px 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--pin);
+  border-radius: 999px;
+}
+
+.eventKind {
+  display: inline-block;
+  padding: 0 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+}
+
+.events h3 {
+  margin: 6px 0 4px;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.eventHead {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eventHead p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.eventToggle {
+  flex: none;
+  padding: 8px 14px;
+  font-weight: 700;
+  color: #fffaf0;
+  cursor: pointer;
+  background: var(--ink);
+  border: 0;
+  border-radius: 4px;
+}
+
+.eventDetail {
+  padding-top: 20px;
+  margin-top: 18px;
+  border-top: 1px dashed rgb(43 33 24 / 35%);
+}
+
+.storyText {
+  display: grid;
+  gap: 14px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.storyText p {
+  margin: 0;
+}
+
+.collection {
+  margin-top: 28px;
+}
+
+.storyText + .collection {
+  margin-top: 36px;
+}
+
+.polaroids {
+  --gap: clamp(20px, 3vw, 32px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.polaroids li {
+  flex: 0 1 calc((100% - var(--gap) * 2) / 3);
+  min-width: 0;
+}
+
+.polaroid {
+  padding: 10px 10px 14px;
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+  box-shadow: 0 8px 20px rgb(60 35 10 / 30%);
+}
+
+.polaroids li:nth-child(odd) .polaroid {
+  rotate: -1.5deg;
+}
+
+.polaroids li:nth-child(even) .polaroid {
+  rotate: 1.2deg;
+}
+
+.polaroids li[data-focused] .polaroid {
+  outline: 3px solid var(--pin);
+  outline-offset: 6px;
+  rotate: 0deg;
+}
+
+.polaroidButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+  background: none;
+  border: 0;
+}
+
+.polaroidButton img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.polaroid figcaption {
+  padding: 12px 4px 0;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.lightbox {
+  max-width: min(92vw, 1000px);
+  max-height: 94vh;
+  padding: 0;
+  margin: auto;
+  overflow: visible;
+  background: none;
+  border: 0;
+}
+
+.lightbox::backdrop {
+  background: rgb(30 20 10 / 88%);
+}
+
+.lightboxBody {
+  position: relative;
+  padding: 12px 12px 16px;
+  color: var(--ink);
+  background: #fff;
+}
+
+.lightboxBody img {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  margin-inline: auto;
+}
+
+.lightboxBody p {
+  padding: 12px 4px 0;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.lightboxNav {
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  background: var(--ink);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  translate: 0 -50%;
+}
+
+.lightboxPrev {
+  left: max(12px, calc(50vw - 560px));
+  padding-right: 3px;
+}
+
+.lightboxNext {
+  right: max(12px, calc(50vw - 560px));
+  padding-left: 3px;
+}
+
+.lightboxCount {
+  display: block;
+  padding: 6px 4px 0;
+  text-align: right;
+  font-family: var(--serif);
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  background: var(--ink);
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+@media (hover: hover) {
+  .eventToggle:hover {
+    background: var(--stamp);
+  }
+
+  .polaroid {
+    transition:
+      rotate 0.2s ease,
+      scale 0.2s ease;
+  }
+
+  .polaroids li .polaroid:hover {
+    scale: 1.03;
+    rotate: 0deg;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding-top: 80px;
+  }
+
+  .eventHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .polaroids li {
+    flex-basis: calc((100% - var(--gap)) / 2);
+  }
+}

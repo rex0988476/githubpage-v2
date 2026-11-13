@@ -7,6 +7,7 @@ import type { Artist } from '../types'
 const pages: Record<string, LazyExoticComponent<ComponentType<{ artist: Artist }>>> = {
   'hoshimachi-suisei': lazy(() => import('./artists/hoshimachi-suisei/SuiseiPage')),
   himehina: lazy(() => import('./artists/himehina/HimehinaPage')),
+  others: lazy(() => import('./artists/others/OthersPage')),
 }
 
 export function ArtistPage() {

@@ -1634,14 +1634,14 @@ button {
   border-radius: 999px;
 }
 
-/* 粉絲見面會：外框小標籤 */
+/* 粉絲見面會：和「即將參戰」同樣是填滿底色的粗體小標籤，用紫色區分 */
 .ticket-kind {
-  padding: 0 9px;
+  padding: 1px 10px;
   margin-bottom: 2px;
   font-size: 12px;
   font-weight: 700;
-  color: color-mix(in srgb, var(--artist-accent) 70%, var(--ink));
-  border: 1.5px solid currentColor;
+  color: #fff;
+  background: #7b6fd6;
   border-radius: 999px;
 }
 
