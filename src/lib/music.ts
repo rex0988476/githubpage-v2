@@ -12,7 +12,7 @@ export const artistImageUrl = (image: string) => `${import.meta.env.BASE_URL}art
 /** 某位音樂家的活動紀錄，新的在前 */
 export const eventsOf = (slug: string) =>
   events
-    .filter((event) => event.artistSlugs.includes(slug))
+    .filter((event) => event.performers.includes(slug))
     .sort((a, b) => b.date.localeCompare(a.date))
 
 /** 某位音樂家的周邊：最愛置頂，再依入手日新到舊，未知排最後。沒有照片的周邊不列出。 */
@@ -49,10 +49,13 @@ export const currentYear = () => today().slice(0, 4)
 /** 場次還沒結束：演出當天仍算，隔天才不算。日期依訪客當地時間。 */
 export const isUpcoming = (date: string) => date >= today()
 
-/** Music 總覽的演唱會時間軸，一律新到舊，分成還沒到和已參加 */
+/** 會出現在 Music 總覽時間軸、也會標「即將參戰」的活動 */
+export const isLive = (event: ArtistEvent) => event.type === 'concert' || event.type === 'fanmeeting'
+
+/** Music 總覽的演唱會時間軸（含粉絲見面會），一律新到舊，分成還沒到和已參加 */
 export const concertTimeline = () => {
   const concerts = events
-    .filter((event) => event.type === 'concert')
+    .filter(isLive)
     .sort((a, b) => b.date.localeCompare(a.date))
   return {
     upcoming: concerts.filter((event) => isUpcoming(event.date)),

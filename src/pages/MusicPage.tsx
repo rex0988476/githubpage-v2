@@ -12,35 +12,70 @@ function tilt(slug: string) {
   return `${((hash % 7) - 3) * 0.8}deg`
 }
 
-/** 演唱會票根：左邊是日期存根，右邊是場次，點了跳到該音樂家頁的那一場 */
+/** 沒有專屬頁的演出者用的存根顏色，依名字固定挑一個 */
+const guestAccents = ['#f28bb0', '#2f8fe6', '#8f7ae6', '#3fb58b', '#f0a23a', '#e86a5a', '#3bb3c9']
+
+function guestAccent(name: string) {
+  let hash = 0
+  for (const char of name) hash = (hash * 31 + char.charCodeAt(0)) >>> 0
+  return guestAccents[hash % guestAccents.length]
+}
+
+/**
+ * 演唱會票根：左邊是日期存根，右邊是場次。
+ * 只有一位演出者且有專屬頁時整張可以點；多位演出者時改成點有專屬頁的名字。
+ */
 function ConcertTicket({ event, upcoming }: { event: ArtistEvent; upcoming: boolean }) {
-  const performers = event.artistSlugs
-    .map((slug) => artists.find((artist) => artist.slug === slug))
-    .filter((artist) => artist !== undefined)
+  const performers = event.performers.map((name) => ({
+    name,
+    artist: artists.find((artist) => artist.slug === name),
+  }))
+  const firstArtist = performers.find((performer) => performer.artist)?.artist
+  const accent = firstArtist?.accent ?? guestAccent(event.performers[0] ?? event.title)
+  const wholeLink = performers.length === 1 && firstArtist !== undefined
   const [year, month, day] = event.date.split('-')
+  const linkState = { focusEvent: event.id }
+
+  const content = (
+    <>
+      <time className="ticket-stub" dateTime={event.date}>
+        <span className="ticket-day">
+          {month}.{day}
+        </span>
+        <span className="ticket-year">{year}</span>
+      </time>
+      <span className="ticket-body">
+        {event.type === 'fanmeeting' && <span className="ticket-kind">Fan Meeting</span>}
+        {upcoming && <span className="ticket-upcoming">即將參戰</span>}
+        <span className="ticket-title">{event.title}</span>
+        {event.subtitle && <span className="ticket-place">{event.subtitle}</span>}
+        <span className="ticket-artists" lang="ja">
+          {performers.map(({ name, artist }, i) => (
+            <span key={name}>
+              {i > 0 && ' · '}
+              {artist && !wholeLink ? (
+                <Link to={`/music/artists/${artist.slug}`} state={linkState}>
+                  {artist.name}
+                </Link>
+              ) : (
+                (artist?.name ?? name)
+              )}
+            </span>
+          ))}
+        </span>
+      </span>
+    </>
+  )
 
   return (
-    <li style={{ '--artist-accent': performers[0]?.accent ?? 'var(--lavender)' } as CSSProperties}>
-      <Link
-        to={`/music/artists/${event.artistSlugs[0]}`}
-        state={{ focusEvent: event.id }}
-        className="ticket"
-      >
-        <time className="ticket-stub" dateTime={event.date}>
-          <span className="ticket-day">
-            {month}.{day}
-          </span>
-          <span className="ticket-year">{year}</span>
-        </time>
-        <span className="ticket-body">
-          {upcoming && <span className="ticket-upcoming">即將參戰</span>}
-          <span className="ticket-title">{event.title}</span>
-          {event.subtitle && <span className="ticket-place">{event.subtitle}</span>}
-          <span className="ticket-artists" lang="ja">
-            {performers.map((artist) => artist.name).join(' · ')}
-          </span>
-        </span>
-      </Link>
+    <li style={{ '--artist-accent': accent } as CSSProperties}>
+      {wholeLink ? (
+        <Link to={`/music/artists/${firstArtist.slug}`} state={linkState} className="ticket">
+          {content}
+        </Link>
+      ) : (
+        <div className="ticket">{content}</div>
+      )}
     </li>
   )
 }
@@ -48,6 +83,7 @@ function ConcertTicket({ event, upcoming }: { event: ArtistEvent; upcoming: bool
 export function MusicPage() {
   const { upcoming, past } = concertTimeline()
   const concerts = [...upcoming, ...past]
+  const fanMeetings = past.filter((event) => event.type === 'fanmeeting').length
   const years = [...new Set(concerts.map((event) => event.date.slice(0, 4)))]
   // 選的年份放在網址上，從音樂家頁按上一頁回來時還在
   const [params, setParams] = useSearchParams()
@@ -72,7 +108,14 @@ export function MusicPage() {
         <section className="music-body music-section" aria-labelledby="music-concerts">
           <h2 id="music-concerts">
             <span className="marker">Concerts</span>
-            <small>{past.length} attended</small>
+            <small>
+              {[
+                `${past.filter((event) => event.type === 'concert').length} concerts`,
+                fanMeetings > 0 && `${fanMeetings} fan meetings`,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </small>
           </h2>
           <div className="concert-years" role="group" aria-label="Year">
             {yearOptions.map((option) => (

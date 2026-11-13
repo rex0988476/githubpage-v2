@@ -49,9 +49,9 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 首頁的社群連結在 `src/data/profile.ts` 的 `socialLinks`，圖示和品牌色來自 `simple-icons` 套件。
 - 自我介紹和興趣：`src/data/profile.ts`。
 - 音樂家：`src/data/music/artists.ts`；形象照：`public/artists/<檔名>`，由 `image` 欄位對應。Music 總覽的卡片是拍立得，照片用 `image`，紙膠帶顏色用 `accent`，下方顯示 `fanSince` 的年份；沒有形象照時用 `accent` 底加名字第一個字。
-- Music 總覽在音樂家上方有 Concerts 區塊，自動列出 `events.ts` 裡所有 `concert`（`concertTimeline`），做成單欄時間軸，一律新到舊；上方有年份篩選膠囊（All 和各年份，預設今年，沒有今年就用最新的一年），選的年份放在網址 `?year=`，從音樂家頁回來時保留。每場是票根，日期存根用第一位音樂家的 `accent`，點了用 `focusEvent` state 跳到該音樂家頁並展開那場（`useEventFocus`）。
+- Music 總覽在音樂家上方有 Concerts 區塊，自動列出 `events.ts` 裡所有 `concert` 和 `fanmeeting`（`concertTimeline`），做成單欄時間軸，一律新到舊；上方有年份篩選膠囊（All 和各年份，預設今年，沒有今年就用最新的一年），選的年份放在網址 `?year=`，從音樂家頁回來時保留。每場是票根，日期存根用第一位有專屬頁的音樂家的 `accent`，都沒有專屬頁時依名字從固定色盤挑。只有一位演出者且有專屬頁時整張票根可點；多位時改成點有專屬頁的名字。點了用 `focusEvent` state 跳到該音樂家頁並展開那場（`useEventFocus`）。
 - 音樂家個人照片：`public/artists/<slug>/`，由活動的 `photos` 對應。原圖先放 `photos-inbox/`（不進 git），清除 EXIF 並壓縮到長邊 1600px 後才放進 public。
-- 活動紀錄：`src/data/music/events.ts`，用 `artistSlugs` 關聯音樂家，`type` 分 `concert` 和 `other`，`subtitle` 是標題下方的文字（演唱會放場地和城市），`review` 和 `photos` 是內文與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。
+- 活動紀錄：`src/data/music/events.ts`，`performers` 依順序列演出者：有專屬頁的寫 slug，還沒有的直接寫名字（之後做了專屬頁就把名字換成 slug）。`type` 分 `concert`、`fanmeeting`（粉絲見面會，票根和活動列會加 Fan Meeting 標籤）和 `other`，`subtitle` 是標題下方的文字（演唱會放場地和城市），`review` 和 `photos` 是內文與照片，有內容才會出現展開按鈕，音樂家頁會自動列出。
 - 周邊：`src/data/music/merch.ts`，照片用 `merchIds` 對應。周邊照片只來自活動紀錄，沒有照片的周邊不會顯示。`favorite` 的周邊在 Collection 置頂，其餘依入手日新到舊，`null` 排最後。
 - `日本音樂家List.json` 和 `music-extract.json` 是未 commit 的本地來源資料，共 284 位音樂家，圖片網址指向 localhost，不能直接用。
 

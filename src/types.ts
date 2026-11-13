@@ -101,15 +101,18 @@ export interface Artist {
 
 export interface ArtistEvent {
   id: string
-  /** 只有演唱會會顯示「即將參戰」 */
-  type: 'concert' | 'other'
+  /** 演唱會和粉絲見面會會出現在 Music 總覽的時間軸，也會顯示「即將參戰」 */
+  type: 'concert' | 'fanmeeting' | 'other'
   /** YYYY-MM-DD */
   date: string
   title: string
   /** 標題下方的文字，演唱會放場地和城市；null 代表沒有 */
   subtitle: string | null
-  /** 一則可以有多位音樂家，例如音樂祭 */
-  artistSlugs: string[]
+  /**
+   * 演出者，依順序列出：有專屬頁的寫 slug，還沒有的直接寫名字。
+   * 之後替某人做了專屬頁，把名字換成 slug 就會連到他的頁面。
+   */
+  performers: string[]
   /** 自己寫的內文，一個元素一段；空陣列代表沒有 */
   review: string[]
   /** 周邊和活動的照片都放這裡；空陣列代表沒有 */

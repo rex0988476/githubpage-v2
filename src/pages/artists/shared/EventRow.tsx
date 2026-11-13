@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { isUpcoming } from '../../../lib/music'
+import { isLive, isUpcoming } from '../../../lib/music'
 import type { ArtistEvent } from '../../../types'
 import { PhotoGallery } from './PhotoGallery'
 
@@ -21,7 +21,8 @@ export function EventRow({ event, open, onToggle, classes }: EventRowProps) {
       <div className={classes.eventHead}>
         <div>
           <time dateTime={date}>{date.replaceAll('-', '.')}</time>
-          {type === 'concert' && isUpcoming(date) && <span className={classes.upcoming}>即將參戰</span>}
+          {type === 'fanmeeting' && <span className={classes.eventKind}>Fan Meeting</span>}
+          {isLive(event) && isUpcoming(date) && <span className={classes.upcoming}>即將參戰</span>}
           <h3>{title}</h3>
           {subtitle && <p>{subtitle}</p>}
         </div>

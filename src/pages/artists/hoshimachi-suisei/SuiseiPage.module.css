@@ -788,6 +788,17 @@
   border-radius: 999px;
 }
 
+/* 粉絲見面會的小標籤 */
+.eventKind {
+  display: inline-block;
+  padding: 0 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+}
+
 .events h3 {
   margin: 4px 0;
   font-size: 20px;

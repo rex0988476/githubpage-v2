@@ -1634,6 +1634,17 @@ button {
   border-radius: 999px;
 }
 
+/* 粉絲見面會：外框小標籤 */
+.ticket-kind {
+  padding: 0 9px;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--artist-accent) 70%, var(--ink));
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+}
+
 .ticket-title {
   font-family: var(--round);
   font-size: 16px;
@@ -1645,6 +1656,13 @@ button {
 .ticket-place {
   font-size: 13px;
   color: var(--muted);
+}
+
+.ticket-artists a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
 
 .ticket-artists {
@@ -1662,7 +1680,7 @@ button {
       filter 0.2s ease;
   }
 
-  .ticket:hover {
+  a.ticket:hover {
     translate: 0 -3px;
     filter: drop-shadow(0 6px 8px rgb(0 0 0 / 0.16));
   }
