@@ -165,11 +165,13 @@
 
 .eventKind {
   display: inline-block;
-  padding: 0 8px;
+  padding: 1px 8px;
   margin-left: 10px;
   font-size: 13px;
   font-weight: 700;
-  border: 1.5px solid currentColor;
+  /* 和 Music 時間軸票根的 Fan Meeting 標籤同色 */
+  color: #fff;
+  background: #7b6fd6;
   border-radius: 999px;
 }
 
