@@ -87,14 +87,20 @@ export function currentSeason(anime: Anime): { index: number; season: Season } |
   return index === -1 ? null : { index, season: anime.seasons[index] }
 }
 
-/** 卡片封面上的進度標籤：還沒看完才有，下一季還沒播出時標 upcoming */
-export function progressTag(anime: Anime): string | null {
+export type ChipKind = 'watching' | 'done' | 'plain'
+
+/** 卡片封面上的標籤：只顯示目前排序的值；依分數排序時不顯示，因為已經有分數貼紙 */
+export function coverChip(anime: Anime, key: SortKey): { text: string; kind: ChipKind } | null {
+  if (key === 'score') return null
+  if (key !== 'progress') return { text: sortLabel(anime, key), kind: 'plain' }
   const current = currentSeason(anime)
-  if (!current) return null
+  if (!current) return { text: 'Completed', kind: 'done' }
   const { index, season } = current
   const label = `S${index + 1}`
-  if (season.watched === null || season.total === null) return `${label} · upcoming`
-  return `${label} · ${season.watched}/${season.total}`
+  if (season.watched === null || season.total === null) {
+    return { text: `${label} · upcoming`, kind: 'watching' }
+  }
+  return { text: `${label} · ${season.watched}/${season.total}`, kind: 'watching' }
 }
 
 export type ScoreTier = 'perfect' | 'great' | 'good' | 'plain'
