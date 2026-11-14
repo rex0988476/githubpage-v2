@@ -1048,6 +1048,62 @@ button {
 }
 
 /* Anime toolbar：排序膠囊在左，展開和檢視切換在右；點目前的排序會反轉方向 */
+/* 標題下方的數字卡：三張微歪的彩色貼紙 */
+.anime-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 3vw, 22px);
+  width: 100%;
+  max-width: 620px;
+  margin: 6px auto 24px;
+}
+
+.anime-stats > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 8px 12px;
+  font-family: var(--round);
+  text-align: center;
+  background: var(--sky-soft);
+  border-radius: 6px 4px 7px 5px;
+  box-shadow: var(--sticker-shadow);
+  rotate: -1.5deg;
+}
+
+.anime-stats > div:nth-child(2) {
+  background: var(--lavender-soft);
+  rotate: 1deg;
+}
+
+.anime-stats > div:nth-child(3) {
+  background: var(--sun-soft);
+  rotate: -0.5deg;
+}
+
+.anime-stats dt {
+  /* 數字在上、名稱在下 */
+  order: 1;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+.anime-stats dd {
+  margin: 0;
+  font-size: clamp(26px, 6vw, 36px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.anime-stats .anime-stats-extra {
+  order: 2;
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.7;
+}
+
 .anime-toolbar {
   display: flex;
   flex-wrap: wrap;

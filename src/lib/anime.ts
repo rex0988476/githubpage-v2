@@ -134,3 +134,32 @@ export function scoreTier(score: number | null): ScoreTier {
 
 /** 依 id 決定卡片的小角度，同一部每次都一樣 */
 export const cardTilt = (anime: Anime) => (((anime.id * 37) % 5) - 2) * 0.6
+
+export interface AnimeStats {
+  /** 作品數 */
+  titles: number
+  /** 每一季都看完的作品數 */
+  completed: number
+  /** 看過的正篇集數 */
+  episodes: number
+  /** 看過的 OVA、番外、總集篇等（各季 extras 的合計） */
+  extras: number
+}
+
+/** Anime 頁上方數字卡用的統計 */
+export function animeStats(list: Anime[]): AnimeStats {
+  let episodes = 0
+  let extras = 0
+  for (const anime of list) {
+    for (const season of anime.seasons) {
+      episodes += season.watched ?? 0
+      for (const count of Object.values(season.extras ?? {})) extras += count
+    }
+  }
+  return {
+    titles: list.length,
+    completed: list.filter((anime) => currentSeason(anime) === null).length,
+    episodes,
+    extras,
+  }
+}

@@ -3,12 +3,13 @@ import { AnimeGrid } from '../components/AnimeGrid'
 import { AnimeTable } from '../components/AnimeTable'
 import { PageTitle } from '../components/PageTitle'
 import animeData from '../data/anime.json'
-import { sortAnime, type SortKey, type SortOrder } from '../lib/anime'
+import { animeStats, sortAnime, type SortKey, type SortOrder } from '../lib/anime'
 import type { Anime } from '../types'
 
 type ViewMode = 'card' | 'list'
 
 const allAnime: Anime[] = animeData
+const stats = animeStats(allAnime)
 
 const viewOptions: { value: ViewMode; label: string }[] = [
   { value: 'card', label: 'Card' },
@@ -52,6 +53,22 @@ export function AnimePage() {
   return (
     <div className="paper-page">
       <PageTitle title="My Anime List" emoji="🌸" tone="--pink-soft" tape="orange" />
+
+      <dl className="anime-stats" aria-label="Stats">
+        <div>
+          <dt>Titles</dt>
+          <dd>{stats.titles}</dd>
+        </div>
+        <div>
+          <dt>Completed</dt>
+          <dd>{stats.completed}</dd>
+        </div>
+        <div>
+          <dt>Episodes</dt>
+          <dd>{stats.episodes.toLocaleString('en-US')}</dd>
+          {stats.extras > 0 && <dd className="anime-stats-extra">+{stats.extras} specials</dd>}
+        </div>
+      </dl>
 
       <section className="anime-toolbar" aria-label="Display options">
         <div className="anime-sort" role="group" aria-label="Sort">
