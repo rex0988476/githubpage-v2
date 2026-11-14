@@ -1364,6 +1364,8 @@ button {
   min-width: 2.2em;
   font-weight: 900;
   line-height: 1.3;
+  /* 只在空格和「、」這類標點後換行，不從詞中間斷開 */
+  word-break: keep-all;
 }
 
 .season-year,
@@ -1736,13 +1738,18 @@ a.ticket-artist {
 }
 
 @media (max-width: 560px) {
-  /* 手機上季名最多約 5 個字寬，再長就在空格處換行（不從詞中間斷開） */
-  .season-list {
-    --season-name-max: 5em;
+  /* 手機上有自訂季名的作品，季名改放在進度條上方獨立一行，進度條才夠長 */
+  .season-list[data-named] {
+    grid-template-columns: 3em minmax(60px, 1fr) 4.8em 30px;
+    row-gap: 12px;
   }
 
-  .season-name {
-    word-break: keep-all;
+  .season-list[data-named] .season {
+    row-gap: 4px;
+  }
+
+  .season-list[data-named] .season-name {
+    grid-column: 1 / -1;
   }
 
   .ticket-list {

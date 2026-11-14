@@ -31,7 +31,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - Collection 由網址控制（`#/music/artists/<slug>/collection/<周邊 id>`），用 `dialog` 蓋在音樂家頁上，所以 `ScrollToTop` 在同一位音樂家底下不回頂端。周邊照片點下去是放大，點說明下方的貼文連結才會用 `focusPhoto` state 回到頁面，`useEventFocus` 負責展開活動並捲到照片。
 - 動畫的排序和計算邏輯集中在 `src/lib/anime.ts`，元件不要自己算。
 - 動畫卡片是白邊貼紙，角度由 id 決定（`cardTilt`）；右上角的分數貼紙依分數分色（10 金色加星、9 粉、8 紫、其餘白，`scoreTier`），封面左下角的標籤只顯示目前排序的值（`coverChip`）：依進度排序時沒看完的標目前那一季、看完的標 Completed（綠底），依集數或年份排序時標排序值，依分數排序時不顯示；除了 Completed 是淡綠底，其餘都是淡藍底。
-- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列（季名用選填的 `name`，沒填顯示 S1、S2；季名欄跟著最長的名稱變寬、進度條縮短，太長就換行）進度條（看完綠、未完藍、正在播且總集數未知是藍色斜紋並顯示「14 / ?」、未播出是虛線，`seasonState`）加該季的小分數貼紙，集數下方的「+1 番外」「+1 OVA」這類標籤來自該季選填的 `extras`，心得是貼了紙膠帶的便條紙。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
+- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列（季名用選填的 `name`，沒填顯示 S1、S2；季名欄跟著最長的名稱變寬、進度條縮短，太長就在空格或「、」後換行；手機上有季名的作品改成季名在進度條上方獨立一行）進度條（看完綠、未完藍、正在播且總集數未知是藍色斜紋並顯示「14 / ?」、未播出是虛線，`seasonState`）加該季的小分數貼紙，集數下方的「+1 番外」「+1 OVA」這類標籤來自該季選填的 `extras`，心得是貼了紙膠帶的便條紙。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
 - 首頁頭像 `src/components/DoodleAvatar.tsx` 是從 `public/images/bocchi_normal_a.png` 描出來的 SVG 線條（逐筆畫出的動畫、點擊播 `public/sounds/bocchi_sound.mp3`），不是直接顯示 PNG。換頭像時只換 PNG 不會改到首頁，要重新描線；favicon 也是從這張 PNG 做的。
 
 ## 資料
@@ -76,5 +76,4 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 動畫可能漏記的額外篇章，使用者說先不加，之後再確認有沒有看過：鏈鋸人《蕾潔篇》劇場版（2025）、在地下城尋求邂逅是否搞錯了什麼《獵戶座之矢》劇場版（2019）、美少女戰士 R／S／SuperS 劇場版和短篇《亞美的初戀》、Fate/strange Fake 特別篇〈Whispers of Dawn〉（2023）、我獨自升級劇場版《ReAwakening》（2024）、怪獸8號總集篇劇場版和同場短篇《保科的休假》（2025）、《劇場版 咒術迴戰 0》（2021）、我們仍未知道那天所看見的花名。劇場版（2013）。
 - 2026-11-14 檢查全部動畫後還沒確認的：
   - 鬼滅之刃劇場版無限列車篇（2020）、無限城篇第一章（2025）。
-  - 艾梅洛閣下II世事件簿可能有一集 2018 年底播的第 0 話，看過的話依規則算正篇，改成 14/14（不確定，要查）。
-  - 可能漏記的 OVA／劇場版／衍生作：紫羅蘭永恆花園 OVA、外傳劇場版（2019）、劇場版（2020）；刀劍神域 Extra Edition、Ordinal Scale、Progressive 劇場版；孤獨搖滾總集篇劇場版前後篇（2024）；MyGO 總集篇劇場版前後篇（2025）；侵略！花枝娘 OVA；流浪神差 OAD（每季 2 集）；日常 OVA 第 0 話；為美好的世界獻上祝福！劇場版紅傳說（2019）、外傳《為美好的世界獻上爆焰！》（2023，12 話，可另開一部）；K 劇場版 Missing Kings（2014）、Seven Stories（2018）；花開物語劇場版（2013）；科學超電磁砲 OVA；哥布林殺手劇場版 Goblin's Crown（2020）；NO GAME NO LIFE 劇場版 Zero（2017）；關於我轉生變成史萊姆這檔事劇場版紅蓮之絆篇（2022）；中二病也想談戀愛！劇場版 Take On Me（2018）；文豪Stray Dogs 劇場版 DEAD APPLE（2018）；搖曳露營△劇場版（2022）；進擊的巨人 OAD；Re:從零 OVA《Memory Snow》《冰結之絆》。
+  - 可能漏記的 OVA／劇場版／衍生作：紫羅蘭永恆花園外傳劇場版（2019）、劇場版（2020）；刀劍神域 Extra Edition、Ordinal Scale、Progressive 劇場版；孤獨搖滾總集篇劇場版前後篇（2024）；MyGO 總集篇劇場版前後篇（2025）；侵略！花枝娘 OVA；流浪神差 OAD（每季 2 集）；日常 OVA 第 0 話；為美好的世界獻上祝福！劇場版紅傳說（2019）、外傳《為美好的世界獻上爆焰！》（2023，12 話，可另開一部）；K 劇場版 Missing Kings（2014）、Seven Stories（2018）；花開物語劇場版（2013）；科學超電磁砲 OVA；哥布林殺手劇場版 Goblin's Crown（2020）；NO GAME NO LIFE 劇場版 Zero（2017）；關於我轉生變成史萊姆這檔事劇場版紅蓮之絆篇（2022）；中二病也想談戀愛！劇場版 Take On Me（2018）；文豪Stray Dogs 劇場版 DEAD APPLE（2018）；搖曳露營△劇場版（2022）；進擊的巨人 OAD；Re:從零 OVA《Memory Snow》《冰結之絆》。

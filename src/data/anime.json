@@ -17,7 +17,10 @@
         "year": 2018,
         "watched": 13,
         "total": 13,
-        "score": 10
+        "score": 10,
+        "extras": {
+          "OVA": 1
+        }
       }
     ]
   },
@@ -89,33 +92,24 @@
     "review": "唯一一部有收全實體小說的作品，可惜地底世界後面爛掉了",
     "seasons": [
       {
+        "name": "艾恩葛朗特篇、妖精之舞篇",
         "year": 2012,
         "watched": 25,
         "total": 25,
-        "score": 9
+        "score": 10
       },
       {
+        "name": "幽靈子彈篇、聖劍篇、聖母聖詠篇",
         "year": 2014,
         "watched": 24,
         "total": 24,
-        "score": 9
+        "score": 10
       },
       {
+        "name": "Alicization篇",
         "year": 2018,
         "watched": 0,
-        "total": 24,
-        "score": null
-      },
-      {
-        "year": 2019,
-        "watched": 0,
-        "total": 12,
-        "score": null
-      },
-      {
-        "year": 2020,
-        "watched": 0,
-        "total": 11,
+        "total": 47,
         "score": null
       }
     ]
@@ -499,10 +493,13 @@
     "review": "除了劇情音樂畫風還有Fate的IP外，世界觀跟氛圍也都很棒，還有格蕾很讚",
     "seasons": [
       {
-        "year": 2019,
-        "watched": 13,
-        "total": 13,
-        "score": 9
+        "year": 2018,
+        "watched": 14,
+        "total": 14,
+        "score": 9,
+        "extras": {
+          "特別篇": 1
+        }
       }
     ]
   },

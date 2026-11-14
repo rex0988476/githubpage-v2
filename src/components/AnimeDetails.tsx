@@ -11,7 +11,10 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
         <ScoreSticker score={anime.score} variant="large" />
       </div>
 
-      <ol className="season-list">
+      <ol
+        className="season-list"
+        data-named={anime.seasons.some((season) => season.name) || undefined}
+      >
         {anime.seasons.map((season, i) => {
           const { state, percent, text } = seasonState(season)
           return (
