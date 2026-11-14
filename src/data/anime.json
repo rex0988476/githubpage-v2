@@ -382,7 +382,7 @@
     "id": 17,
     "title": "遊戲3人娘",
     "cover": "17.webp",
-    "score": 8.5,
+    "score": 9,
     "tags": [],
     "review": "我看過最好笑的作品",
     "seasons": [
@@ -464,7 +464,7 @@
     "id": 21,
     "title": "女高中生的虛度日常",
     "cover": "21.webp",
-    "score": 8.5,
+    "score": 8,
     "tags": [],
     "review": "非常好笑的作品",
     "seasons": [
@@ -472,7 +472,7 @@
         "year": 2019,
         "watched": 12,
         "total": 12,
-        "score": 9
+        "score": 8
       }
     ]
   },
@@ -590,9 +590,9 @@
       },
       {
         "year": 2026,
-        "watched": null,
-        "total": null,
-        "score": null
+        "watched": 16,
+        "total": 16,
+        "score": 9
       }
     ]
   },
@@ -830,7 +830,7 @@
     "id": 39,
     "title": "中二病也想談戀愛！",
     "cover": "39.webp",
-    "score": 9,
+    "score": 9.5,
     "tags": [],
     "review": null,
     "seasons": [
@@ -838,13 +838,13 @@
         "year": 2012,
         "watched": 12,
         "total": 12,
-        "score": 9
+        "score": 9.5
       },
       {
         "year": 2014,
-        "watched": 0,
+        "watched": 12,
         "total": 12,
-        "score": null
+        "score": 9.9
       }
     ]
   },
@@ -1050,7 +1050,7 @@
     "id": 49,
     "title": "Re:從零開始的異世界生活",
     "cover": "49.webp",
-    "score": 8,
+    "score": 9,
     "tags": [],
     "review": null,
     "seasons": [
@@ -1058,25 +1058,25 @@
         "year": 2016,
         "watched": 25,
         "total": 25,
-        "score": 6
+        "score": 8
       },
       {
         "year": 2020,
         "watched": 25,
         "total": 25,
-        "score": 8
+        "score": 9.5
       },
       {
         "year": 2024,
         "watched": 16,
         "total": 16,
-        "score": 8
+        "score": 9.5
       },
       {
         "year": 2026,
-        "watched": null,
-        "total": null,
-        "score": null
+        "watched": 19,
+        "total": 19,
+        "score": 9
       }
     ]
   },
@@ -1368,6 +1368,126 @@
         "watched": 12,
         "total": 12,
         "score": 10
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "title": "BanG Dream! Ave Mujica",
+    "cover": "62.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2025,
+        "watched": 13,
+        "total": 13,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "title": "我獨自升級",
+    "cover": "63.webp",
+    "score": 6,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2024,
+        "watched": 12,
+        "total": 12,
+        "score": 6
+      },
+      {
+        "year": 2025,
+        "watched": 13,
+        "total": 13,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "title": "迷宮飯",
+    "cover": "64.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2024,
+        "watched": 24,
+        "total": 24,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "title": "怪獸8號",
+    "cover": "65.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2024,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      },
+      {
+        "year": 2025,
+        "watched": 11,
+        "total": 11,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "title": "咒術迴戰",
+    "cover": "66.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 24,
+        "total": 24,
+        "score": 7
+      },
+      {
+        "year": 2023,
+        "watched": 23,
+        "total": 23,
+        "score": 7
+      },
+      {
+        "year": 2026,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "title": "我們仍未知道那天所看見的花名。",
+    "cover": "67.webp",
+    "score": 9,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2011,
+        "watched": 11,
+        "total": 11,
+        "score": 9
       }
     ]
   }
