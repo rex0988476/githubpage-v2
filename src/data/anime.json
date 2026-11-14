@@ -1047,19 +1047,28 @@
         "year": 2013,
         "watched": 25,
         "total": 25,
-        "score": 9
+        "score": 9,
+        "extras": {
+          "OVA": 5
+        }
       },
       {
         "year": 2017,
         "watched": 12,
         "total": 12,
-        "score": 9
+        "score": 9,
+        "extras": {
+          "OVA": 2
+        }
       },
       {
         "year": 2018,
         "watched": 22,
         "total": 22,
-        "score": 9
+        "score": 9,
+        "extras": {
+          "OVA": 1
+        }
       },
       {
         "year": 2020,
@@ -1212,7 +1221,7 @@
     "id": 53,
     "title": "Fate/Extra Last Encore",
     "cover": "53.webp",
-    "score": 9,
+    "score": 8,
     "tags": [],
     "review": null,
     "seasons": [
@@ -1220,7 +1229,7 @@
         "year": 2018,
         "watched": 13,
         "total": 13,
-        "score": 9
+        "score": 8
       }
     ]
   },
