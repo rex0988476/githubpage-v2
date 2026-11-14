@@ -1151,7 +1151,7 @@
         "total": 23,
         "score": 9,
         "extras": {
-          "番外": 1
+          "OVA": 1
         }
       },
       {
@@ -1523,6 +1523,52 @@
         "watched": 11,
         "total": 11,
         "score": 9
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "title": "黑執事",
+    "cover": "68.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2008,
+        "watched": 24,
+        "total": 24,
+        "score": 8,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "year": 2010,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      },
+      {
+        "name": "Book of Circus",
+        "year": 2014,
+        "watched": 0,
+        "total": 10,
+        "score": null
+      },
+      {
+        "name": "寄宿學校篇",
+        "year": 2024,
+        "watched": 0,
+        "total": 11,
+        "score": null
+      },
+      {
+        "name": "綠之魔女篇",
+        "year": 2025,
+        "watched": 0,
+        "total": 13,
+        "score": null
       }
     ]
   }
