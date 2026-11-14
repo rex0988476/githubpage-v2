@@ -1,4 +1,6 @@
 export interface Season {
+  /** 季的名稱，例如「無限列車篇」；沒填就顯示 S1、S2 */
+  name?: string
   year: number
   /** 看過的集數；null 代表未知（例如尚未開播） */
   watched: number | null

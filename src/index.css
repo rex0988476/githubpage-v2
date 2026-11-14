@@ -1217,6 +1217,8 @@ button {
   line-height: 1.3;
   color: var(--chip-blue-ink);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: var(--chip-blue);
   border-radius: 999px;
   box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
@@ -1335,27 +1337,33 @@ button {
   overflow-x: auto;
 }
 
-/* 各季一列：季數、年份、進度條、集數、分數小貼紙 */
+/* 各季一列：季名、年份、進度條、集數、分數小貼紙。
+   欄寬由整張清單決定（subgrid），季名欄跟著最長的名稱變寬、進度條縮短，各季仍對齊；
+   名稱太長時在 --season-name-max 換行，讓進度條留得下來 */
 .season-list {
+  --season-name-max: 11em;
   display: grid;
-  gap: 8px;
+  grid-template-columns: fit-content(var(--season-name-max)) 3em minmax(60px, 1fr) 4.8em 30px;
+  gap: 8px 10px;
   margin: 0;
   padding: 0;
+  font-family: var(--round);
+  font-size: 14px;
+  font-weight: 700;
   list-style: none;
 }
 
 .season {
   display: grid;
-  grid-template-columns: 2.2em 3em minmax(60px, 1fr) 4.8em 30px;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: center;
-  gap: 10px;
-  font-family: var(--round);
-  font-size: 14px;
-  font-weight: 700;
 }
 
 .season-name {
+  min-width: 2.2em;
   font-weight: 900;
+  line-height: 1.3;
 }
 
 .season-year,
@@ -1728,6 +1736,15 @@ a.ticket-artist {
 }
 
 @media (max-width: 560px) {
+  /* 手機上季名最多約 5 個字寬，再長就在空格處換行（不從詞中間斷開） */
+  .season-list {
+    --season-name-max: 5em;
+  }
+
+  .season-name {
+    word-break: keep-all;
+  }
+
   .ticket-list {
     padding-left: 24px;
   }

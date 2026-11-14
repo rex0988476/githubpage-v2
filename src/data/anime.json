@@ -37,28 +37,39 @@
     "review": "劇情還行，結局有點草率，但動畫跟音樂很棒，尤其是動畫，沒看過演出這麼猛的，是部光動畫品質就值得推薦其他人看的作品",
     "seasons": [
       {
+        "name": "竈門炭治郎 立志篇",
         "year": 2019,
         "watched": 26,
         "total": 26,
         "score": 8
       },
       {
+        "name": "無限列車篇",
+        "year": 2021,
+        "watched": 7,
+        "total": 7,
+        "score": 8
+      },
+      {
+        "name": "遊郭篇",
         "year": 2021,
         "watched": 11,
         "total": 11,
         "score": 8
       },
       {
+        "name": "刀匠村篇",
         "year": 2023,
-        "watched": 0,
+        "watched": 11,
         "total": 11,
-        "score": null
+        "score": 8
       },
       {
+        "name": "柱訓練篇",
         "year": 2024,
-        "watched": 0,
+        "watched": 8,
         "total": 8,
-        "score": null
+        "score": 8
       }
     ]
   },
@@ -266,7 +277,10 @@
         "year": 2012,
         "watched": 22,
         "total": 22,
-        "score": 10
+        "score": 10,
+        "extras": {
+          "OVA": 1
+        }
       }
     ]
   },

@@ -93,6 +93,9 @@ export function seasonState({ watched, total }: Season): {
   return { state: watched === 0 ? 'unstarted' : 'watching', percent, text }
 }
 
+/** 季的顯示名稱：有填 name 用 name，否則依順序是 S1、S2⋯ */
+export const seasonLabel = (season: Season, index: number) => season.name ?? `S${index + 1}`
+
 export const seasonProgress = ({ watched, total }: Season) =>
   watched === null ? '-' : `${watched} / ${total ?? '?'}`
 
@@ -113,7 +116,7 @@ export function coverChip(anime: Anime, key: SortKey): { text: string; kind: Chi
   const current = currentSeason(anime)
   if (!current) return { text: 'Completed', kind: 'done' }
   const { index, season } = current
-  const label = `S${index + 1}`
+  const label = seasonLabel(season, index)
   if (season.watched === null) return { text: `${label} · upcoming`, kind: 'watching' }
   return { text: `${label} · ${season.watched}/${season.total ?? '?'}`, kind: 'watching' }
 }
