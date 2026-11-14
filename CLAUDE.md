@@ -31,7 +31,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - Collection 由網址控制（`#/music/artists/<slug>/collection/<周邊 id>`），用 `dialog` 蓋在音樂家頁上，所以 `ScrollToTop` 在同一位音樂家底下不回頂端。周邊照片點下去是放大，點說明下方的貼文連結才會用 `focusPhoto` state 回到頁面，`useEventFocus` 負責展開活動並捲到照片。
 - 動畫的排序和計算邏輯集中在 `src/lib/anime.ts`，元件不要自己算。
 - 動畫卡片是白邊貼紙，角度由 id 決定（`cardTilt`）；右上角的分數貼紙依分數分色（10 金色加星、9 粉、8 紫、其餘白，`scoreTier`），封面左下角的標籤只顯示目前排序的值（`coverChip`）：依進度排序時沒看完的標目前那一季、看完的標 Completed（綠底），依集數或年份排序時標排序值，依分數排序時不顯示；除了 Completed 是淡綠底，其餘都是淡藍底。
-- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列進度條（看完綠、未完藍、未播出是虛線，`seasonState`）加該季的小分數貼紙，心得是貼了紙膠帶的便條紙。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
+- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列進度條（看完綠、未完藍、正在播且總集數未知是藍色斜紋並顯示「14 / ?」、未播出是虛線，`seasonState`）加該季的小分數貼紙，集數下方的「+1 番外」「+1 OVA」這類標籤來自該季選填的 `extras`，心得是貼了紙膠帶的便條紙。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
 - 首頁頭像 `src/components/DoodleAvatar.tsx` 是從 `public/images/bocchi_normal_a.png` 描出來的 SVG 線條（逐筆畫出的動畫、點擊播 `public/sounds/bocchi_sound.mp3`），不是直接顯示 PNG。換頭像時只換 PNG 不會改到首頁，要重新描線；favicon 也是從這張 PNG 做的。
 
 ## 資料
@@ -39,7 +39,8 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 動畫：`src/data/anime.json`，型別在 `src/types.ts`，直接打包進 JS，不用 fetch。
 - 封面：`public/covers/<id>.webp`，由 `cover` 欄位對應，不靠順序。新封面保留原解析度（寬約 460px）轉成 WebP（品質 82）並清掉圖片資訊，原圖移到 `photos-inbox/covers/`。
 - 未知或未評分的值填 `null`。`null` 不論升降冪都排最後。
-- 尚未開播的季（`watched` 和 `total` 為 `null`）會讓該部動畫的進度和總集數變成未知，這是刻意的行為。
+- 尚未開播的季（`watched` 和 `total` 為 `null`）、正在播但總集數未知的季（只有 `total` 為 `null`）都會讓該部動畫的進度和總集數變成未知，這是刻意的行為。
+- 集數只算官方的正篇（電視播出、官方算在集數裡的第 0 話也算）；番外、OVA、總集篇等填在該季選填的 `extras`（例如 `{"OVA": 1}`，key 照使用者寫的種類，會直接顯示），都不影響進度、總集數和排序。
 - 舊 Excel 已停用，不要再把資料同步回去。
 - 遊戲：`src/data/games.ts`，`active` 放在上方的 Dock，`semi-active` 和 `no` 一起放在 Game library。icon 由使用者提供，放 `public/games/`，由 `icon` 欄位對應；統一轉成 200×200 的 WebP 並清掉圖片資訊（原圖有透明的部分就保留透明，不要補白底），原圖移到 `photos-inbox/games/`。沒有 icon 的遊戲會顯示名稱縮寫方塊。
 - 主機遊戲不用正方形 icon，改填 `cover`（盒裝封面，轉成 200×300 的 WebP），會在 Game library 裡另分一組 Console，其餘是 Mobile & PC；沒有遊戲的組不顯示。外觀和 icon 一樣只有白邊和圓角，使用者不要平台色帶之類的裝飾。
@@ -72,4 +73,5 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - HIMEHINA 頁其他場次的心得和照片，等使用者提供。
 - 星街すいせい頁 11/12 場的心得和照片，等使用者提供。
 - BanG Dream! Ave Mujica：舊資料有封面（`../githubpage/anime_covers/`）但沒有動畫資料，等使用者提供分數和進度。
-- 51 部中有 46 部還沒有 `tags`。
+- 62 部中有 57 部還沒有 `tags`。
+- 動畫可能漏記的額外篇章，使用者說先不加，之後再確認有沒有看過：鏈鋸人《蕾潔篇》劇場版（2025）、在地下城尋求邂逅是否搞錯了什麼《獵戶座之矢》劇場版（2019）、美少女戰士 R／S／SuperS 劇場版和短篇《亞美的初戀》、Fate/strange Fake 特別篇〈Whispers of Dawn〉（2023）。

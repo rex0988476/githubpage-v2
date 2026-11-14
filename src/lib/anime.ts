@@ -76,7 +76,8 @@ export function sortLabel(anime: Anime, key: SortKey): string {
   }
 }
 
-export type SeasonState = 'done' | 'watching' | 'unstarted' | 'upcoming'
+/** airing：有看過的集數但總集數還不知道（正在播） */
+export type SeasonState = 'done' | 'watching' | 'airing' | 'unstarted' | 'upcoming'
 
 /** 展開後各季進度條用的狀態、百分比和文字 */
 export function seasonState({ watched, total }: Season): {
@@ -84,7 +85,8 @@ export function seasonState({ watched, total }: Season): {
   percent: number
   text: string
 } {
-  if (watched === null || total === null) return { state: 'upcoming', percent: 0, text: 'upcoming' }
+  if (watched === null) return { state: 'upcoming', percent: 0, text: 'upcoming' }
+  if (total === null) return { state: 'airing', percent: 0, text: `${watched} / ?` }
   const text = `${watched} / ${total}`
   if (watched >= total) return { state: 'done', percent: 100, text }
   const percent = total === 0 ? 0 : (watched / total) * 100
@@ -92,7 +94,7 @@ export function seasonState({ watched, total }: Season): {
 }
 
 export const seasonProgress = ({ watched, total }: Season) =>
-  watched === null || total === null ? '-' : `${watched} / ${total}`
+  watched === null ? '-' : `${watched} / ${total ?? '?'}`
 
 /** 第一個還沒看完的季；全部看完回傳 null */
 export function currentSeason(anime: Anime): { index: number; season: Season } | null {
@@ -112,10 +114,8 @@ export function coverChip(anime: Anime, key: SortKey): { text: string; kind: Chi
   if (!current) return { text: 'Completed', kind: 'done' }
   const { index, season } = current
   const label = `S${index + 1}`
-  if (season.watched === null || season.total === null) {
-    return { text: `${label} · upcoming`, kind: 'watching' }
-  }
-  return { text: `${label} · ${season.watched}/${season.total}`, kind: 'watching' }
+  if (season.watched === null) return { text: `${label} · upcoming`, kind: 'watching' }
+  return { text: `${label} · ${season.watched}/${season.total ?? '?'}`, kind: 'watching' }
 }
 
 export type ScoreTier = 'perfect' | 'great' | 'good' | 'plain'

@@ -1368,6 +1368,23 @@ button {
   white-space: nowrap;
 }
 
+/* 番外、OVA：集數下方的小標籤，不算進進度 */
+.season-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: flex-end;
+  margin-top: 3px;
+}
+
+.season-extras span {
+  padding: 0 7px;
+  font-size: 11px;
+  color: var(--ink);
+  background: var(--lavender-soft);
+  border-radius: 999px;
+}
+
 .season-bar {
   height: 10px;
   overflow: hidden;
@@ -1386,6 +1403,15 @@ button {
 
 .season[data-state='done'] .season-bar::before {
   background: var(--bar-green);
+}
+
+/* 正在播、總集數未知：不畫比例，整條是藍色斜紋 */
+.season[data-state='airing'] .season-bar {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--bar-blue) 0 6px,
+    var(--bar-track) 6px 12px
+  );
 }
 
 /* 還沒播出的季：虛線空條 */

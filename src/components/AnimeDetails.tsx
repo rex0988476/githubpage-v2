@@ -24,7 +24,18 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
                 aria-label={text}
                 style={{ '--percent': `${percent}%` } as CSSProperties}
               />
-              <span className="season-count">{text}</span>
+              <span className="season-count">
+                {text}
+                {season.extras ? (
+                  <span className="season-extras">
+                    {Object.entries(season.extras).map(([kind, count]) => (
+                      <span key={kind}>
+                        +{count} {kind}
+                      </span>
+                    ))}
+                  </span>
+                ) : null}
+              </span>
               <ScoreSticker score={season.score} variant="mini" />
             </li>
           )
