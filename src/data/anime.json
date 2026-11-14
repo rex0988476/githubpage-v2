@@ -233,7 +233,10 @@
         "year": 2011,
         "watched": 12,
         "total": 12,
-        "score": 10
+        "score": 10,
+        "extras": {
+          "OVA": 3
+        }
       }
     ]
   },
@@ -249,13 +252,19 @@
         "year": 2014,
         "watched": 12,
         "total": 12,
-        "score": 10
+        "score": 10,
+        "extras": {
+          "OVA": 2
+        }
       },
       {
         "year": 2015,
         "watched": 13,
         "total": 13,
-        "score": 10
+        "score": 10,
+        "extras": {
+          "OVA": 2
+        }
       }
     ]
   },
@@ -290,7 +299,10 @@
         "year": 2011,
         "watched": 26,
         "total": 26,
-        "score": 9
+        "score": 9,
+        "extras": {
+          "OVA": 1
+        }
       }
     ]
   },
@@ -1069,7 +1081,10 @@
         "year": 2016,
         "watched": 25,
         "total": 25,
-        "score": 8
+        "score": 8,
+        "extras": {
+          "OVA": 2
+        }
       },
       {
         "year": 2020,
@@ -1298,7 +1313,7 @@
         "total": 22,
         "score": 8,
         "extras": {
-          "OAD": 1
+          "OVA": 1
         }
       }
     ]
