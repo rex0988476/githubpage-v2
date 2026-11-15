@@ -2177,5 +2177,75 @@
         }
       }
     ]
+  },
+  {
+    "id": 91,
+    "title": "Fate/Apocrypha",
+    "cover": "91.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2017,
+        "watched": 0,
+        "total": 25,
+        "score": 8,
+        "extras": {
+          "總集篇": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "title": "NEW GAME!",
+    "cover": "92.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2016,
+        "watched": 0,
+        "total": 12,
+        "score": 8,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "name": "NEW GAME!!",
+        "year": 2017,
+        "watched": 0,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "title": "笨蛋，測驗，召喚獸",
+    "cover": "93.webp",
+    "score": 10,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2010,
+        "watched": 13,
+        "total": 13,
+        "score": 10,
+        "extras": {
+          "OVA": 2
+        }
+      },
+      {
+        "year": 2011,
+        "watched": 0,
+        "total": 13,
+        "score": 10
+      }
+    ]
   }
 ]
