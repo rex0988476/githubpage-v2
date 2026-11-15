@@ -310,7 +310,7 @@
     "id": 12,
     "title": "少女終末旅行",
     "cover": "12.webp",
-    "score": 8,
+    "score": 9,
     "tags": [],
     "review": "兩個可愛的少女在戰後孤獨的末日極地下還能夠積極樂觀地踏上旅程，這種反差感讓我印象非常深刻",
     "seasons": [
@@ -318,7 +318,7 @@
         "year": 2017,
         "watched": 12,
         "total": 12,
-        "score": 8
+        "score": 9
       }
     ]
   },
@@ -1963,6 +1963,173 @@
         "watched": 0,
         "total": 13,
         "score": null
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "title": "小書痴的下剋上：為了成為圖書管理員不擇手段！",
+    "cover": "82.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 14,
+        "total": 14,
+        "score": 7
+      },
+      {
+        "year": 2020,
+        "watched": 0,
+        "total": 12,
+        "score": null,
+        "extras": {
+          "OVA": 2
+        }
+      },
+      {
+        "year": 2022,
+        "watched": 0,
+        "total": 10,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "title": "暮蟬悲鳴時",
+    "cover": "83.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2006,
+        "watched": 26,
+        "total": 26,
+        "score": 8,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "name": "解",
+        "year": 2007,
+        "watched": 24,
+        "total": 24,
+        "score": 8,
+        "extras": {
+          "OVA": 10
+        }
+      },
+      {
+        "name": "業",
+        "year": 2020,
+        "watched": 0,
+        "total": 24,
+        "score": null
+      },
+      {
+        "name": "卒",
+        "year": 2021,
+        "watched": 0,
+        "total": 15,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "title": "轉生成女性向遊戲只有毀滅END的壞人大小姐",
+    "cover": "84.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      },
+      {
+        "name": "X",
+        "year": 2021,
+        "watched": 0,
+        "total": 12,
+        "score": null,
+        "extras": {
+          "OVA": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "title": "隱瞞之事",
+    "cover": "85.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2020,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "title": "為了女兒，我說不定連魔王都能幹掉。",
+    "cover": "86.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "title": "騷亂時節的少女們。",
+    "cover": "87.webp",
+    "score": 5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 0,
+        "total": 12,
+        "score": 5
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "title": "實況主的逃脫遊戲【直播中】",
+    "cover": "88.webp",
+    "score": 6,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 0,
+        "total": 12,
+        "score": 6,
+        "extras": {
+          "OVA": 1
+        }
       }
     ]
   }

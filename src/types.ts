@@ -10,7 +10,7 @@ export interface Season {
   total: number | null
   /** 該季評分；null 代表未評分 */
   score: number | null
-  /** 正篇以外看過的集數，例如 { "番外": 1, "OVA": 1, "總集篇": 2 }；
+  /** 該季的正篇以外的特別篇集數，不論有沒有看過，例如 { "番外": 1, "OVA": 1, "總集篇": 2 }；
    *  不算進進度和總集數，只在展開後依序顯示成「+1 番外」這類標籤 */
   extras?: Record<string, number>
 }

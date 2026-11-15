@@ -148,7 +148,7 @@ export interface AnimeStats {
   completed: number
   /** 看過的正篇集數 */
   episodes: number
-  /** 看過的 OVA、番外、總集篇等（各季 extras 的合計） */
+  /** OVA、番外、總集篇等（各季 extras 的合計，不論有沒有看過） */
   extras: number
 }
 
