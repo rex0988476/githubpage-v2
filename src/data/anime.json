@@ -1876,5 +1876,94 @@
         "score": null
       }
     ]
+  },
+  {
+    "id": 78,
+    "title": "戀上換裝娃娃",
+    "cover": "78.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2022,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      },
+      {
+        "year": 2025,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "title": "小市民系列",
+    "cover": "79.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2024,
+        "watched": 10,
+        "total": 10,
+        "score": 8
+      },
+      {
+        "year": 2025,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "title": "地獄樂",
+    "cover": "80.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2023,
+        "watched": 13,
+        "total": 13,
+        "score": 7
+      },
+      {
+        "year": 2026,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "title": "青春豬頭少年不會夢到兔女郎學姊",
+    "cover": "81.webp",
+    "score": 10,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 13,
+        "total": 13,
+        "score": 10
+      },
+      {
+        "name": "聖誕服女郎",
+        "year": 2025,
+        "watched": 0,
+        "total": 13,
+        "score": null
+      }
+    ]
   }
 ]
