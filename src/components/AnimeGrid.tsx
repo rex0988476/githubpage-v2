@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { cardTilt, coverChip, coverUrl, type SortKey } from '../lib/anime'
+import { SeasonName } from './SeasonName'
 import type { Anime } from '../types'
 import { AnimeDetails } from './AnimeDetails'
 import { ScoreSticker } from './ScoreSticker'
@@ -40,6 +41,11 @@ export function AnimeGrid({ list, sortKey, expanded, onToggle }: AnimeGridProps)
                 <img src={coverUrl(anime)} alt="" loading="lazy" />
                 {chip && (
                   <span className="cover-chip" data-kind={chip.kind}>
+                    {chip.current && (
+                      <>
+                        <SeasonName {...chip.current} /> ·{' '}
+                      </>
+                    )}
                     {chip.text}
                   </span>
                 )}

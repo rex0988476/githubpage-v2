@@ -1,6 +1,8 @@
 export interface Season {
   /** 季的名稱，例如「無限列車篇」；沒填就顯示 S1、S2 */
   name?: string
+  /** 季名加刪除線，對應官方標題把副標劃掉的梗（例如輝夜姬第二季） */
+  strike?: boolean
   year: number
   /** 看過的集數；null 代表未知（例如尚未開播） */
   watched: number | null

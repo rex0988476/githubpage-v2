@@ -109,16 +109,22 @@ export function currentSeason(anime: Anime): { index: number; season: Season } |
 
 export type ChipKind = 'watching' | 'done' | 'plain'
 
+export interface CoverChip {
+  text: string
+  kind: ChipKind
+  /** 依進度排序時標的季，元件用 SeasonName 顯示在 text 前面 */
+  current?: { index: number; season: Season }
+}
+
 /** 卡片封面上的標籤：只顯示目前排序的值；依分數排序時不顯示，因為已經有分數貼紙 */
-export function coverChip(anime: Anime, key: SortKey): { text: string; kind: ChipKind } | null {
+export function coverChip(anime: Anime, key: SortKey): CoverChip | null {
   if (key === 'score') return null
   if (key !== 'progress') return { text: sortLabel(anime, key), kind: 'plain' }
   const current = currentSeason(anime)
   if (!current) return { text: 'Completed', kind: 'done' }
-  const { index, season } = current
-  const label = seasonLabel(season, index)
-  if (season.watched === null) return { text: `${label} · upcoming`, kind: 'watching' }
-  return { text: `${label} · ${season.watched}/${season.total ?? '?'}`, kind: 'watching' }
+  const { season } = current
+  const text = season.watched === null ? 'upcoming' : `${season.watched}/${season.total ?? '?'}`
+  return { text, kind: 'watching', current }
 }
 
 export type ScoreTier = 'perfect' | 'great' | 'good' | 'plain'

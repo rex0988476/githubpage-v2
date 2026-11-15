@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
-import { seasonLabel, seasonState } from '../lib/anime'
+import { seasonState } from '../lib/anime'
+import { SeasonName } from './SeasonName'
 import type { Anime } from '../types'
 import { ScoreSticker } from './ScoreSticker'
 
@@ -19,7 +20,9 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
           const { state, percent, text } = seasonState(season)
           return (
             <li key={i} className="season" data-state={state}>
-              <span className="season-name">{seasonLabel(season, i)}</span>
+              <span className="season-name">
+                <SeasonName season={season} index={i} />
+              </span>
               <span className="season-year">{season.year}</span>
               <span
                 className="season-bar"

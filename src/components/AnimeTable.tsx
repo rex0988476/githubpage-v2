@@ -2,13 +2,13 @@ import { Fragment } from 'react'
 import {
   coverUrl,
   currentSeason,
-  seasonLabel,
   seasonProgress,
   sortLabel,
   type SortKey,
 } from '../lib/anime'
 import type { Anime } from '../types'
 import { AnimeDetails } from './AnimeDetails'
+import { SeasonName } from './SeasonName'
 
 interface AnimeTableProps {
   list: Anime[]
@@ -21,7 +21,11 @@ interface AnimeTableProps {
 function progressText(anime: Anime) {
   const current = currentSeason(anime)
   if (!current) return 'completed'
-  return `${seasonLabel(current.season, current.index)} · ${seasonProgress(current.season)}`
+  return (
+    <>
+      <SeasonName {...current} /> · {seasonProgress(current.season)}
+    </>
+  )
 }
 
 export function AnimeTable({ list, sortKey, sortName, expanded, onToggle }: AnimeTableProps) {

@@ -1653,5 +1653,228 @@
         "score": 9
       }
     ]
+  },
+  {
+    "id": 73,
+    "title": "Dr.STONE 新石紀",
+    "cover": "73.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 24,
+        "total": 24,
+        "score": 7
+      },
+      {
+        "name": "STONE WARS",
+        "year": 2021,
+        "watched": 0,
+        "total": 11,
+        "score": null
+      },
+      {
+        "name": "龍水",
+        "year": 2022,
+        "watched": 0,
+        "total": 1,
+        "score": null
+      },
+      {
+        "name": "NEW WORLD",
+        "year": 2023,
+        "watched": 0,
+        "total": 22,
+        "score": null
+      },
+      {
+        "name": "SCIENCE FUTURE",
+        "year": 2025,
+        "watched": 0,
+        "total": 37,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "title": "JoJo的奇妙冒險",
+    "cover": "74.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2012,
+        "watched": 26,
+        "total": 26,
+        "score": 7
+      },
+      {
+        "name": "星塵遠征軍",
+        "year": 2014,
+        "watched": 48,
+        "total": 48,
+        "score": 7
+      },
+      {
+        "name": "不滅鑽石",
+        "year": 2016,
+        "watched": 39,
+        "total": 39,
+        "score": 7,
+        "extras": {
+          "OVA": 2
+        }
+      },
+      {
+        "name": "黃金之風",
+        "year": 2018,
+        "watched": 0,
+        "total": 39,
+        "score": null,
+        "extras": {
+          "OVA": 2
+        }
+      },
+      {
+        "name": "石之海",
+        "year": 2022,
+        "watched": 0,
+        "total": 38,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "title": "青之驅魔師",
+    "cover": "75.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2011,
+        "watched": 25,
+        "total": 25,
+        "score": 7,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "name": "京都不淨王篇",
+        "year": 2017,
+        "watched": 0,
+        "total": 12,
+        "score": null,
+        "extras": {
+          "OVA": 2
+        }
+      },
+      {
+        "name": "島根啓明結社篇",
+        "year": 2024,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      },
+      {
+        "name": "雪之盡頭篇",
+        "year": 2024,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      },
+      {
+        "name": "終夜篇",
+        "year": 2025,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "title": "輝夜姬想讓人告白～天才們的戀愛頭腦戰～",
+    "cover": "76.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 9
+      },
+      {
+        "name": "～天才們的戀愛頭腦戰～",
+        "strike": true,
+        "year": 2020,
+        "watched": 0,
+        "total": 12,
+        "score": null,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "name": "超級浪漫",
+        "year": 2022,
+        "watched": 0,
+        "total": 13,
+        "score": null
+      },
+      {
+        "name": "永不結束的初吻",
+        "year": 2023,
+        "watched": 0,
+        "total": 4,
+        "score": null
+      },
+      {
+        "name": "邁向大人的階梯",
+        "year": 2025,
+        "watched": 0,
+        "total": 2,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "title": "擅長捉弄人的高木同學",
+    "cover": "77.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2018,
+        "watched": 12,
+        "total": 12,
+        "score": 8,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 8
+      },
+      {
+        "year": 2022,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
   }
 ]
