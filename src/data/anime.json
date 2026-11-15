@@ -2132,5 +2132,50 @@
         }
       }
     ]
+  },
+  {
+    "id": 89,
+    "title": "只要長得可愛，即使是變態你也喜歡嗎？",
+    "cover": "89.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2019,
+        "watched": 12,
+        "total": 12,
+        "score": 7
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "title": "不起眼女主角培育法",
+    "cover": "90.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2015,
+        "watched": 12,
+        "total": 12,
+        "score": 8,
+        "extras": {
+          "OVA": 1
+        }
+      },
+      {
+        "name": "♭",
+        "year": 2017,
+        "watched": 11,
+        "total": 11,
+        "score": 8,
+        "extras": {
+          "OVA": 1
+        }
+      }
+    ]
   }
 ]
