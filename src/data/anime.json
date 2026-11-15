@@ -2247,5 +2247,123 @@
         "score": 10
       }
     ]
+  },
+  {
+    "id": 94,
+    "title": "普通女高中生要做當地偶像",
+    "cover": "94.webp",
+    "score": 7.5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2014,
+        "watched": 12,
+        "total": 12,
+        "score": 7.5,
+        "extras": {
+          "OVA": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "title": "重裝武器",
+    "cover": "95.webp",
+    "score": 7.5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2015,
+        "watched": 24,
+        "total": 24,
+        "score": 7.5
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "title": "我的朋友很少",
+    "cover": "96.webp",
+    "score": 7,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2011,
+        "watched": 12,
+        "total": 12,
+        "score": 7,
+        "extras": {
+          "OVA": 2
+        }
+      },
+      {
+        "name": "NEXT",
+        "year": 2013,
+        "watched": 0,
+        "total": 12,
+        "score": null
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "title": "狗與剪刀必有用",
+    "cover": "97.webp",
+    "score": 7.5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2013,
+        "watched": 0,
+        "total": 12,
+        "score": 7.5
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "title": "來自風平浪靜的明日",
+    "cover": "98.webp",
+    "score": 8,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2013,
+        "watched": 0,
+        "total": 26,
+        "score": 8
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "title": "緋色的碎片",
+    "cover": "99.webp",
+    "score": 7.5,
+    "tags": [],
+    "review": null,
+    "seasons": [
+      {
+        "year": 2012,
+        "watched": 13,
+        "total": 13,
+        "score": 7.5
+      },
+      {
+        "year": 2012,
+        "watched": 13,
+        "total": 13,
+        "score": 7.5,
+        "extras": {
+          "OVA": 1
+        }
+      }
+    ]
   }
 ]
