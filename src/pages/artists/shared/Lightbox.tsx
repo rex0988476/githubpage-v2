@@ -4,17 +4,26 @@ import type { ArtistPhoto } from '../../../types'
 
 interface LightboxProps {
   /** 可以左右切換的照片，通常是同一篇貼文的照片 */
-  photos: ArtistPhoto[]
+  photos: Pick<ArtistPhoto, 'image' | 'alt' | 'caption'>[]
   /** 正在看的照片位置；null 代表關閉 */
   index: number | null
   onIndexChange: (index: number) => void
   onClose: () => void
-  /** 各音樂家頁自己的 CSS Module */
+  /** 各音樂家頁自己的 CSS Module；共用外框的頁面傳 index.css 的 class 名稱 */
   classes: CSSModuleClasses
+  /** 照片網址；預設是 public/artists/ 底下的路徑 */
+  urlOf?: (image: string) => string
 }
 
 /** 用原生 dialog 看大圖，可用兩側按鈕或方向鍵切換 */
-export function Lightbox({ photos, index, onIndexChange, onClose, classes }: LightboxProps) {
+export function Lightbox({
+  photos,
+  index,
+  onIndexChange,
+  onClose,
+  classes,
+  urlOf = artistImageUrl,
+}: LightboxProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const open = index !== null
   const photo = open ? photos[index] : undefined
@@ -52,7 +61,7 @@ export function Lightbox({ photos, index, onIndexChange, onClose, classes }: Lig
           >
             ✕
           </button>
-          <img src={artistImageUrl(photo.image)} alt={photo.alt} />
+          <img src={urlOf(photo.image)} alt={photo.alt} />
           {/* 按鈕固定在畫面兩側，照片直橫不同時位置也不會跳 */}
           {hasPrev && (
             <button

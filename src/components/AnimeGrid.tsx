@@ -27,7 +27,11 @@ export function AnimeGrid({ list, sortKey, expanded, onToggle }: AnimeGridProps)
         const isOpen = expanded.has(anime.id)
         const chip = coverChip(anime, sortKey)
         return (
-          <li key={anime.id} className={isOpen ? 'anime-card open' : 'anime-card'}>
+          <li
+            key={anime.id}
+            className={isOpen ? 'anime-card open' : 'anime-card'}
+            data-anime-id={anime.id}
+          >
             <button
               type="button"
               className="cover-button"

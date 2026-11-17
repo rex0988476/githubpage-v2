@@ -49,7 +49,7 @@ export function AnimeTable({ list, sortKey, sortName, expanded, onToggle }: Anim
             const isOpen = expanded.has(anime.id)
             return (
               <Fragment key={anime.id}>
-                <tr className={isOpen ? 'open' : undefined}>
+                <tr className={isOpen ? 'open' : undefined} data-anime-id={anime.id}>
                   {showSortColumn && <td className="nowrap">{sortLabel(anime, sortKey)}</td>}
                   <td>
                     <button

@@ -30,14 +30,17 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 - 歌曲清單固定最大高度，超過就在欄內捲動。清單的 `ul` 要加 `data-scroller`，`useExpandableRows` 靠它分開處理頁面和清單的捲動。
 - Collection 由網址控制（`#/music/artists/<slug>/collection/<周邊 id>`），用 `dialog` 蓋在音樂家頁上，所以 `ScrollToTop` 在同一位音樂家底下不回頂端。周邊照片點下去是放大，點說明下方的貼文連結才會用 `focusPhoto` state 回到頁面，`useEventFocus` 負責展開活動並捲到照片。
 - 動畫的排序和計算邏輯集中在 `src/lib/anime.ts`，元件不要自己算。
+- Anime 頁的排序、Card／List、展開的作品存在 `src/lib/animeView.ts`（模組變數，重新整理就清掉）。從逐集心得頁回來（頁面上的 ← Anime 或瀏覽器上一頁）時那部作品會展開並捲到畫面上方，靠卡片和清單列上的 `data-anime-id` 找位置。
 - Anime 頁標題下方有三張數字卡（作品數、全部看完的作品數、看過的正篇集數加 extras 合計），由 `animeStats` 從 `anime.json` 自動算出。使用者不要觀看時間和平均分數。
 - 動畫卡片是白邊貼紙，角度由 id 決定（`cardTilt`）；右上角的分數貼紙依分數分色（10 金色加星、9 粉、8 紫、其餘白，`scoreTier`），封面左下角的標籤只顯示目前排序的值（`coverChip`）：依進度排序時沒看完的標目前那一季、看完的標 Completed（綠底），依集數或年份排序時標排序值，依分數排序時不顯示；除了 Completed 是淡綠底，其餘都是淡藍底。
-- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列（季名用選填的 `name`，沒填顯示 S1、S2；`strike: true` 的季名加刪除線，展開內容、封面標籤和清單的進度欄都用 `src/components/SeasonName.tsx` 顯示；季名欄跟著最長的名稱變寬、進度條縮短，太長就在空格或「、」後換行；手機上有季名的作品改成季名在進度條上方獨立一行）進度條（看完綠、未完藍、正在播且總集數未知是藍色斜紋並顯示「14 / ?」、未播出是虛線，`seasonState`）加該季的小分數貼紙，集數下方的「+1 番外」「+1 OVA」這類標籤來自該季選填的 `extras`，心得是貼了紙膠帶的便條紙。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
+- 展開後的內容在 `src/components/AnimeDetails.tsx`，卡片和清單模式共用：標題旁是大的分數貼紙，各季一列（季名用選填的 `name`，沒填顯示 S1、S2；`strike: true` 的季名加刪除線，展開內容、封面標籤和清單的進度欄都用 `src/components/SeasonName.tsx` 顯示；季名欄跟著最長的名稱變寬、進度條縮短，太長就在空格或「、」後換行；手機上有季名的作品改成季名在進度條上方獨立一行）進度條（看完綠、未完藍、正在播且總集數未知是藍色斜紋並顯示「14 / ?」、未播出是虛線，`seasonState`）加該季的小分數貼紙，集數下方的「+1 番外」「+1 OVA」這類標籤來自該季選填的 `extras`；有心得檔的作品最後有「Episode notes →」。展開內容不放心得（以前的便條紙心得已搬到逐集心得的總覽）。分數貼紙統一用 `src/components/ScoreSticker.tsx`。
 - 首頁頭像 `src/components/DoodleAvatar.tsx` 是從 `public/images/bocchi_normal_a.png` 描出來的 SVG 線條（逐筆畫出的動畫、點擊播 `public/sounds/bocchi_sound.mp3`），不是直接顯示 PNG。換頭像時只換 PNG 不會改到首頁，要重新描線；favicon 也是從這張 PNG 做的。
 
 ## 資料
 
 - 動畫：`src/data/anime.json`，型別在 `src/types.ts`，直接打包進 JS，不用 fetch。
+- 逐集心得：`src/data/anime-notes/<動畫 id>.md`，整部作品的心得也寫在這裡（`## 總覽` 或 `## Overview`，排在最前面，目錄顯示 Overview），`anime.json` 沒有心得欄位。有檔案的動畫展開後才會出現「Episode notes →」，連到 `#/anime/<id>`（`src/pages/AnimeNotesPage.tsx`，按需載入；解析在 `src/lib/animeNotes.ts`）。一個 `## S1 E3` 是一集，單季作品可寫 `## E3`，後面可接日期 `2026-11-20` 和小標題；特別篇把 E 換成種類（`## OVA1`、`## S2 番外1`），排在那季正篇後面、照寫的順序，目錄裡用淡紫色區分；第一個標題前的文字不顯示。照片寫成單獨一段的 `![說明](檔名.jpg)`，說明會顯示在照片下方。頁面上方的目錄只列寫過的集數，`#/anime/<id>/s1e3` 直接跳到那一集；某季超過 20 集時目錄改成先選季。每集和總覽的內容一律先糊掉（`src/components/Spoiler.tsx`）。
+- 逐集心得的照片：原圖放 `photos-inbox/anime/<id>/`，執行 `npm run photos`（`scripts/anime_photos.py`）會轉正、長邊壓到 1600px、清掉圖片資訊、轉成品質 82 的 WebP 放到 `public/anime/<id>/`，原圖移到同資料夾的 `done/`。
 - 封面：`public/covers/<id>.webp`，由 `cover` 欄位對應，不靠順序。新封面保留原解析度（寬約 460px）轉成 WebP（品質 82）並清掉圖片資訊，原圖移到 `photos-inbox/covers/`。
 - 未知或未評分的值填 `null`。`null` 不論升降冪都排最後。
 - 尚未開播的季（`watched` 和 `total` 為 `null`）、正在播但總集數未知的季（只有 `total` 為 `null`）都會讓該部動畫的進度和總集數變成未知，這是刻意的行為。

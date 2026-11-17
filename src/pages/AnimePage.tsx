@@ -1,12 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimeGrid } from '../components/AnimeGrid'
 import { AnimeTable } from '../components/AnimeTable'
 import { PageTitle } from '../components/PageTitle'
 import animeData from '../data/anime.json'
 import { animeStats, sortAnime, type SortKey, type SortOrder } from '../lib/anime'
+import { animeView, type ViewMode } from '../lib/animeView'
 import type { Anime } from '../types'
-
-type ViewMode = 'card' | 'list'
 
 const allAnime: Anime[] = animeData
 const stats = animeStats(allAnime)
@@ -27,10 +26,30 @@ const sortOptions: { value: SortKey; label: string }[] = [
 const orderNames: Record<SortOrder, string> = { asc: 'ascending', desc: 'descending' }
 
 export function AnimePage() {
-  const [view, setView] = useState<ViewMode>('card')
-  const [sortKey, setSortKey] = useState<SortKey>('score')
-  const [order, setOrder] = useState<SortOrder>('desc')
-  const [expanded, setExpanded] = useState<Set<number>>(new Set())
+  const [view, setView] = useState<ViewMode>(animeView.view)
+  const [sortKey, setSortKey] = useState<SortKey>(animeView.sortKey)
+  const [order, setOrder] = useState<SortOrder>(animeView.order)
+  // 從逐集心得頁回來時，那部作品一定是展開的
+  const [expanded, setExpanded] = useState<Set<number>>(
+    () => new Set(animeView.focus === null ? animeView.expanded : [...animeView.expanded, animeView.focus]),
+  )
+
+  useEffect(() => {
+    Object.assign(animeView, { view, sortKey, order, expanded: [...expanded] })
+  }, [view, sortKey, order, expanded])
+
+  // 捲回剛才看心得的那部
+  useEffect(() => {
+    const focus = animeView.focus
+    if (focus === null) return
+    animeView.focus = null
+    const scroll = () =>
+      document.querySelector(`[data-anime-id="${focus}"]`)?.scrollIntoView({ block: 'start' })
+    scroll()
+    // 按瀏覽器上一頁回來時，瀏覽器會在之後還原舊的捲動位置，再捲一次蓋過去
+    const timer = setTimeout(scroll, 60)
+    return () => clearTimeout(timer)
+  }, [])
 
   const list = useMemo(() => sortAnime(allAnime, sortKey, order), [sortKey, order])
   const sortName = sortOptions.find((option) => option.value === sortKey)!.label

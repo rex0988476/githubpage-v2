@@ -1,5 +1,7 @@
 import type { CSSProperties } from 'react'
+import { Link } from 'react-router-dom'
 import { seasonState } from '../lib/anime'
+import { hasNotes } from '../lib/animeNotes'
 import { SeasonName } from './SeasonName'
 import type { Anime } from '../types'
 import { ScoreSticker } from './ScoreSticker'
@@ -56,7 +58,11 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
         </ul>
       )}
 
-      {anime.review && <p className="review-note">{anime.review}</p>}
+      {hasNotes(anime.id) && (
+        <Link className="notes-link" to={`/anime/${anime.id}`}>
+          Episode notes →
+        </Link>
+      )}
     </div>
   )
 }

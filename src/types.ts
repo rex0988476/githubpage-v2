@@ -23,7 +23,6 @@ export interface Anime {
   /** 總評分；null 代表未評分 */
   score: number | null
   tags: string[]
-  review: string | null
   seasons: Season[]
 }
 

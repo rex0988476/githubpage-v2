@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { ScrollToTop } from './components/ScrollToTop'
@@ -6,6 +7,14 @@ import { ArtistPage } from './pages/ArtistPage'
 import { GamesPage } from './pages/GamesPage'
 import { HomePage } from './pages/HomePage'
 import { MusicPage } from './pages/MusicPage'
+
+// 逐集心得頁用到時才載入
+const AnimeNotesPage = lazy(() => import('./pages/AnimeNotesPage'))
+const animeNotes = (
+  <Suspense fallback={null}>
+    <AnimeNotesPage />
+  </Suspense>
+)
 
 // 用 HashRouter：GitHub Pages 沒有伺服器端路由，重新整理子頁面才不會 404
 export default function App() {
@@ -16,6 +25,8 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="anime" element={<AnimePage />} />
+          <Route path="anime/:id" element={animeNotes} />
+          <Route path="anime/:id/:ep" element={animeNotes} />
           <Route path="games" element={<GamesPage />} />
           <Route path="music" element={<MusicPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

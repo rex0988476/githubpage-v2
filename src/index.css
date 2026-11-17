@@ -1499,37 +1499,71 @@ button {
   background: var(--lavender-soft);
 }
 
-/* 心得做成貼了紙膠帶的便條紙 */
-.review-note {
+/* 防劇透（src/components/Spoiler.tsx）：內容先糊掉，點了才顯示 */
+.spoiler {
   position: relative;
-  margin-top: 10px;
-  padding: 20px 18px 16px;
-  line-height: 1.7;
-  white-space: pre-line;
-  background: var(--note);
-  border-radius: 4px;
-  box-shadow: var(--sticker-shadow);
-  rotate: -0.6deg;
 }
 
-.review-note::before {
-  content: '';
+/* 內容很短時，蓋住的標籤也要放得下 */
+.spoiler[data-hidden] {
+  min-height: 76px;
+}
+
+.spoiler[data-hidden] .spoiler-content {
+  max-height: 180px;
+  overflow: hidden;
+  filter: blur(6px);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.spoiler-cover {
   position: absolute;
-  top: -11px;
-  left: 50%;
-  width: 78px;
-  height: 22px;
-  translate: -50% 0;
-  rotate: 3deg;
-  background: repeating-linear-gradient(
-    45deg,
-    color-mix(in srgb, var(--pink) 80%, transparent) 0 8px,
-    color-mix(in srgb, var(--pink) 55%, transparent) 8px 14px
-  );
-  clip-path: polygon(
-    0 10%, 5% 0, 95% 0, 100% 12%, 96% 30%, 100% 50%, 96% 70%, 100% 88%, 95% 100%,
-    5% 100%, 0 88%, 4% 70%, 0 50%, 4% 30%
-  );
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.spoiler-cover > span {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  padding: 6px 16px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: var(--sticker-shadow);
+}
+
+.spoiler-cover small {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.notes-link {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--sky-soft);
+}
+
+@media (hover: hover) {
+  .notes-link:hover {
+    background: var(--lavender-soft);
+  }
 }
 
 /* Anime list view */
@@ -2034,4 +2068,318 @@ a.ticket-artist {
     stroke-dashoffset: 0;
     opacity: 1;
   }
+}
+
+/* 逐集心得頁 #/anime/<id>（src/pages/AnimeNotesPage.tsx） */
+.anime-notes-page {
+  gap: 24px;
+}
+
+.notes-head,
+.notes-toc,
+.notes-list {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.notes-head {
+  display: grid;
+  gap: 18px;
+}
+
+.notes-back {
+  justify-self: start;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface);
+  box-shadow: var(--sticker-shadow);
+}
+
+.notes-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.notes-hero img {
+  flex: none;
+  width: 104px;
+  border: 5px solid var(--surface);
+  border-radius: 10px;
+  box-shadow: var(--sticker-shadow);
+  rotate: -2deg;
+}
+
+.notes-hero h1 {
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1.3;
+}
+
+.notes-hero p {
+  margin-top: 4px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.notes-toc {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--sticker-shadow);
+}
+
+.notes-toc-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.notes-toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.notes-toc-season {
+  flex: none;
+  min-width: 2.5em;
+  font-weight: 900;
+}
+
+.notes-toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+}
+
+.notes-toc a,
+.notes-toc-tabs button {
+  display: block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--sky-soft);
+  border: 0;
+}
+
+.notes-toc a[data-special] {
+  background: var(--lavender-soft);
+}
+
+.notes-toc a[aria-current],
+.notes-toc-tabs button[aria-pressed='true'] {
+  color: var(--surface);
+  background: var(--ink);
+}
+
+.notes-list {
+  display: grid;
+  gap: 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.notes-list > li {
+  /* 捲到某一集時不要被固定的頁首蓋住 */
+  scroll-margin-top: 80px;
+}
+
+.episode-note {
+  padding: 16px 18px 18px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--sticker-shadow);
+}
+
+.notes-list > li[data-current] .episode-note {
+  box-shadow:
+    0 0 0 3px var(--bar-blue),
+    var(--sticker-shadow);
+}
+
+.episode-note > header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.episode-note h2 {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.episode-season {
+  margin-right: 0.4em;
+  color: var(--muted);
+}
+
+.episode-title {
+  font-weight: 700;
+}
+
+.episode-note time {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.episode-body {
+  margin-top: 10px;
+}
+
+.episode-body .spoiler-content {
+  display: grid;
+  gap: 12px;
+}
+
+.episode-body p {
+  line-height: 1.75;
+  white-space: pre-line;
+}
+
+.episode-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.episode-photos figure {
+  display: grid;
+  margin: 0;
+  gap: 4px;
+}
+
+.episode-photos button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+  background: none;
+  border: 0;
+}
+
+.episode-photos img {
+  display: block;
+  width: 100%;
+  border: 4px solid var(--cream);
+  border-radius: 8px;
+}
+
+.episode-photos figcaption {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.notes-lightbox {
+  max-width: min(92vw, 1000px);
+  max-height: 94vh;
+  padding: 0;
+  margin: auto;
+  overflow: visible;
+  background: none;
+  border: 0;
+}
+
+.notes-lightbox::backdrop {
+  background: rgb(20 22 28 / 88%);
+}
+
+.notes-lightbox-body {
+  position: relative;
+  padding: 12px 12px 14px;
+  color: var(--ink);
+  background: var(--surface);
+  border-radius: 12px;
+}
+
+.notes-lightbox-body img {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  margin-inline: auto;
+}
+
+.notes-lightbox-body p {
+  padding: 10px 4px 0;
+  line-height: 1.6;
+}
+
+.notes-lightbox-nav,
+.notes-lightbox-close {
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--surface);
+  cursor: pointer;
+  background: var(--ink);
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+}
+
+.notes-lightbox-nav {
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.notes-lightbox-prev {
+  left: max(12px, calc(50vw - 560px));
+}
+
+.notes-lightbox-next {
+  right: max(12px, calc(50vw - 560px));
+}
+
+.notes-lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.notes-lightbox-count {
+  display: block;
+  padding: 6px 4px 0;
+  text-align: right;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .notes-hero img {
+    width: 80px;
+  }
+
+  .notes-toc-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* 從逐集心得頁回到 Anime 頁時捲到那部作品，不要被固定的頁首蓋住 */
+[data-anime-id] {
+  scroll-margin-top: 76px;
 }
