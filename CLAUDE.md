@@ -13,7 +13,7 @@ rex0988476 的個人網站，從舊專案 `../githubpage`（純 HTML/JS，執行
 
 ## 部署
 
-- 已上線：https://rex0988476.github.io/githubpage-v2/ ，push 到 `main` 就會由 `.github/workflows/deploy.yml` 自動部署。
+- 已上線：https://rex0988476.github.io/ （repo 名稱是 `rex0988476.github.io`，2026-11-18 從 githubpage-v2 改名），push 到 `main` 就會由 `.github/workflows/deploy.yml` 自動部署。
 
 ## 架構
 
